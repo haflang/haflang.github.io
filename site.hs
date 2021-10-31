@@ -51,7 +51,7 @@ main = hakyllWith config $ do
         >>= loadAndApplyTemplate "templates/default.html" archiveCtx
         >>= relativizeUrls
 
-  match "index.html" $ do
+  match (fromList ["index.html", "people.html"]) $ do
     route idRoute
     compile $ do
       posts <- recentFirst =<< loadAll "posts/*"
