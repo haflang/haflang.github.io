@@ -1,0 +1,17 @@
+---
+title: People
+---
+
+#+begin_export html
+  <div class="container marketing">
+
+    <div class="row">
+      <div class="col-lg-4">
+      <img src="images/RobStewart.jpg" alt="Rob Stewart" class="rounded-circle">
+        <h2>Principle Investigator</h2>
+        <p>Dr Stewart has interests in parallel computing, Domain Specific Languages, verification, AI accelerators and functional language design and implementation. He is leading this HAFLANG project.</p>
+        <p><a class="btn btn-secondary" href="https://www.macs.hw.ac.uk/~rs46/" target="_blank">Website &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+#+end_export
