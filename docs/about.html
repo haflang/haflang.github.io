@@ -67,15 +67,56 @@
         <div id="content">
           <h1>Project Summary</h1>
 
-          <p>The performance of programming language implementations until 10 years ago relied on increasing clock frequencies on uni-core CPUs. The last decade has seen the rise of the multi-core era adding processing elements to CPUs, to enable general purpose parallel computing.</p>
-<p>Due to a single connection from multiple cores on a CPU to main memory, general purpose languages with parallelism support are finding the limits of general purpose CPU architectures that have been extended with parallelism. The fabric on which we compute has changed fundamentally.</p>
-<p>Driven by the needs of AI, Big Data and energy efficiency, industry is moving away from general purpose CPUs to efficient special purpose hardware e.g. Google’s Tensorflow Processing Unit (TPU) in 2016, Huawei’s Neural Processing Unit (NPU) in smartphones, and Graphcore’s Intelligent Processing Unit (IPU) in 2017. This reflects a wider shift to special purpose hardware to improve execution efficiency.</p>
-<p>Functional languages are gaining widespread use in industry due to reduced development time, better maintainability, code correctness with assistance of static type checkers, and ease of deterministic parallelism. Functional language implementations overwhelmingly target general purpose CPUs, and hence have limited control over cache behaviour, sharing, prefetching and garbage collection locality. As such, they are reaching their performance limits due to the trade-off between parallelism and memory contention. This project takes the view that rather than using compiler optimisations to squeeze small incremental performance improvements from CPUs, special purpose hardware on programmable FPGAs may instead be able to provide a step change improvement by moving these non-deterministic inefficiencies into hardware.</p>
+          <p>The performance of programming language implementations until 10 years
+ago relied on increasing clock frequencies on uni-core CPUs. The last
+decade has seen the rise of the multi-core era adding processing
+elements to CPUs, to enable general purpose parallel computing.</p>
+<p>Due to a single connection from multiple cores on a CPU to main
+memory, general purpose languages with parallelism support are finding
+the limits of general purpose CPU architectures that have been
+extended with parallelism. The fabric on which we compute has changed
+fundamentally.</p>
+<p>Driven by the needs of AI, Big Data and energy efficiency, industry is
+moving away from general purpose CPUs to efficient special purpose
+hardware e.g. Google’s Tensorflow Processing Unit (TPU) in 2016,
+Huawei’s Neural Processing Unit (NPU) in smartphones, and Graphcore’s
+Intelligent Processing Unit (IPU) in 2017. This reflects a wider shift
+to special purpose hardware to improve execution efficiency.</p>
+<p>Functional languages are gaining widespread use in industry due to
+reduced development time, better maintainability, code correctness
+with assistance of static type checkers, and ease of deterministic
+parallelism. Functional language implementations overwhelmingly target
+general purpose CPUs, and hence have limited control over cache
+behaviour, sharing, prefetching and garbage collection locality. As
+such, they are reaching their performance limits due to the trade-off
+between parallelism and memory contention. This project takes the view
+that rather than using compiler optimisations to squeeze small
+incremental performance improvements from CPUs, special purpose
+hardware on programmable FPGAs may instead be able to provide a step
+change improvement by moving these non-deterministic inefficiencies
+into hardware.</p>
 <p>Graph reduction is a functional execution model that offers intriguing opportunities for developing radically different processor architectures. Early ideas stem back to the 1980s, well before the age of advanced Field Programmable Gate Array (FPGA) technology of the last 5-10 years.</p>
-<p>We believe that a bespoke FPGA memory hierarchy for functional languages could minimise memory traffic, thus avoiding the costs of cache misses and memory access latencies that quickly become the bottleneck for medium and large sized functional programs. We believe that lowering key runtime system components (prefetching, garbage collection, parallelism) to hardware, with a domain specific instruction set for graph reduction, will significantly reduce runtimes.</p>
-<p>We aim to inspire the computer architecture community to extend this project by developing accurate cost models for functional languages that target special purpose functional language hardware.</p>
-<p>Our HAFLANG project will target the Xilinx Alveo U280 accelerator board, a state-of-the-art UltraScale+ FPGA-based platform as a research vehicle for developing the FPU. The HAFLANG compilation framework will be designed to be extensible, and hence make the FPU processor a target for other languages in future.</p>
-<p>By developing a hardware accelerator, we believe it is possible to engineer a processor that (1) will execute programs with twice the throughput compared with GHC compiled Haskell executing on conventional mid-tier 4-16 core x86/x86-64 CPUs, and (2) consumes four times less energy than by executing programming languages on CPUs.</p>
+<p>We believe that a bespoke FPGA memory hierarchy for functional
+languages could minimise memory traffic, thus avoiding the costs of
+cache misses and memory access latencies that quickly become the
+bottleneck for medium and large sized functional programs. We believe
+that lowering key runtime system components (prefetching, garbage
+collection, parallelism) to hardware, with a domain specific
+instruction set for graph reduction, will significantly reduce
+runtimes.</p>
+<p>We aim to inspire the computer architecture community to extend this
+project by developing accurate cost models for functional languages
+that target special purpose functional language hardware.</p>
+<p>Our HAFLANG project will target the Xilinx Alveo U280 accelerator
+board, a state-of-the-art UltraScale+ FPGA-based platform as a
+research vehicle for developing the FPU. The HAFLANG compilation
+framework will be designed to be extensible, and hence make the FPU
+processor a target for other languages in future.</p>
+<p>By developing a hardware accelerator, we believe it is possible to
+engineer a processor that (1) will execute programs with twice the
+throughput compared with GHC compiled Haskell executing on
+conventional mid-tier 4-16 core x86/x86-64 CPUs, and (2) consumes four
+times less energy than by executing programming languages on CPUs.</p>
         </div>
 
         <footer class="pt-5 my-5 text-muted border-top">
