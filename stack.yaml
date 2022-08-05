@@ -44,7 +44,7 @@ packages:
 #
 
 extra-deps:
-- hakyll-4.15.1.0@sha256:e5017c9fbecbffac951710550f8a1c6b2506bbe94e1deb470a5b18c55c87ca97,9562
+- hakyll-4.15.1.1
 
 # Override default flag values for local packages and extra-deps
 # flags: {}
