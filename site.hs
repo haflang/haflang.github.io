@@ -1,19 +1,18 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 
-import Data.Monoid (mappend)
 import Hakyll
 import Text.Pandoc.Options
 
 --------------------------------------------------------------------------------
-config :: Configuration
-config =
+siteConfig :: Configuration
+siteConfig =
   defaultConfiguration
     { destinationDirectory = "docs"
     }
 
 main :: IO ()
-main = hakyllWith config $ do
+main = hakyllWith siteConfig $ do
   match "images/*" $ do
     route idRoute
     compile copyFileCompiler
