@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>HAFLANG - Relaxing Reduceron's Template Constraints</title>
+    <!-- <link rel="shortcut icon" type="image/jpg" href="images/haflang-favicon.png"/> -->
+    <link rel="shortcut icon" type="image/svg" href="../images/proc.svg" />
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira Sans">
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LBPNLBE6DL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LBPNLBE6DL');
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  </head>
+
+  <div class="col-lg-8 mx-auto p-3 py-md-5">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="../css/haflang-template.css" />
+
+      <header class="d-flex align-items-center pb-1 mb-5 border-bottom">
+        <a href="../index.html" class="d-flex align-items-center text-dark
+                           text-decoration-none">
+      <img width="50" src="../images/proc.svg" />
+          <!-- <img src="images/processor-idea-icon.png"> -->
+            <span class="fs-4">HAFLANG</span>
+          </a>
+
+          <nav class="navbar navbar-expand-lg navbar-light bg-light rounded" aria-label="Twelfth navbar example">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="../about.html">About</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="../people.html">People</a>
+                    </li>
+                  <!-- <li class="nav-item"> -->
+                    <!--   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
+                    <!-- </li> -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Memos</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                        
+                        <li><a class="dropdown-item" href="../posts/2023-03-07-memo_01.html">Memo 01</a></li>
+                        
+                        <li><a class="dropdown-item" href="../posts/2023-03-08-memo_02.html">Memo 02</a></li>
+                        
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </header>
+        
+        <div id="content">
+          
+          
+          <link rel="stylesheet" type="text/css" href="../css/syntax.css" />
+<link rel="stylesheet" type="text/css" href="../css/post-template.css" />
+<script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
+
+<div id="memo_content" class="row justify-content-center">
+  <div class="col-md-10 col-sm-12">
+      <p class="title"> Relaxing Reduceron's Template Constraints </p>
+      
+      <p class="author"> By Craig Ramsay </p>
+      
+      <p>Our own work towards HAFLANG is heavily inspired by the
+<a href="https://www.cs.york.ac.uk/fp/reduceron/">Reduceron</a> project. The Reduceron is
+an FPGA-based template instantiation architecture for a small, lazy functional
+language called <em>F-lite</em>. An F-lite program is a set of supercombinators, each
+of which get translated to a set of <em>templates</em> — the Reduceron’s native
+representation of a program. This process remains quite true to the user’s
+original source: we are evaluating the functional program as directly as is
+feasible.</p>
+<p>Consider a toy example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>foo x y <span class="ot">=</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> { a <span class="ot">=</span> h y }</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span> f (g x a) a;</span></code></pre></div>
+<p>We could directly draw the supercombinator <code>foo</code> as a graph. The (simplified)
+translation from this graph to Reduceron templates is a two step process:</p>
+<ol type="1">
+<li>We divide the graph into two categories: the (pink) spine down the left
+side, and a set of non-spinal subexpressions (blue) branching towards the right.</li>
+<li>We map the spine and subexpressions to a number of templates, splitting up
+any constructs which are too large for the hardware.</li>
+</ol>
+<figure>
+<img src="../images/memo_01/example_graph_template.svg" width="450" />
+</figure>
+<p>When evaluated, the spine application is pushed directly onto the main stack,
+while the non-spinal subexpressions are allocated on the heap. Note that the
+hardware architecture necessarily has fixed dimensions. The three most important
+dimensions, illustrated above, are:</p>
+<dl>
+<dt><code>SpineLen</code></dt>
+<dd>Maximum number of atoms per spinal application. Dictates how parallel our main
+stack implementation needs to be.
+</dd>
+<dt><code>ApLen</code></dt>
+<dd>Maximum number of atoms per application on the heap. Dictates how wide our
+heap memory needs to be.
+</dd>
+<dt><code>MaxAps</code></dt>
+<dd>Maximum number of applications we can allocate on the heap simultaneously.
+Dictates the number of ports our heap memory needs to have.
+</dd>
+</dl>
+<p>Assuming our example graph obeys all of these fixed dimensions, we can quite
+directly write out a corresponding template with one spinal application and two
+heap applications. (The <em>Alts</em> field is for handling case expressions and will
+be explored in future memos.)</p>
+<p><span class="math display">$$
+\textit{#0}\ 
+\left[\ \
+\begin{array}{r l}
+  \text{Alts}\ &amp; [] \\\\
+  \text{Spine}   &amp;
+    [\begin{array}{c c c c c c}
+       \texttt{FUN f}, &amp; \texttt{VAR 1}, &amp; \texttt{VAR 0}
+     \end{array}]\\\\
+  \text{Heap} &amp;
+    \left\{
+    \begin{array}{l}
+    \texttt{VAR 0} \mapsto \texttt{App}\ [\begin{array}{c c c c}
+       \texttt{FUN h}, &amp; \texttt{ARG y}
+     \end{array}]\\
+    \texttt{VAR 1} \mapsto \texttt{App}\ [\begin{array}{c c c c}
+       \texttt{FUN g}, &amp; \texttt{ARG x}, &amp; \texttt{VAR 0}
+     \end{array}]\\
+    \end{array}\right.
+\end{array}
+\right.
+$$</span></p>
+<p>This is the happy path for the translation to templates. There are, however, some constraints on the Reduceron templates which are overly strict. We want to see if we can relax these constraints with a modest increase in hardware complexity.</p>
+<h2 id="the-constraints">The Constraints</h2>
+<h3 id="the-referscheck">1. The <code>refersCheck</code></h3>
+<p>The head of any template’s spine will direct which reduction rule is used
+directly after template instantiation. If the head of the spine is <code>VAR x</code>, our
+next step is to unwind/dereference <code>x</code> from the heap memory. Below, we show an
+example template representing <code>sumDoubles x y = (x+x) + (y+y)</code>. Note in
+particular that the <code>VAR</code> in head position refers to an application which is
+being allocated by the same template.</p>
+<p><span class="math display">$$
+\textit{sumDoubles}\ 
+\left[\ \
+\begin{array}{r l}
+  \text{Alts}\ &amp; [] \\\\
+  \text{Spine}   &amp;
+    [\begin{array}{c c c c c c}
+       \texttt{VAR 0}, &amp; \texttt{(+)}, &amp; \texttt{VAR 1}
+     \end{array}]\\\\
+  \text{Heap} &amp;
+    \left\{
+    \begin{array}{l}
+    \texttt{VAR 0} \mapsto \texttt{App}\ [\begin{array}{c c c c}
+       \texttt{ARG x}, &amp; \texttt{(+)}, &amp; \texttt{ARG x}
+     \end{array}]\\
+    \texttt{VAR 1} \mapsto \texttt{App}\ [\begin{array}{c c c c}
+       \texttt{ARG y}, &amp; \texttt{(+)}, &amp; \texttt{ARG y}
+     \end{array}]\\
+    \end{array}\right.
+\end{array}
+\right.
+$$</span></p>
+<p>There is one subtle problem here. Since the template is responsible for
+instantiating <code>VAR 0</code> <em>and</em> allocating it to the heap, we might try to prefetch
+<code>VAR 0</code> for unwinding before it has been comitted to memory!</p>
+<p>To avoid this conflict, the F-lite compiler checks for this condition and will
+split the template into two. Now the application will be allocated in the first
+template and the original spine appears in the second template. This incurrs a
+cost in terms of the code size (+1 template) and run time (+1 cycle for
+instantiation).</p>
+<p><span class="math display">$$
+\begin{array}{l}
+\textit{#0}\ 
+\left[\ \
+\begin{array}{r l}
+  \text{Alts}\ &amp; [] \\\\
+  \text{Spine}   &amp;
+    [\begin{array}{c c c c c c}
+       \texttt{FUN #1}
+     \end{array}]\\\\
+  \text{Heap} &amp;
+    \left\{
+    \begin{array}{l}
+    \texttt{VAR 0} \mapsto \texttt{App}\ [\begin{array}{c c c c}
+       \texttt{ARG x}, &amp; \texttt{(+)}, &amp; \texttt{ARG x}
+     \end{array}]\\
+    \texttt{VAR 1} \mapsto \texttt{App}\ [\begin{array}{c c c c}
+       \texttt{ARG y}, &amp; \texttt{(+)}, &amp; \texttt{ARG y}
+     \end{array}]\\
+    \end{array}\right.
+\end{array}
+\right. \\~\\
+\textit{#1}\ 
+\left[\ \
+\begin{array}{r l}
+  \text{Alts}\ &amp; [] \\\\
+  \text{Spine}   &amp;
+    [\begin{array}{c c c c c c}
+       \texttt{VAR 0}, &amp; \texttt{(+)}, &amp; \texttt{VAR 1}
+     \end{array}]\\\\
+  \text{Heap} &amp;
+    \left\{\ \right.
+\end{array}
+\right.
+\end{array}
+$$</span></p>
+<p>Instead, we propose a simple forwarding mechanism to support the original
+problematic template. Here an application instantiated during the previous cycle
+is available directly, without taking a round-trip to the heap memory.</p>
+<h3 id="conservative-heap-activity">2. Conservative heap activity</h3>
+<p>There is one more constraint which apeases the limits of the heap memory. We
+also need to ensure we have enough physical ports to the heap memory to dispatch
+all transactions needed in a single cycle. Although the compiler does have a
+<code>MaxAps</code> parameter (#heap applications per template), this is not the full
+picture. If the top of the stack happens to be a <code>VAR</code>, the original
+architecture will attempt to prefetch it from the heap. We run into difficulty
+when we need this prefetching but our template also tries to instantiate
+<code>MaxAps</code> applications to the heap.</p>
+<p>The F-lite chooses to eliminate this possibility quite conservatively. Unless we
+are certain that a template’s spine is a single <code>FUN</code> atom (a pattern introduced
+by the template splitting process), we restrict the number of new heap
+applications to <code>MaxAps</code>-1.</p>
+<p>There is scope for weakening this restriction further with just static analysis:</p>
+<ul>
+<li>The spine can be any length; only the first atom is important.</li>
+<li>The head position could be any atom which, when instantiated, is a
+non-<code>VAR</code>. This includes <code>INT</code>, <code>CON</code>, and <code>FUN</code>. Any <code>ARG</code>s are excluded
+since we do not know what they will resolve to until run-time.</li>
+</ul>
+<p>We choose to go one step further and make this choice dynamic, deferring it
+until run-time. The static version will always need to be conservative since we
+cannot statically determine what an <code>ARG</code> atom will become after instantiation.
+We opt to always allow templates to allocate <code>MaxAps</code> heap nodes. If the head
+position of the spine resolves to a <code>VAR</code> (which is not in our new forwarding
+registers!), we incur a 1-cycle bubble while waiting on the heap memory.</p>
+<h3 id="spine-splitting">3. Spine splitting</h3>
+<p>Finally, the F-lite compiler takes a simple approach to splitting spinal
+applications which are longer than <code>SpineLen</code>. The bottom <code>SpineLen-1</code> atoms
+remain in the spine and the rest are relocated to (possibly several) heap
+applications. This means that for any set of split templates, only the final
+template actually stores useful spine data. This effect was also demonstrated
+back in the split version of <code>sumDoubles</code>.</p>
+<p>If we could more intelligently divide long spinal applications between templates, we would win on two fronts:</p>
+<ul>
+<li>We often have a smaller code size. There can be better utilisation of
+previously unused split template spines and fewer heap applications since
+none are required for overspill of long spines.</li>
+<li>We often need fewer cycles per reduction. We avoid the overhead of unwinding
+auxilliary applications generated during spine splitting.</li>
+</ul>
+<p>The first point is not <em>always</em> true — if there are sufficient free heap
+allocations in a template, the original method <em>could</em> pack more efficiently
+into a single template. However, the results later in this memo suggest the new
+approach offers a good advantage on average. Ideally, our compiler would be
+aware of the remaining template resources for each supercombinator and could make
+an informed decision about which method to use depending on context.</p>
+<p>Implementing the incremental construction of a spine in the compiler is
+non-trivial since elements will be moved on (or popped from) the stack
+incrementally, impacting the structure and reach of the next portion of the
+spine. To side-step this complexity, we make a small addition to the hardware
+architecture. We freeze a copy of the top <code>SpineLen</code> elements of the stack
+whenever we begin the instantiation of a set of linked templates. All
+instantiation is then performed against this frozen copy, while we are free to
+clobber the arguments on the live stack.</p>
+<h2 id="results">Results</h2>
+<p>We have implemented all three changes to the compilation of templates and the
+emulated Reduceron hardware. Below we show results normalised against the
+original implementation. There are three distinct metrics of interest here:</p>
+<ul>
+<li>Code size</li>
+<li>Reduction run time (in cycles, not including GC)</li>
+<li>Number of GC events triggered (a proxy for heap allocations)</li>
+</ul>
+<div>
+<div id="aa7afd00-dd4a-4c46-bf77-e69c64c176a5" class="plotly-graph-div" style="height:100%; width:100%;">
+
+</div>
+<script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("aa7afd00-dd4a-4c46-bf77-e69c64c176a5")) {                    Plotly.newPlot(                        "aa7afd00-dd4a-4c46-bf77-e69c64c176a5",                        [{"alignmentgroup":"True","hovertemplate":"Mode=prs<br>Benchmark=%{x}<br>% Improvement in Cycles=%{y}<extra></extra>","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"textposition":"auto","x":["Fib","CountDown","KnuthBendix","Adjoxo","Cichelli","Taut","While","MSS","Braun","Clausify","OrdList","PermSort","SumPuz","Queens","Mate"],"xaxis":"x","y":[0.0,1.7977073470063831,5.031432466423391,10.406596703668914,1.5760214295808317,10.036551686859207,7.0315972658364645,0.8780310973501071,7.120228520089222,1.4747505744999279,6.440788049361334,11.642835206865609,2.427426561569679,0.0,5.648132697906538],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,0.98],"title":{"text":"Benchmark"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"% Improvement in Cycles"}},"annotations":[{"font":{},"showarrow":false,"text":"Mode=prs","textangle":90,"x":0.98,"xanchor":"left","xref":"paper","y":0.5,"yanchor":"middle","yref":"paper"}],"legend":{"tracegroupgap":0},"margin":{"t":60},"barmode":"group"},                        {"responsive": true}                    )                };                            
+</script>
+</div>
+<p>First of all, we do see modest improvements to the run time of all benchmarks
+except <code>Fib</code> and <code>Queens</code>. This effect is due to two factors: more efficient
+template packing leads to fewer cycles spent on instantiation, and better use of
+spinal applications avoids the overhead of unnecessary dereferencing.</p>
+<p>Next, we highlight the first of these factors in isolation — comparing the
+number of templates required for each benchmark. For this metric, we also see
+modest improvements nearly across the board. The only outlier is <code>Fib</code> which an
+unrepresentitively small code size.</p>
+<div>
+<div id="c3840455-18c1-4812-82fa-d9f730b48ad4" class="plotly-graph-div" style="height:100%; width:100%;">
+
+</div>
+<script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("c3840455-18c1-4812-82fa-d9f730b48ad4")) {                    Plotly.newPlot(                        "c3840455-18c1-4812-82fa-d9f730b48ad4",                        [{"alignmentgroup":"True","hovertemplate":"Mode=prs<br>Benchmark=%{x}<br>% Improvement in Code Size=%{y}<extra></extra>","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"textposition":"auto","x":["Fib","CountDown","KnuthBendix","Adjoxo","Cichelli","Taut","While","MSS","Braun","Clausify","OrdList","PermSort","SumPuz","Queens","Mate"],"xaxis":"x","y":[0.0,3.809523809523807,6.462035541195476,5.932203389830503,4.01785714285714,4.761904761904767,0.9708737864077666,6.666666666666665,7.14285714285714,8.03571428571429,7.692307692307687,5.555555555555558,3.93258426966292,2.631578947368418,7.317073170731703],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,0.98],"title":{"text":"Benchmark"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"% Improvement in Code Size"}},"annotations":[{"font":{},"showarrow":false,"text":"Mode=prs","textangle":90,"x":0.98,"xanchor":"left","xref":"paper","y":0.5,"yanchor":"middle","yref":"paper"}],"legend":{"tracegroupgap":0},"margin":{"t":60},"barmode":"group"},                        {"responsive": true}                    )                };                            
+</script>
+</div>
+<p>Finally, we demonstrate that all benchmarks which have “hot” supercombinators
+templates with spines longer than <code>SpineLen</code> also benerift from reduced heap
+activity. Since our long spines no longer spill over into the heap, we have
+fewer allocations and fewer GC events are triggered.</p>
+<div>
+<div id="a7c7f89e-2d64-4bf4-b230-810ec3430865" class="plotly-graph-div" style="height:100%; width:100%;">
+
+</div>
+<script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("a7c7f89e-2d64-4bf4-b230-810ec3430865")) {                    Plotly.newPlot(                        "a7c7f89e-2d64-4bf4-b230-810ec3430865",                        [{"alignmentgroup":"True","hovertemplate":"Mode=prs<br>Benchmark=%{x}<br>% Improvement in GC Events=%{y}<extra></extra>","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"textposition":"auto","x":["Fib","CountDown","KnuthBendix","Adjoxo","Cichelli","Taut","While","MSS","Braun","Clausify","OrdList","PermSort","SumPuz","Queens","Mate"],"xaxis":"x","y":[0.0,12.5,21.858864027538726,34.08323959505062,9.26966292134831,0.0,24.558404558404558,0.0,0.0,0.0,null,0.0,0.0,0.0,26.15106412574767],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,0.98],"title":{"text":"Benchmark"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"% Improvement in GC Events"}},"annotations":[{"font":{},"showarrow":false,"text":"Mode=prs","textangle":90,"x":0.98,"xanchor":"left","xref":"paper","y":0.5,"yanchor":"middle","yref":"paper"}],"legend":{"tracegroupgap":0},"margin":{"t":60},"barmode":"group"},                        {"responsive": true}                    )                };                            
+</script>
+</div>
+<p>These three tweaks give us modest improvements across the board with only cheap
+additions to the hardware architecture.</p>
+<p class="sig">
+Cheers,<br />
+Craig
+</p>
+  </div>
+</div>
+
+        </div>
+
+        <footer class="pt-5 my-5 text-muted border-top">
+
+        <div class="footer d-flex justify-content-between align-items-center">
+            <img class="logo" src="../images/Xilinx.png">
+            <img class="logo" src="../images/qbaylogic.png">
+        </div>
+
+        <div class="footer d-flex justify-content-center">
+          <p>Supported by the Engineering and Physical Sciences Research
+              Council (EPSRC) grant <a href="https://gow.epsrc.ukri.org/NGBOViewGrant.aspx?GrantRef=EP/W009447/1">EP/W009447/1</a>.</p>
+        </div>
+        </footer>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      </div>
+    </html>

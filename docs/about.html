@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>HAFLANG - Project Summary</title>
     <!-- <link rel="shortcut icon" type="image/jpg" href="images/haflang-favicon.png"/> -->
-    <link rel="shortcut icon" type="image/svg" href="images/proc.svg" />
+    <link rel="shortcut icon" type="image/svg" href="./images/proc.svg" />
 
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira Sans">
     
@@ -18,6 +18,8 @@
 
   gtag('config', 'G-LBPNLBE6DL');
 </script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   </head>
 
@@ -26,9 +28,9 @@
       <link rel="stylesheet" type="text/css" href="./css/haflang-template.css" />
 
       <header class="d-flex align-items-center pb-1 mb-5 border-bottom">
-        <a href="./" class="d-flex align-items-center text-dark
+        <a href="./index.html" class="d-flex align-items-center text-dark
                            text-decoration-none">
-      <img width="50" src="images/proc.svg" />
+      <img width="50" src="./images/proc.svg" />
           <!-- <img src="images/processor-idea-icon.png"> -->
             <span class="fs-4">HAFLANG</span>
           </a>
@@ -42,22 +44,24 @@
               <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="about.html">About</a>
+                    <a class="nav-link" aria-current="page" href="./about.html">About</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" aria-current="page" href="people.html">People</a>
+                      <a class="nav-link" aria-current="page" href="./people.html">People</a>
                     </li>
                   <!-- <li class="nav-item"> -->
                     <!--   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
                     <!-- </li> -->
-                  <!-- <li class="nav-item dropdown"> -->
-                    <!--   <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a> -->
-                    <!--   <ul class="dropdown-menu" aria-labelledby="dropdown10"> -->
-                      <!--     <li><a class="dropdown-item" href="#">Action</a></li> -->
-                      <!--     <li><a class="dropdown-item" href="#">Another action</a></li> -->
-                      <!--     <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                      <!--   </ul> -->
-                    <!-- </li> -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Memos</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                        
+                        <li><a class="dropdown-item" href="./posts/2023-03-07-memo_01.html">Memo 01</a></li>
+                        
+                        <li><a class="dropdown-item" href="./posts/2023-03-08-memo_02.html">Memo 02</a></li>
+                        
+                    </ul>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -65,8 +69,9 @@
         </header>
         
         <div id="content">
-          <h1>Project Summary</h1>
-
+          
+            <h1>Project Summary</h1>
+          
           <p>The performance of programming language implementations until 10 years
 ago relied on increasing clock frequencies on uni-core CPUs. The last
 decade has seen the rise of the multi-core era adding processing
@@ -121,18 +126,17 @@ times less energy than by executing programming languages on CPUs.</p>
 
         <footer class="pt-5 my-5 text-muted border-top">
 
-<div class="footer d-flex justify-content-between align-items-center">
-    <img class="logo" src="./images/Xilinx.png">
-    <img class="logo" src="./images/qbaylogic.png">
-    <!-- <a class="center_btn btn-primary btn-lg" href="#" role="button">Ask a question</a> -->
-    <!-- <a class="right_btn btn-primary btn-lg" href="#" role="button">Register</a> -->
-</div>
+        <div class="footer d-flex justify-content-between align-items-center">
+            <img class="logo" src="./images/Xilinx.png">
+            <img class="logo" src="./images/qbaylogic.png">
+        </div>
 
-          Supported by the Engineering and Physical Sciences Research
-          Council (EPSRC) grant <a href="https://gow.epsrc.ukri.org/NGBOViewGrant.aspx?GrantRef=EP/W009447/1">EP/W009447/1</a>.
+        <div class="footer d-flex justify-content-center">
+          <p>Supported by the Engineering and Physical Sciences Research
+              Council (EPSRC) grant <a href="https://gow.epsrc.ukri.org/NGBOViewGrant.aspx?GrantRef=EP/W009447/1">EP/W009447/1</a>.</p>
+        </div>
         </footer>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
       </div>
     </html>

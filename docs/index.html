@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>HAFLANG - Hardware Acceleration of Functional Languages</title>
     <!-- <link rel="shortcut icon" type="image/jpg" href="images/haflang-favicon.png"/> -->
-    <link rel="shortcut icon" type="image/svg" href="images/proc.svg" />
+    <link rel="shortcut icon" type="image/svg" href="./images/proc.svg" />
 
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira Sans">
     
@@ -18,6 +18,8 @@
 
   gtag('config', 'G-LBPNLBE6DL');
 </script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   </head>
 
@@ -26,9 +28,9 @@
       <link rel="stylesheet" type="text/css" href="./css/haflang-template.css" />
 
       <header class="d-flex align-items-center pb-1 mb-5 border-bottom">
-        <a href="./" class="d-flex align-items-center text-dark
+        <a href="./index.html" class="d-flex align-items-center text-dark
                            text-decoration-none">
-      <img width="50" src="images/proc.svg" />
+      <img width="50" src="./images/proc.svg" />
           <!-- <img src="images/processor-idea-icon.png"> -->
             <span class="fs-4">HAFLANG</span>
           </a>
@@ -42,22 +44,24 @@
               <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="about.html">About</a>
+                    <a class="nav-link" aria-current="page" href="./about.html">About</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" aria-current="page" href="people.html">People</a>
+                      <a class="nav-link" aria-current="page" href="./people.html">People</a>
                     </li>
                   <!-- <li class="nav-item"> -->
                     <!--   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
                     <!-- </li> -->
-                  <!-- <li class="nav-item dropdown"> -->
-                    <!--   <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a> -->
-                    <!--   <ul class="dropdown-menu" aria-labelledby="dropdown10"> -->
-                      <!--     <li><a class="dropdown-item" href="#">Action</a></li> -->
-                      <!--     <li><a class="dropdown-item" href="#">Another action</a></li> -->
-                      <!--     <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                      <!--   </ul> -->
-                    <!-- </li> -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Memos</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                        
+                        <li><a class="dropdown-item" href="./posts/2023-03-07-memo_01.html">Memo 01</a></li>
+                        
+                        <li><a class="dropdown-item" href="./posts/2023-03-08-memo_02.html">Memo 02</a></li>
+                        
+                    </ul>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -65,25 +69,13 @@
         </header>
         
         <div id="content">
-          <h1>Hardware Acceleration of Functional Languages</h1>
-
+          
+            <h1>Hardware Acceleration of Functional Languages</h1>
+          
           <body>
+    <div class="row justify-content-center"><hr class="col-md-8 mb-5 ma-5"></div>
 
-  <!-- <div class="card-img-top d-flex align-items-center"> -->
-  <!--   <p class="fs-5 col-md-8">This project will develop a special -->
-  <!--     purpose processor for accelerating functional programming -->
-  <!--     languages, by implementing functional languages runtime components -->
-  <!--     in hardware using the latest FPGA technology. -->
-
-  <!--     The project will run from 2022 to 2025. -->
-  <!--   </p> -->
-  <!--   <\!-- <div> -\-> -->
-  <!--     <\!-- <img width="150" height="150" src="images/proc.svg" /> -\-> -->
-  <!--     <\!-- <img class="img-fluid" src="images/processor-idea.png" alt="Card image cap"> -\-> -->
-  <!--   <\!-- </div> -\-> -->
-  <!-- </div> -->
-
-  <div class="row g-5">
+    <div class="row g-5 justify-content-center">
     <div class="col-md-6">
       <p class="fs-5">
       This project will develop a special purpose processor for
@@ -92,15 +84,14 @@
       latest FPGA technology.
       </p>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-2">
       <img width="150" height="150" src="images/proc.svg" />
     </div>
   </div>
-  
-  
-  <hr class="col-3 col-md-2 mb-5">
 
-  <div class="row g-5">
+  <div class="row justify-content-center"><hr class="col-md-8 mb-5 ma-5"></div>
+
+  <div class="row g-5 justify-content-center">
     <div class="col-md-5">
       <h2>News</h2>
       <p>The latest updates about HAFLANG.</p>
@@ -140,34 +131,59 @@
     </div>
   </div>
 
-  <hr class="col-3 col-md-2 mb-5">
-  
-  <p class="fs-5 col-md-8">For inquiries about the project, and the
-    postdoc position and funded PhD projects, please contact the PI
-    Dr. <a href="https://www.macs.hw.ac.uk/~rs46/">Rob Stewart</a> at
-    R.Stewart@hw.ac.uk.</p>
+  <div class="row justify-content-center"><hr class="col-md-8 mb-5 ma-5"></div>
 
-<a class="twitter-timeline" data-width="400" data-height="600" href="https://twitter.com/HaflangProject?ref_src=twsrc%5Etfw">Tweets
-by HaflangProject</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-  
+  <div class="row g-5 justify-content-center">
+      <div class="col-md-6">
+          <h2> Project Memos </h2>
+          <p>Our collection of work-in-progress thoughts:</p>
+          <table class="table table-striped">
+              <tbody>
+                  
+                  <tr>
+                      <th scope="row"><a href="./posts/2023-03-07-memo_01.html"> Memo 01</a></th>
+                      <td>Relaxing Reduceron's Template Constraints</td>
+                  </tr>
+                  
+                  <tr>
+                      <th scope="row"><a href="./posts/2023-03-08-memo_02.html"> Memo 02</a></th>
+                      <td>Inlining simple case alternatives</td>
+                  </tr>
+                  
+              </tbody>
+          </table>
+      </div>
+      <div class="col-md-5">
+          <a class="twitter-timeline" data-width="400" data-height="400" href="https://twitter.com/HaflangProject?ref_src=twsrc%5Etfw">Tweets
+              by HaflangProject</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+  </div>
+
+  <div class="row justify-content-center"><hr class="col-md-8 mb-5 ma-5"></div>
+
+  <div class="row justify-content-center">
+  <p class="col-md-11 fs-5">For inquiries about the project and funded PhD projects, please contact the PI
+      Dr. <a href="https://www.macs.hw.ac.uk/~rs46/">Rob Stewart</a> at
+      R.Stewart@hw.ac.uk.</p>
+  </div>
+
 </body>
 
         </div>
 
         <footer class="pt-5 my-5 text-muted border-top">
 
-<div class="footer d-flex justify-content-between align-items-center">
-    <img class="logo" src="./images/Xilinx.png">
-    <img class="logo" src="./images/qbaylogic.png">
-    <!-- <a class="center_btn btn-primary btn-lg" href="#" role="button">Ask a question</a> -->
-    <!-- <a class="right_btn btn-primary btn-lg" href="#" role="button">Register</a> -->
-</div>
+        <div class="footer d-flex justify-content-between align-items-center">
+            <img class="logo" src="./images/Xilinx.png">
+            <img class="logo" src="./images/qbaylogic.png">
+        </div>
 
-          Supported by the Engineering and Physical Sciences Research
-          Council (EPSRC) grant <a href="https://gow.epsrc.ukri.org/NGBOViewGrant.aspx?GrantRef=EP/W009447/1">EP/W009447/1</a>.
+        <div class="footer d-flex justify-content-center">
+          <p>Supported by the Engineering and Physical Sciences Research
+              Council (EPSRC) grant <a href="https://gow.epsrc.ukri.org/NGBOViewGrant.aspx?GrantRef=EP/W009447/1">EP/W009447/1</a>.</p>
+        </div>
         </footer>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
       </div>
     </html>
