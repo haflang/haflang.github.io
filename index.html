@@ -1,24 +1,11 @@
 ---
-title: Hardware
+title: Hardware Acceleration of Functional Languages
 ---
 
 <body>
+    <div class="row justify-content-center"><hr class="col-md-8 mb-5 ma-5"></div>
 
-  <!-- <div class="card-img-top d-flex align-items-center"> -->
-  <!--   <p class="fs-5 col-md-8">This project will develop a special -->
-  <!--     purpose processor for accelerating functional programming -->
-  <!--     languages, by implementing functional languages runtime components -->
-  <!--     in hardware using the latest FPGA technology. -->
-
-  <!--     The project will run from 2022 to 2025. -->
-  <!--   </p> -->
-  <!--   <\!-- <div> -\-> -->
-  <!--     <\!-- <img width="150" height="150" src="images/proc.svg" /> -\-> -->
-  <!--     <\!-- <img class="img-fluid" src="images/processor-idea.png" alt="Card image cap"> -\-> -->
-  <!--   <\!-- </div> -\-> -->
-  <!-- </div> -->
-
-  <div class="row g-5">
+    <div class="row g-5 justify-content-center">
     <div class="col-md-6">
       <p class="fs-5">
       This project will develop a special purpose processor for
@@ -27,15 +14,14 @@ title: Hardware
       latest FPGA technology.
       </p>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-2">
       <img width="150" height="150" src="images/proc.svg" />
     </div>
   </div>
-  
-  
-  <hr class="col-3 col-md-2 mb-5">
 
-  <div class="row g-5">
+  <div class="row justify-content-center"><hr class="col-md-8 mb-5 ma-5"></div>
+
+  <div class="row g-5 justify-content-center">
     <div class="col-md-5">
       <h2>News</h2>
       <p>The latest updates about HAFLANG.</p>
@@ -75,17 +61,38 @@ title: Hardware
     </div>
   </div>
 
-  <hr class="col-3 col-md-2 mb-5">
-  
-  <p class="fs-5 col-md-8">For inquiries about the project, and the
-    postdoc position and funded PhD projects, please contact the PI
-    Dr. <a href="https://www.macs.hw.ac.uk/~rs46/">Rob Stewart</a> at
-    R.Stewart@hw.ac.uk.</p>
+  <div class="row justify-content-center"><hr class="col-md-8 mb-5 ma-5"></div>
 
-<a class="twitter-timeline" data-width="400" data-height="600"
-href="https://twitter.com/HaflangProject?ref_src=twsrc%5Etfw">Tweets
-by HaflangProject</a> <script async
-src="https://platform.twitter.com/widgets.js"
-charset="utf-8"></script>
-  
+  <div class="row g-5 justify-content-center">
+      <div class="col-md-6">
+          <h2> Project Memos </h2>
+          <p>Our collection of work-in-progress thoughts:</p>
+          <table class="table table-striped">
+              <tbody>
+                  $for(posts)$
+                  <tr>
+                      <th scope="row"><a href="$url$"> Memo $id$</a></th>
+                      <td>$title$</td>
+                  </tr>
+                  $endfor$
+              </tbody>
+          </table>
+      </div>
+      <div class="col-md-5">
+          <a class="twitter-timeline" data-width="400" data-height="400"
+             href="https://twitter.com/HaflangProject?ref_src=twsrc%5Etfw">Tweets
+              by HaflangProject</a> <script async
+                                            src="https://platform.twitter.com/widgets.js"
+                                            charset="utf-8"></script>
+      </div>
+  </div>
+
+  <div class="row justify-content-center"><hr class="col-md-8 mb-5 ma-5"></div>
+
+  <div class="row justify-content-center">
+  <p class="col-md-11 fs-5">For inquiries about the project and funded PhD projects, please contact the PI
+      Dr. <a href="https://www.macs.hw.ac.uk/~rs46/">Rob Stewart</a> at
+      R.Stewart@hw.ac.uk.</p>
+  </div>
+
 </body>
