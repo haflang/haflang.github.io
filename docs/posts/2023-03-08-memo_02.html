@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>HAFLANG - Inlining simple case alternatives</title>
+    <!-- <link rel="shortcut icon" type="image/jpg" href="images/haflang-favicon.png"/> -->
+    <link rel="shortcut icon" type="image/svg" href="../images/proc.svg" />
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira Sans">
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LBPNLBE6DL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LBPNLBE6DL');
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  </head>
+
+  <div class="col-lg-8 mx-auto p-3 py-md-5">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="../css/haflang-template.css" />
+
+      <header class="d-flex align-items-center pb-1 mb-5 border-bottom">
+        <a href="../index.html" class="d-flex align-items-center text-dark
+                           text-decoration-none">
+      <img width="50" src="../images/proc.svg" />
+          <!-- <img src="images/processor-idea-icon.png"> -->
+            <span class="fs-4">HAFLANG</span>
+          </a>
+
+          <nav class="navbar navbar-expand-lg navbar-light bg-light rounded" aria-label="Twelfth navbar example">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="../about.html">About</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="../people.html">People</a>
+                    </li>
+                  <!-- <li class="nav-item"> -->
+                    <!--   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
+                    <!-- </li> -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Memos</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                        
+                        <li><a class="dropdown-item" href="../posts/2023-03-07-memo_01.html">Memo 01</a></li>
+                        
+                        <li><a class="dropdown-item" href="../posts/2023-03-08-memo_02.html">Memo 02</a></li>
+                        
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </header>
+        
+        <div id="content">
+          
+          
+          <link rel="stylesheet" type="text/css" href="../css/syntax.css" />
+<link rel="stylesheet" type="text/css" href="../css/post-template.css" />
+<script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
+
+<div id="memo_content" class="row justify-content-center">
+  <div class="col-md-10 col-sm-12">
+      <p class="title"> Inlining simple case alternatives </p>
+      
+      <p class="author"> By Craig Ramsay </p>
+      
+      <p>In this post, we try to reduce the code size of compiled F-lite programs since
+we are currently bounded by the memory resources of our Reduceron-inspired
+processor architecture.</p>
+<p>All case expressions in F-lite programs infer multiple templates:</p>
+<ul>
+<li>At least one to evaluate the case scrutinee, and…</li>
+<li>At least one per case alternative</li>
+</ul>
+<p>Each alternative must be mapped to a contiguous part of the template memory,
+since case expressions get compiled down to a <em>case table</em>. These case tables
+are represented as offsets into the template memory, with an offset based on the
+tag of the case scrutinee once evaluated to WHNF. This keeps the size of the
+case table quite small in the template format, but requires each alternative to
+occupy at least one (quite large!) template regardless of complexity.</p>
+<p>Our proposal is that we could encode trivial case alternatives <em>inline</em> within
+our case tables, minimising overall code size. To keep our case tables small
+enough to be appealing, we only offer a special case for two-way choices.</p>
+<p>For this proposal, we explore inlining alternatives which are trivial — just a
+single atom and a number of elements to pop off the stack. This does not gain us
+any run-time performance directly, but we can substantially reduce the total
+number of templates required for a program. We will see scenarios with up to a
+43% improvement in template count.</p>
+<h2 id="original-case-handling">Original case handling</h2>
+<p>Let’s recap how case expressions are handled in Reduceron by looking at a small
+example. We define a binary <code>and</code> function and use it in a specialised fold over
+lists of booleans, called <code>ands</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">and</span> <span class="dt">False</span> x <span class="ot">=</span> <span class="dt">False</span>;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">and</span> <span class="dt">True</span>  x <span class="ot">=</span> x;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ands <span class="dt">Nil</span> <span class="ot">=</span> <span class="dt">True</span>;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ands (<span class="dt">Cons</span> x xs) <span class="ot">=</span> <span class="fu">and</span> x (ands xs);</span></code></pre></div>
+<p>The F-lite compiler will desugar the pattern matching to case expressions on the
+RHS. It then transforms the case expressions of the form</p>
+<p><span class="math display">$$\mathtt{case}\ e\ \mathtt{of}\ \lbrace C_0\ \overrightarrow{x_0}\ ;\ \ldots\ ;\ C_n \overrightarrow{x_m} \rbrace$$</span></p>
+<p>into a series of templates, where each case alternative is lifted out to their own templates. More formally, this form is:</p>
+<p><span class="math display">$$
+\begin{array}{l}
+e\ \langle \mathtt{FUN}\ \mathit{alt}_0\ ,\ \ldots\ ,\ \mathtt{FUN}\ \mathit{alt}_m \rangle\ \overrightarrow{v}
+\end{array}
+$$</span></p>
+<p>assuming that <span class="math display"><em>v⃗</em></span> includes all free variables in any case
+alternative and each new function <span class="math display"><em>a</em><em>l</em><em>t</em><sub><em>i</em></sub></span> implements the original
+alternative with the extra <span class="math display"><em>v⃗</em></span> arguments. These case tables
+are lifted out to the <code>Lut</code> field of a template when in spinal position, or are
+attributed to a particular heap application. Our full program compiles down to a
+set of 5 templates after inlining:</p>
+<p><span class="math display">$$
+\begin{array}{l}
+\textit{sums#0}\ 
+\left[\ \
+\begin{array}{r l}
+  \text{Alts}\ &amp; [\texttt{FUN sums#3}] \\\\
+  \text{Spine}   &amp;
+    [\begin{array}{c c c c c c}
+       \texttt{ARG xs}, &amp; \texttt{INT 0}
+     \end{array}]\\\\
+  \text{Heap} &amp;
+    \left\{\right.
+\end{array}
+\right.
+\\
+\textit{sums#1}\ 
+\left[\ \
+\begin{array}{r l}
+  \text{Alts}\ &amp; [] \\\\
+  \text{Spine}   &amp;
+    [\begin{array}{c c c c c c}
+       \texttt{CON 0 0}
+     \end{array}]\\\\
+  \text{Heap} &amp;
+    \left\{\right.
+\end{array}
+\right.
+\\
+\textit{sums#2}\ 
+\left[\ \
+\begin{array}{r l}
+  \text{Alts}\ &amp; [\texttt{FUN sums#3}] \\\\
+  \text{Spine}   &amp;
+    [\begin{array}{c c c c c c}
+       \texttt{ARG x}, &amp; \texttt{INT 0}
+     \end{array}]\\\\
+  \text{Heap} &amp;
+    \left\{\right.
+\end{array}
+\right.
+\\
+\textit{sums#3}\ 
+\left[\ \
+\begin{array}{r l}
+  \text{Alts}\ &amp; [\texttt{FUN sums#1}] \\\\
+  \text{Spine}   &amp;
+    [\begin{array}{c c c c c c}
+       \texttt{ARG x}, &amp; \texttt{ARG xs}
+     \end{array}]\\\\
+  \text{Heap} &amp;
+    \left\{\right.
+\end{array}
+\right.
+\\
+\textit{sums#4}
+\left[\ \
+\begin{array}{r l}
+  \text{Alts}\ &amp; [] \\\\
+  \text{Spine}   &amp;
+    [\begin{array}{c c c c c c}
+       \texttt{CON 1}
+     \end{array}]\\\\
+  \text{Heap} &amp;
+    \left\{\right.
+\end{array}
+\right.
+\end{array}
+$$</span></p>
+<p>Note that order of the alternatives is tied to the alphabetic ordering of the
+constructor names being scrutinised. For lists we expect <code>Cons</code> then <code>Nil</code>, and
+for booleans we expect <code>False</code> then <code>True</code>. Each of these templates does very
+little work compared to the maximum computational power of a single template.
+Instead, we offer a different compilation scheme.</p>
+<h2 id="a-new-case-table-representation">A new case table representation</h2>
+<p>Originally, case tables were compiled down to a single integer: the offset into
+the template memory for the base of the table. We extend this to optionally be a
+binary choice between two stripped-down atoms, represented as:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">LUT</span> <span class="ot">=</span> <span class="dt">LOffset</span> <span class="dt">Int</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">LInline</span> (<span class="dt">Alt</span>,<span class="dt">Alt</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Alt</span> <span class="ot">=</span> <span class="dt">AFun</span> <span class="dt">TmplAddr</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">AInt</span> <span class="dt">Pops</span> <span class="dt">Val</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">AArg</span> <span class="dt">Pops</span> <span class="dt">Index</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">ACon</span> <span class="dt">Pops</span> <span class="dt">Arity</span> <span class="dt">Tag</span></span></code></pre></div>
+<p>One vital aspect towards the success of the inlining technique is trying to
+minimise the number of bits representing an <code>Alt</code>. For our default parameters
+(<code>SpineLen=6</code> and <code>TmplAddr=10 bits</code>) we can encode <code>Alt</code> as an 11-bit structure
+while only substantially limiting the range of representable integers. This
+feels like a reasonable trade-off since we anticipate that trivial integer
+alternatives will usually be small values in a recursion’s base-case. Our 11-bit
+encoding is:</p>
+<p><span class="math display">$$
+\begin{array}{r l l l l}
+ \mathtt{AFun\ a}     \mapsto &amp; 1 &amp; a_9\ a_8\ a_7\ a_6 &amp; a_5\ a_4\ a_3\ a_2\ a_1a_0 \\
+ \mathtt{AInt\ p\ v}   \mapsto &amp; 01 &amp; p_2\ p_1\ p_0 &amp; v_5\ v_4\ v_3\ v_2\ v_1\ v_0 \\
+ \mathtt{AArg\ p\ i}   \mapsto &amp; 001 &amp; p_2\ p_1\ p_0 &amp; i_4\ i_3\ i_2\ i_1\ i_0  \\
+ \mathtt{ACon\ p\ a\ t} \mapsto &amp; 0001 &amp; p_2\ p_1\ p_0 &amp; a_2\ a_1\ a_0 &amp; t_0
+\end{array}
+$$</span></p>
+<p>For our default parameters, including the new case alternative encoding for the
+spinal application and any <code>CASE</code> heap applications increases the template size
+from 470 bits to 493; an increase of 4.9%. For this to be worthwhile, we would
+need an average reduction in the number of templates by well over 5%.</p>
+<p>With these new case alternative constructs, we can compile our example program
+quite simply. We follow the same process creating templates for each
+alternative. After inlining etc. we identify which 2-way cases have at least one
+trivial alternative and inline them into the new <code>LInline</code> construct.</p>
+<p><span class="math display">$$
+\begin{array}{l}
+\textit{sums#0}\ 
+\left[\ \
+\begin{array}{r l}
+  \text{Alts}\ &amp; [\texttt{LInline (AFun sums#2, ACon 1 0 True)}] \\\\
+  \text{Spine}   &amp;
+    [\begin{array}{c c c c c c}
+       \texttt{ARG xs}, &amp; \texttt{INT 0}
+     \end{array}]\\\\
+  \text{Heap} &amp;
+    \left\{\right.
+\end{array}
+\right.
+\\
+\textit{sums#1}\ 
+\left[\ \
+\begin{array}{r l}
+  \text{Alts}\ &amp; [\texttt{LInline (AFun sums#2, ACon 1 0 True)}] \\\\
+  \text{Spine}   &amp;
+    [\begin{array}{c c c c c c}
+       \texttt{ARG xs}, &amp; \texttt{INT 0}
+     \end{array}]\\\\
+  \text{Heap} &amp;
+    \left\{\right.
+\end{array}
+\right.
+\\
+\textit{sums#2}\ 
+\left[\ \
+\begin{array}{r l}
+  \text{Alts}\ &amp; [\texttt{LInline (ACon 1 0 False, AFun sums#1)}] \\\\
+  \text{Spine}   &amp;
+    [\begin{array}{c c c c c c}
+       \texttt{ARG x}, &amp; \texttt{ARG xs}
+     \end{array}]\\\\
+  \text{Heap} &amp;
+    \left\{\right.
+\end{array}
+\right.
+\end{array}
+$$</span></p>
+<h2 id="results">Results</h2>
+<p>Let’s take a look at how this change impacts the code size for each of our
+benchmarks, accounting for the increased template size.</p>
+<div>
+<div id="8731de06-d41e-4109-b472-59a157dce7b4" class="plotly-graph-div" style="height:100%; width:100%;">
+
+</div>
+<script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("8731de06-d41e-4109-b472-59a157dce7b4")) {                    Plotly.newPlot(                        "8731de06-d41e-4109-b472-59a157dce7b4",                        [{"alignmentgroup":"True","hovertemplate":"Version=Relaxed Templates<br>Mode=prs<br>Benchmark=%{x}<br>% Improvement in Code Size=%{y}<extra></extra>","legendgroup":"Relaxed Templates","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"Relaxed Templates","offsetgroup":"Relaxed Templates","orientation":"v","showlegend":true,"textposition":"auto","x":["Fib","CountDown","KnuthBendix","Adjoxo","Cichelli","Taut","While","MSS","Braun","Clausify","OrdList","PermSort","SumPuz","Queens","Mate"],"xaxis":"x","y":[0.0,3.809523809523807,6.462035541195476,5.932203389830503,4.01785714285714,4.761904761904767,0.9708737864077666,6.666666666666665,7.14285714285714,8.03571428571429,7.692307692307687,5.555555555555558,3.93258426966292,2.631578947368418,7.317073170731703],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"Version=Inline Alts<br>Mode=prs<br>Benchmark=%{x}<br>% Improvement in Code Size=%{y}<extra></extra>","legendgroup":"Inline Alts","marker":{"color":"#EF553B","pattern":{"shape":""}},"name":"Inline Alts","offsetgroup":"Inline Alts","orientation":"v","showlegend":true,"textposition":"auto","x":["Fib","CountDown","KnuthBendix","Adjoxo","Cichelli","Taut","While","MSS","Braun","Clausify","OrdList","PermSort","SumPuz","Queens","Mate"],"xaxis":"x","y":[12.588652482269502,19.082066869300906,24.25291307187296,38.66390191128741,17.11531155015198,23.827254305977707,1.2166907663705762,16.08510638297872,35.06585612968591,20.39323708206686,40.82924168030551,27.157210401891252,25.749462108534548,19.949608062709967,30.07092198581559],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,0.98],"title":{"text":"Benchmark"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"% Improvement in Code Size"}},"annotations":[{"font":{},"showarrow":false,"text":"Mode=prs","textangle":90,"x":0.98,"xanchor":"left","xref":"paper","y":0.5,"yanchor":"middle","yref":"paper"}],"legend":{"title":{"text":"Version"},"tracegroupgap":0},"margin":{"t":60},"barmode":"group"},                        {"responsive": true}                    )                };                            
+</script>
+</div>
+<p>That’s encouraging! We never see a negative impact due to the increased template
+size. <code>OrdList</code>, an example with many two-way case expressions with trivial
+alternatives, shrinks from 18330 bits to just 10846! Inlining trivial case
+alternatives seems to work towards minimising the memory requirements of our
+reduction core — currently the most limiting factor of our implementation.</p>
+  </div>
+</div>
+
+        </div>
+
+        <footer class="pt-5 my-5 text-muted border-top">
+
+        <div class="footer d-flex justify-content-between align-items-center">
+            <img class="logo" src="../images/Xilinx.png">
+            <img class="logo" src="../images/qbaylogic.png">
+        </div>
+
+        <div class="footer d-flex justify-content-center">
+          <p>Supported by the Engineering and Physical Sciences Research
+              Council (EPSRC) grant <a href="https://gow.epsrc.ukri.org/NGBOViewGrant.aspx?GrantRef=EP/W009447/1">EP/W009447/1</a>.</p>
+        </div>
+        </footer>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      </div>
+    </html>
