@@ -1,0 +1,84 @@
+{
+    "title": {
+        "text": {
+          "headline": "Functional hardware<br/> 1936 - 2023",
+          "text": "<p>A history of hardware implementations of functional languages.</p>"
+        }
+    },
+    "events": [
+        {
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/en/a/a6/Alonzo_Church.jpg",
+          "caption": "Alonzo Church."
+        },
+        "start_date": {
+          "month": "04",
+          "year": "1936"
+        },
+        "text": {
+          "headline": "The Lambda Calculus",
+            "text": "<p>It all started here...<br>\"An Unsolvable Problem of Elementary Number Theory\", American Journal of Mathematics.<br><a href=\"https://doi.org/10.2307%2F2371045\">https://doi.org/10.2307%2F2371045</a></p>"
+        }
+        },
+      {
+        "media": {
+          "url": "/images/fp-history/skim.png",
+          "caption": "SKIM Machine Block Diagram",
+          "credit": "ACM Conference on LISP and functional programming"
+        },
+        "start_date": {
+          "month": "08",
+          "day": "25",
+          "year": "1980"
+        },
+        "text": {
+          "headline": "SKIM - The S, K, I reduction machine",
+          "text": "<p>SKIM is a computer built to explore pure functional programming, combinators as a machine language and the use of hardware to provide direct support for a high level language. Its design stresses simplicity and aims at providing minicomputer performance (in its particular application areas) for microcomputer costs.<br><a href=\"https://doi.org/10.1145/800087.802798\">https://doi.org/10.1145/800087.802798</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/alice-architecture.png",
+          "caption": "ALICE abstract architecture",
+          "credit": "ACM FPCA"
+        },
+        "start_date": {
+          "month": "10",
+          "year": "1981"
+        },
+        "text": {
+          "headline": "ALICE a multi-processor reduction machine for the parallel evaluation CF applicative languages",
+          "text": "<p>Scheme for the parallel evaluation of a variety of applicative languages and provide an overview of highly modular architecture of a machine on which it may be implemented. Performance estimates illustrated that a small machine would provide an efficient desk-top personal applicative computer.<br><a href=\"https://doi.org/10.1145/800223.806764\">https://doi.org/10.1145/800223.806764</a></p>"
+        }
+      },
+      {
+        "start_date": {
+          "year": "1985"
+        },
+        "text": {
+          "headline": "Cobweb — A combinator reduction architecture",
+          "text": "<p>A family of machines called COBWEB. The first machine employs normal order reduction to evaluate pure functional programs. The next machine will use a parallel reduction strategy and later members will support progressively more sophisticated facilities.<br><a href=\"https://doi.org/10.1007/3-540-15975-4_32\">https://doi.org/10.1007/3-540-15975-4_32</a></p>"
+        }
+      },
+      {
+        "start_date": {
+          "year": "1989"
+        },
+        "text": {
+          "headline": "MaRS, a combinator graph reduction multiprocessor",
+            "text": "<p>Modular distributed control multiprocessor for parallel graph reduction using a combinator machine language. Dedicated to the parallel execution of purely functional languages. The machine uses specific types of processor for Reduction, Memory and Communication.<br><a href=\"https://doi.org/10.1007/3540512845_39\">https://doi.org/10.1007/3540512845_39</a></p>"
+        }
+      },
+      {
+        "start_date": {
+          "month": "03",
+          "day": "01",
+          "year": "1992"
+        },
+        "text": {
+          "headline": "Parallel Combinator Reduction: Some Performance Bounds",
+            "text": "<p>A parallel graph reduction machine simulator that performs combinator reduction and simulates various different parallel reduction strategies. A number of functional programs are examined, and experimental results presented comparing the amount of parallelism obtainable.<br><a href=\"https://www.dcs.warwick.ac.uk/report/pdfs/cs-rr-210.pdf\">https://www.dcs.warwick.ac.uk/report/pdfs/cs-rr-210.pdf</a></p>"
+        }
+      }
+    ]
+}
