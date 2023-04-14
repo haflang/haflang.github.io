@@ -2,8 +2,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import Hakyll
-import Text.Pandoc.Options
 import Text.Pandoc.Highlighting (Style, haddock, styleToCss)
+import Text.Pandoc.Options
 
 --------------------------------------------------------------------------------
 siteConfig :: Configuration
@@ -23,6 +23,10 @@ main = hakyllWith siteConfig $ do
     compile copyFileCompiler
 
   match "js/*" $ do
+    route idRoute
+    compile copyFileCompiler
+
+  match "data/*" $ do
     route idRoute
     compile copyFileCompiler
 
@@ -48,7 +52,7 @@ main = hakyllWith siteConfig $ do
         >>= loadAndApplyTemplate "templates/default.html" ctxt'
         >>= relativizeUrls
 
-  match (fromList ["index.html", "people.html", "about.html"]) $ do
+  match (fromList ["index.html", "people.html", "about.html", "history.html"]) $ do
     route idRoute
     compile $ do
       ctxt <- getBaseCtxt
@@ -71,9 +75,10 @@ getBaseCtxt = do
   return $ listField "posts" postCtx (return postIds) `mappend` defaultContext
 
 pandocCompiler' :: Compiler (Item String)
-pandocCompiler' = pandocCompilerWith
-                    pandocMathReaderOptions
-                    pandocMathWriterOptions { writerHighlightStyle = Just pandocCodeStyle }
+pandocCompiler' =
+  pandocCompilerWith
+    pandocMathReaderOptions
+    pandocMathWriterOptions {writerHighlightStyle = Just pandocCodeStyle}
 
 pandocCodeStyle = haddock
 
