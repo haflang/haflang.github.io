@@ -17,14 +17,71 @@
         },
         "text": {
           "headline": "The Lambda Calculus",
-            "text": "<p>It all started here...<br>\"An Unsolvable Problem of Elementary Number Theory\", American Journal of Mathematics.<br><a href=\"https://doi.org/10.2307%2F2371045\">https://doi.org/10.2307%2F2371045</a></p>"
+            "text": "<p>American mathematician Alonzo Church proposed a model of computation called the untyped lambda calculus.<br>\"An Unsolvable Problem of Elementary Number Theory\", American Journal of Mathematics.<br><a href=\"https://doi.org/10.2307%2F2371045\">https://doi.org/10.2307%2F2371045</a></p>"
         }
         },
       {
         "media": {
+            "url": "/images/fp-history/backus-1978.png",
+            "caption": "John Backus",
+          "credit": "Communications of the ACM."
+        },
+        "start_date": {
+          "month": "08",
+          "year": "1978"
+        },
+          "text": {
+            "text": "<p><q>A new class of computing systems uses the functional programming style both in its programming language and in its state transition rules. Unlike von Neumann languages, these systems have semantics loosely coupled to states—only one state transition occurs per major computation.</q><br><a href=\"https://doi.org/10.1145/359576.359579\">https://doi.org/10.1145/359576.359579</a></p>"
+        }
+      },
+      {
+        "media": {
+          "url": "/images/fp-history/keller-1978.png",
+          "caption": "Compiling function closures",
+          "credit": "Technical Report UUCS-78-105, University of Utah."
+        },
+        "start_date": {
+          "month": "10",
+          "year": "1978"
+        },
+        "text": {
+          "headline": "An Architecture for a Loosely-Coupled Parallel Processor",
+            "text": "<p>Executes demand-driven applicative LISP code. Presents an architecture for a large (e.g. 1,000 processor) parallel computer. Locality of task allocation and communication is a key objective of the machine. Opportunities for concurrency arise in the parallel evaluation of arguments to strict operators, i.e . those known to require evaluation of their full set of arguments.<br><a href=\"https://collections.lib.utah.edu/ark:/87278/s6g73z2w\">https://collections.lib.utah.edu/ark:/87278/s6g73z2w</a></p>"
+        }
+      },
+      {
+        "media": {
+          "url": "/images/fp-history/david_turner.jpg",
+          "caption": "David Turner"
+        },
+        "start_date": {
+          "month": "01",
+          "year": "1979"
+        },
+        "text": {
+          "headline": "A new implementation technique for applicative languages",
+            "text": "<p>David Turner demonstrated with SASL (1975), and later Miranda (1986), that compiling functional code to simple S K combinators had practical application for efficient language interpreters.<br><a href=\"https://doi.org/10.1002/spe.4380090105\">https://doi.org/10.1002/spe.4380090105</a></p>"
+        }
+      },
+      {
+        "media": {
+          "url": "/images/fp-history/mago-1979.png",
+            "caption": "tree-structured network of identical cells",
+            "credit": "US Patent - Cellular Network of Processors"
+        },
+        "start_date": {
+          "month": "10",
+          "year": "1979"
+        },
+        "text": {
+          "headline": "A network of microprocessors to execute reduction languages",
+            "text": "<p>Building on Backus's work, Gyula Mago presents a cellular processor architecture capable of directly and efficiently executing reduction languages. The processor consists of two interconnected networks of microprocessors, one of which is a linear array of identical cells, and the other a tree-structured network of identical cells.<br><a href=\"https://doi.org/10.1007/BF00995174\">https://doi.org/10.1007/BF00995174</a></p>"
+        }
+      },
+      {
+        "media": {
           "url": "/images/fp-history/skim.png",
-          "caption": "SKIM Machine Block Diagram",
-          "credit": "ACM Conference on LISP and functional programming"
+          "caption": "SKIM Machine Block Diagram"
         },
         "start_date": {
           "month": "08",
@@ -33,14 +90,29 @@
         },
         "text": {
           "headline": "SKIM - The S, K, I reduction machine",
-          "text": "<p>SKIM is a computer built to explore pure functional programming, combinators as a machine language and the use of hardware to provide direct support for a high level language. Its design stresses simplicity and aims at providing minicomputer performance (in its particular application areas) for microcomputer costs.<br><a href=\"https://doi.org/10.1145/800087.802798\">https://doi.org/10.1145/800087.802798</a></p>"
+            "text": "<p>Building on Turner's abstract machine for S K combinators, SKIM is a computer built to explore fine grained combinators as a machine language, and use of hardware to provide direct support for high level pure functional languages. Its hardware design stresses simplicity.<br><a href=\"https://doi.org/10.1145/800087.802798\">https://doi.org/10.1145/800087.802798</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/tolle-1981.png",
+          "caption": "Partitioning inner-most applications into into a tree network",
+          "credit": "ACM Programming Languages and Computer Architecture"
+        },
+        "start_date": {
+          "month": "10",
+          "year": "1981"
+        },
+        "text": {
+          "headline": "Implanting FFP trees in binary trees: An architectural proposal",
+            "text": "<p>Other researchers continued to extend Magó's tree-based cellular computer. Donald Tolle proposed an architecture that he claimed had advantages over Magó's machine in terms of simplicity, flexibility of functional operators and potential for more parallelism<br><a href=\"https://doi.org/10.1145/800223.806770\">https://doi.org/10.1145/800223.806770</a></p>"
         }
       },
         {
         "media": {
           "url": "/images/fp-history/alice-architecture.png",
           "caption": "ALICE abstract architecture",
-          "credit": "ACM FPCA"
+          "credit": "ACM Programming Languages and Computer Architecture"
         },
         "start_date": {
           "month": "10",
@@ -48,7 +120,32 @@
         },
         "text": {
           "headline": "ALICE a multi-processor reduction machine for the parallel evaluation CF applicative languages",
-          "text": "<p>Scheme for the parallel evaluation of a variety of applicative languages and provide an overview of highly modular architecture of a machine on which it may be implemented. Performance estimates illustrated that a small machine would provide an efficient desk-top personal applicative computer.<br><a href=\"https://doi.org/10.1145/800223.806764\">https://doi.org/10.1145/800223.806764</a></p>"
+            "text": "<p>A highly modular machine architecture for the parallel evaluation of a variety of applicative languages. The papers compares with related architectures including dataflow, string reduction and tree machines.<br><a href=\"https://doi.org/10.1145/800223.806764\">https://doi.org/10.1145/800223.806764</a></p>"
+        }
+      },
+        {
+        "start_date": {
+          "month": "10",
+          "year": "1981"
+        },
+        "text": {
+          "headline": "Executing functional programs on a virtual tree of processors",
+            "text": "<p>Warren Burton and Ronan Sleep mapped Turner's SASL language to their Zero Assignment Parallel Processor (ZAPP) at the univerity of East Anglia. They presented a simple concurrency model for executing <q>process trees</q>. Their FPCA 1981 paper: <q>Many potential users say 'Applicative languages are great to program in - they really speed up software development. But I have to reprogram in FORTRAN to get a speed I can use.'. We aim to considerably reduce the force of this argument by explofting the natural parallelism in an applicative language</q>.<br><a href=\"https://doi.org/10.1145/800223.806778\">https://doi.org/10.1145/800223.806778</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/traub-1985.png",
+            "caption": "Parallel Graph Reduction Machine - design hierarchy",
+          "credit": "ACM SIGARCH Computer Architecture News"
+        },
+        "start_date": {
+          "month": "06",
+          "year": "1985"
+        },
+        "text": {
+          "headline": "An abstract parallel graph reduction machine",
+            "text": "<p>Presents a systematic approach to the study of parallel graph reduction machines. Proposes an abstract parallel graph reduction architecture that is independent of the base language and communication network chosen for an actual implementation.<br><a href=\"https://doi.org/10.1145/327070.328253\">https://doi.org/10.1145/327070.328253</a></p>"
         }
       },
       {
@@ -57,7 +154,7 @@
         },
         "text": {
           "headline": "Cobweb — A combinator reduction architecture",
-          "text": "<p>A family of machines called COBWEB. The first machine employs normal order reduction to evaluate pure functional programs. The next machine will use a parallel reduction strategy and later members will support progressively more sophisticated facilities.<br><a href=\"https://doi.org/10.1007/3-540-15975-4_32\">https://doi.org/10.1007/3-540-15975-4_32</a></p>"
+          "text": "<p>A family of machines called COBWEB. The first machine employs normal order reduction to evaluate pure functional programs. The next machine uses a parallel reduction strategy. Later iterations of the architecture supported more sophisticated combinator reduction facilities.<br><a href=\"https://doi.org/10.1007/3-540-15975-4_32\">https://doi.org/10.1007/3-540-15975-4_32</a></p>"
         }
       },
       {
@@ -66,7 +163,7 @@
         },
         "text": {
           "headline": "MaRS, a combinator graph reduction multiprocessor",
-            "text": "<p>Modular distributed control multiprocessor for parallel graph reduction using a combinator machine language. Dedicated to the parallel execution of purely functional languages. The machine uses specific types of processor for Reduction, Memory and Communication.<br><a href=\"https://doi.org/10.1007/3540512845_39\">https://doi.org/10.1007/3540512845_39</a></p>"
+            "text": "<p>Modular distributed control multiprocessor for parallel graph reduction using a combinator machine language. Dedicated to the parallel execution of purely functional languages, the machine used separate specially designed processors for Reduction, Memory and Communication.<br><a href=\"https://doi.org/10.1007/3540512845_39\">https://doi.org/10.1007/3540512845_39</a></p>"
         }
       },
       {
