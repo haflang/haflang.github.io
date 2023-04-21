@@ -208,7 +208,31 @@
         },
         "text": {
             "headline": "Towards a parallel architecture for functional languages",
-            "text": "<p>Presents findings of the 18 month Subproject B project on parallel architectures for functional languages, at the GEC Hirst Research Centre in Middlesex. With a focus on COBWEB (1985), they implement Hankin's <B>P</B> combinator in hardware for parallelism.<br><a href=\"https://doi.org/10.1007/3-540-18203-9_7\">https://doi.org/10.1007/3-540-18203-9_7</a></p>"
+            "text": "<p>Presents findings of the 18 month Subproject B project on parallel architectures for functional languages, at the GEC Hirst Research Centre in Middlesex. With a focus on COBWEB (1985), they implemented Hankin's <B>P</B> combinator in their hardware for parallelism.<br><a href=\"https://doi.org/10.1007/3-540-18203-9_7\">https://doi.org/10.1007/3-540-18203-9_7</a></p>"
+        }
+      },
+        {
+        "start_date": {
+          "year": "1987"
+        },
+        "text": {
+            "headline": "Too much parallelism",
+            "text": "<p>The fine-grained <B>P</B> combinator and coarse-grained approaches offered huge promise for parallel functional languages. However, architectures had limits on how much parallelism they could support. This impacted the ALICE project for functional languages. But it was also observed in other computing domains, at <a href=\"http://csg.csail.mit.edu/pubs/memos/Memo-257/Memo-257.pdf\">MIT</a>, for the <a href=\"https://doi.org/10.1007/3-540-18317-5_6\">Flagship re-write rule machine</a>, and in Japanese dataflow projects <a href=\"https://doi.org/10.1145/17356.17383\">Sigma-1</a>, <a href=\"https://doi.org/10.1145/17356.17358\">DFM</a> and <a href=\"https://doi.org/10.1145/17356.17373\">PIM-D</a>.</p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/manchester-dataflow-computer.png",
+          "caption": "Manchester Dataflow Computer",
+            "credit": "Communications of the ACM, <a href=\"https://doi.org/10.1145/2465.2468\">January 1985</a>"
+        },
+        "start_date": {
+          "month": "09",
+          "year": "1987"
+        },
+        "text": {
+          "headline": "Control of parallelism in the Manchester dataflow machine",
+            "text": "<p>The solution to the <q>too much parallelism</q> problem in the Manchester Dataflow Machine was coarse-grained, process-based throttling of parallelism.<br><a href=\"https://doi.org/10.1007/3-540-15975-4_36\">https://doi.org/10.1007/3-540-15975-4_36</a></p>"
         }
       },
       {
