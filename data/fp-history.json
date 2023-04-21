@@ -105,7 +105,7 @@
         },
         "text": {
           "headline": "Implanting FFP trees in binary trees: An architectural proposal",
-            "text": "<p>Other researchers continued to extend Magó's tree-based cellular computer. Donald Tolle proposed an architecture that he claimed had advantages over Magó's machine in terms of simplicity, flexibility of functional operators and potential for more parallelism<br><a href=\"https://doi.org/10.1145/800223.806770\">https://doi.org/10.1145/800223.806770</a></p>"
+            "text": "<p>Other researchers continued to extend Magó's tree-based cellular computer. Donald Tolle proposed an architecture that he claimed had advantages over Magó's machine in terms of simplicity, flexibility of functional operators and potential for more parallelism.<br><a href=\"https://doi.org/10.1145/800223.806770\">https://doi.org/10.1145/800223.806770</a></p>"
         }
       },
         {
@@ -135,6 +135,21 @@
       },
         {
         "media": {
+          "url": "/images/fp-history/moor-1982-hope.png",
+          "caption": "Append function in HOPE compiled to CTL for the ALICE machine",
+          "credit": "ACM SIGPLAN Notes"
+        },
+        "start_date": {
+          "month": "06",
+          "year": "1982"
+        },
+        "text": {
+          "headline": "An applicative compiler for a parallel machine",
+            "text": "<p>Work on evaluating the ALICE machine continued. This paper presents a compiler from HOPE to Compiler Target Language (CTL) for the ALICE simulator. Performance was quite slow: 5-10 minutes for 20 lines of HOPE, though extensions to HOPE and the compiler to exploit parallelism on ALICE are described.<br><a href=\"https://doi.org/10.1145/872726.807002\">https://doi.org/10.1145/872726.807002</a></p>"
+        }
+      },
+        {
+        "media": {
           "url": "/images/fp-history/traub-1985.png",
             "caption": "Parallel Graph Reduction Machine - design hierarchy",
           "credit": "ACM SIGARCH Computer Architecture News"
@@ -148,6 +163,21 @@
             "text": "<p>Presents a systematic approach to the study of parallel graph reduction machines. Proposes an abstract parallel graph reduction architecture that is independent of the base language and communication network chosen for an actual implementation.<br><a href=\"https://doi.org/10.1145/327070.328253\">https://doi.org/10.1145/327070.328253</a></p>"
         }
       },
+        {
+        "media": {
+          "url": "/images/fp-history/odonnell-1985.png",
+          "caption": "Associative Aggregate Representation",
+          "credit": "Springer Programming Languages and Computer Architecture"
+        },
+        "start_date": {
+          "month": "09",
+          "year": "1985"
+        },
+        "text": {
+          "headline": "An architecture that efficiently updates associative aggregates in applicative programming languages",
+            "text": "<p>Data structures in pure languages are expensive to maintain. Implementations often created complete copies of data structures when one element was updated. John O'Donnell proposed a solution with <q>associative aggregate</q> data structures and an <q>Associate Aggregate Machine</q> hardware memory design, with a linear sequence of cells forming a shift register that supported efficient insertion and deletion.<br><a href=\"https://doi.org/10.1007/3-540-15975-4_36\">https://doi.org/10.1007/3-540-15975-4_36</a></p>"
+        }
+      },
       {
         "start_date": {
           "year": "1985"
@@ -155,6 +185,30 @@
         "text": {
           "headline": "Cobweb — A combinator reduction architecture",
           "text": "<p>A family of machines called COBWEB. The first machine employs normal order reduction to evaluate pure functional programs. The next machine uses a parallel reduction strategy. Later iterations of the architecture supported more sophisticated combinator reduction facilities.<br><a href=\"https://doi.org/10.1007/3-540-15975-4_32\">https://doi.org/10.1007/3-540-15975-4_32</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/p-combinator-1986.png",
+            "caption": "Two new <B>P</B> combinators for parallelism appears in ESOP 1986.",
+          "credit": "<a href=\"https://doi.org/10.1007/3-540-16442-1_7\">https://doi.org/10.1007/3-540-16442-1_7</a>"
+        },
+        "start_date": {
+          "month": "03",
+          "year": "1986"
+        },
+        "text": {
+            "headline": "A safe approach to parallel combinator reduction"
+        }
+      },
+        {
+        "start_date": {
+          "month": "06",
+          "year": "1986"
+        },
+        "text": {
+            "headline": "Towards a parallel architecture for functional languages",
+            "text": "<p>Presents findings of the 18 month Subproject B project on parallel architectures for functional languages, at the GEC Hirst Research Centre in Middlesex. With a focus on COBWEB (1985), they implement Hankin's <B>P</B> combinator in hardware for parallelism.<br><a href=\"https://doi.org/10.1007/3-540-18203-9_7\">https://doi.org/10.1007/3-540-18203-9_7</a></p>"
         }
       },
       {
