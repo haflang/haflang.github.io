@@ -150,6 +150,21 @@
       },
         {
         "media": {
+          "url": "/images/fp-history/john-hughes.jpg",
+          "caption": "John Hughes invented super-combinators for efficient language implementation",
+          "credit": "<a href=\"https://www.cse.chalmers.se/~rjmh/\">https://www.cse.chalmers.se/~rjmh/</a>"
+        },
+        "start_date": {
+          "month": "08",
+          "year": "1982"
+        },
+        "text": {
+          "headline": "Super-combinators a new implementation method for applicative languages",
+            "text": "<p>Efforts so far were based on combinatory logic (<a href=\"https://www.cambridge.org/core/journals/journal-of-symbolic-logic/article/abs/haskell-b-curry-and-robert-feys-combinatory-logic-volume-i-with-two-sections-by-william-craig-studies-in-logic-and-the-foundations-of-mathematics-northholland-publishing-company-amsterdam1958-xvi-417-pp/ADC0261CC1D952E97468E2803D4D7721\">Curry and Feys, 1958</a>). For example, Turner compiled SASL to S K combinators (1979). With that approach, Hughes argued that (1) machine code was far removed from the program, (2) compilation was slow, (3) execution was broken into many very small fine-grained steps. Hughes proposed super-combinators to overcome these problems.<br><a href=\"https://doi.org/10.1145/800068.802129\">https://doi.org/10.1145/800068.802129</a></p>"
+        }
+      },
+        {
+        "media": {
           "url": "/images/fp-history/traub-1985.png",
             "caption": "Parallel Graph Reduction Machine - design hierarchy",
           "credit": "ACM SIGARCH Computer Architecture News"
@@ -185,6 +200,20 @@
         "text": {
           "headline": "Cobweb — A combinator reduction architecture",
           "text": "<p>A family of machines called COBWEB. The first machine employs normal order reduction to evaluate pure functional programs. The next machine uses a parallel reduction strategy. Later iterations of the architecture supported more sophisticated combinator reduction facilities.<br><a href=\"https://doi.org/10.1007/3-540-15975-4_32\">https://doi.org/10.1007/3-540-15975-4_32</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/wise-perlis.png",
+            "caption": "David Wise meets Alan Perlis",
+            "credit": "<a href=\"https://legacy.cs.indiana.edu/~dswise/\">https://legacy.cs.indiana.edu/~dswise/</a>"
+        },
+        "start_date": {
+          "year": "1985"
+        },
+        "text": {
+            "headline": "Garbage collection in hardware",
+            "text": "<p>Researchers explored hardware mechanisms for efficient garbage collection, including David Wise who published <q>Design for a multiprocessing heap with on-board reference counting</q> at FPCA 1985. Wise met Alan Perlis, head of Maths, when he was a freshman. Wise became an ACM Fellow in 2007, and Alan Perlis became the first recipient of the Turing Award.<br><a href=\"https://doi.org/10.1007/3-540-15975-4_43\">https://doi.org/10.1007/3-540-15975-4_43</a></p>"
         }
       },
         {
@@ -233,6 +262,21 @@
         "text": {
           "headline": "Control of parallelism in the Manchester dataflow machine",
             "text": "<p>The solution to the <q>too much parallelism</q> problem in the Manchester Dataflow Machine was coarse-grained, process-based throttling of parallelism.<br><a href=\"https://doi.org/10.1007/3-540-15975-4_36\">https://doi.org/10.1007/3-540-15975-4_36</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/tim-1987.png",
+          "caption": "Machine state is a function applied to arguments on the stack",
+            "credit": "Springer, FPCA 1987"
+        },
+        "start_date": {
+          "month": "09",
+          "year": "1987"
+        },
+        "text": {
+          "headline": "Tim: A simple, lazy abstract machine to execute supercombinators",
+            "text": "<p>Reseachers at Cambridge took the supercombinator approach to graph reduction. Tim had three instructions: <i>Take</i> to move items from the argument stack to a frame on the heap, <i>Push</i> to push an item onto the argument stack and <i>Enter</i> to load the current frame and program counter with an item. <q>The simplicity of this machine suggests that it would not be difficult to implement as a chip.</q><br><a href=\"https://doi.org/10.1007/3-540-18317-5_3\">https://doi.org/10.1007/3-540-18317-5_3</a></p>"
         }
       },
       {
