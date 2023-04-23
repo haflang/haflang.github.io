@@ -46,7 +46,7 @@
         },
         "text": {
           "headline": "An Architecture for a Loosely-Coupled Parallel Processor",
-            "text": "<p>Executes demand-driven applicative LISP code. Presents an architecture for a large (e.g. 1,000 processor) parallel computer. Locality of task allocation and communication is a key objective of the machine. Opportunities for concurrency arise in the parallel evaluation of arguments to strict operators, i.e . those known to require evaluation of their full set of arguments.<br><a href=\"https://collections.lib.utah.edu/ark:/87278/s6g73z2w\">https://collections.lib.utah.edu/ark:/87278/s6g73z2w</a></p>"
+            "text": "<p>A large (e.g. 1,000 processor) parallel architecture that executes demand-driven applicative LISP code. Locality of task allocation and communication was a key objective. Opportunities for concurrency arose in the parallel evaluation of strict operators, i.e . those known to require evaluation of their full set of arguments.<br><a href=\"https://collections.lib.utah.edu/ark:/87278/s6g73z2w\">https://collections.lib.utah.edu/ark:/87278/s6g73z2w</a></p>"
         }
       },
       {
@@ -263,8 +263,22 @@
           "headline": "Control of parallelism in the Manchester dataflow machine",
             "text": "<p>The solution to the <q>too much parallelism</q> problem in the Manchester Dataflow Machine was coarse-grained, process-based throttling of parallelism.<br><a href=\"https://doi.org/10.1007/3-540-15975-4_36\">https://doi.org/10.1007/3-540-15975-4_36</a></p>"
         }
-      },
+        },
         {
+       "media": {
+          "url": "/images/fp-history/portland-1987.jpg",
+           "caption": "FPCA 1987 at Portland, Oregon, USA,"
+        },
+        "start_date": {
+          "month": "09",
+          "year": "1987"
+        },
+        "text": {
+          "headline": "Supercombinator architectures",
+            "text": "<p>Multiple architectures adopting the <i>supercombinator</i> approach (Hughes, 1982) were presented at FPCA 1987. Notably: Tim, Flagship and GRIP.</p>"
+        }
+      },
+         {
         "media": {
           "url": "/images/fp-history/tim-1987.png",
           "caption": "Machine state is a function applied to arguments on the stack",
@@ -276,7 +290,37 @@
         },
         "text": {
           "headline": "Tim: A simple, lazy abstract machine to execute supercombinators",
-            "text": "<p>Reseachers at Cambridge took the supercombinator approach to graph reduction. Tim had three instructions: <i>Take</i> to move items from the argument stack to a frame on the heap, <i>Push</i> to push an item onto the argument stack and <i>Enter</i> to load the current frame and program counter with an item. <q>The simplicity of this machine suggests that it would not be difficult to implement as a chip.</q><br><a href=\"https://doi.org/10.1007/3-540-18317-5_3\">https://doi.org/10.1007/3-540-18317-5_3</a></p>"
+            "text": "<p>Tim, developed at the University of Cambridge had three instructions: <i>Take</i> to move items from the argument stack to a frame on the heap, <i>Push</i> to push an item onto the argument stack and <i>Enter</i> to load the current frame and program counter with an item. <q>The simplicity of this machine suggests that it would not be difficult to implement as a chip.</q><br><a href=\"https://doi.org/10.1007/3-540-18317-5_3\">https://doi.org/10.1007/3-540-18317-5_3</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/flagship-1987.png",
+          "caption": "Flagship architecture",
+            "credit": "Springer, FPCA 1987"
+        },
+        "start_date": {
+          "month": "09",
+          "year": "1987"
+        },
+        "text": {
+            "headline": "Evaluating functional programs on the flagship machine",
+            "text": "<p>Flagship was developed by the University of Manchester, Imperial College London and International Computers Ltd. Each processor performed reductions on the sub-graph in its local store, removing contention on a single store. Early prototypes used Turner's fixed combinators, supercombinators turned out to be 10-100x more efficient.<br><a href=\"https://doi.org/10.1007/3-540-18317-5_6\">https://doi.org/10.1007/3-540-18317-5_6</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/grip-1987.png",
+          "caption": "GRIP architecture",
+            "credit": "Springer, FPCA 1987"
+        },
+        "start_date": {
+          "month": "09",
+          "year": "1987"
+        },
+        "text": {
+            "headline": "GRIP — a high-performance architecture for parallel graph reduction",
+            "text": "<p>TODO.<br><a href=\"https://doi.org/10.1007/3-540-18317-5_7\">https://doi.org/10.1007/3-540-18317-5_7</a></p>"
         }
       },
       {
