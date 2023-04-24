@@ -323,13 +323,29 @@
             "text": "<p>Developed at University College London, GRIP's <q>Intelligent Memory Units</q> exposed a spectrum of design choices for adding <q>intelligence</q> to <B>memories</B> e.g. reduction, garbage collection and synchronisation (<a href=\"https://doi.org/10.1145/319838.319865\">LFP 1986</a>). GRIP implemented reduction cores (PEs) with von Neumann Motorola 68020 processors. Each board had 4 PEs. 21 boards could fit on a 50cm Futurebus.<br><a href=\"https://doi.org/10.1007/3-540-18317-5_7\">https://doi.org/10.1007/3-540-18317-5_7</a></p>"
         }
       },
-      {
-        "start_date": {
-          "year": "1989"
+        {
+            "start_date": {
+                "month" : "12",
+                "year": "1987"
         },
         "text": {
-          "headline": "MaRS, a combinator graph reduction multiprocessor",
-            "text": "<p>Modular distributed control multiprocessor for parallel graph reduction using a combinator machine language. Dedicated to the parallel execution of purely functional languages, the machine used separate specially designed processors for Reduction, Memory and Communication.<br><a href=\"https://doi.org/10.1007/3540512845_39\">https://doi.org/10.1007/3540512845_39</a></p>"
+          "headline": "The Dutch Parallel Reduction Machine Project",
+            "text": "<p>In 1984 three Dutch universities, Amsterdam, Nijmegen and Utrecht, started work on a parallel reduction machine. They used their graph rewriting language <a href=\"https://doi.org/10.1007/3-540-18317-5_20\">Clean</a> as the Intermediate Representation (IR) between source languages, SASL and Miranda, and their achitecture. Unlike the GRIP and Flagship machines, the Dutch Parallel Reduction Machine did not have a global address space, instead focusing on low latency memories local to reduction processors. The authors proposed a <q>sandwich reduction strategy</q> for coarse grained parallel reduction in this local memory architecture. To avoid work duplication, it fully reduced redexes before communicating them to other processors. Reduction cores were built using M68000 with a VME-bus. They collaborated with the University of East Anglia on an extension to Clean, called <a href=\"https://doi.org/10.1007/3-540-17945-3_9\">Lean</a>, which they envisaged would become a reusable IR between declarative languages and parallel architectures in the future.<br><a href=\"https://www.sciencedirect.com/science/article/abs/pii/0167739X87900306\">https://www.sciencedirect.com/science/article/abs/pii/0167739X87900306</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/mars-1988.png",
+          "caption": "MaRS architecture",
+            "credit": "ACM SIGARCH Computer Architecture News 1988"
+        },
+            "start_date": {
+                "month" : "06",
+                "year": "1988"
+        },
+        "text": {
+          "headline": "MaRS: a parallel graph reduction multiprocessor",
+            "text": "<p>An extension of Curry's S K combinators and Turner's practical utility of them, the MaRS functional machine language comprised 8 combinators. MaRS-LISP, a simple pure language, was compiled to these combinators. The VLSI 1.5-micron CMOS based hardware comprised three processor types for reduction, memory and communication.<br><a href=\"https://doi.org/10.1145/48675.48678\">https://doi.org/10.1145/48675.48678</a></p>"
         }
       },
       {
