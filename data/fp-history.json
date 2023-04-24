@@ -311,7 +311,7 @@
         {
         "media": {
           "url": "/images/fp-history/grip-1987.png",
-          "caption": "GRIP architecture",
+          "caption": "Architecture of a GRIP board",
             "credit": "Springer, FPCA 1987"
         },
         "start_date": {
@@ -320,7 +320,7 @@
         },
         "text": {
             "headline": "GRIP — a high-performance architecture for parallel graph reduction",
-            "text": "<p>TODO.<br><a href=\"https://doi.org/10.1007/3-540-18317-5_7\">https://doi.org/10.1007/3-540-18317-5_7</a></p>"
+            "text": "<p>Developed at University College London, GRIP's <q>Intelligent Memory Units</q> exposed a spectrum of design choices for adding <q>intelligence</q> to <B>memories</B> e.g. reduction, garbage collection and synchronisation (<a href=\"https://doi.org/10.1145/319838.319865\">LFP 1986</a>). GRIP implemented reduction cores (PEs) with von Neumann Motorola 68020 processors. Each board had 4 PEs. 21 boards could fit on a 50cm Futurebus.<br><a href=\"https://doi.org/10.1007/3-540-18317-5_7\">https://doi.org/10.1007/3-540-18317-5_7</a></p>"
         }
       },
       {
