@@ -305,7 +305,7 @@
         },
         "text": {
             "headline": "Evaluating functional programs on the flagship machine",
-            "text": "<p>Flagship was developed by the University of Manchester, Imperial College London and International Computers Ltd. Each processor performed reductions on the sub-graph in its local store, removing contention on a single store. Early prototypes used Turner's fixed combinators, supercombinators turned out to be 10-100x more efficient.<br><a href=\"https://doi.org/10.1007/3-540-18317-5_6\">https://doi.org/10.1007/3-540-18317-5_6</a></p>"
+            "text": "<p>Flagship was developed by the University of Manchester, Imperial College London and International Computers Ltd. Each processor performed reductions on the sub-graph in its local store, removing contention on a single store. A detailed description of a 16 processor Flagship machine is <a href=\"https://doi.org/10.1017/S0956796800000927\">described</a> in the Journal of Functional Programm, 1994. Early prototypes used Turner's fixed combinators, however switching to supercombinators turned out to be 10-100x more efficient.<br><a href=\"https://doi.org/10.1007/3-540-18317-5_6\">https://doi.org/10.1007/3-540-18317-5_6</a></p>"
         }
       },
         {
