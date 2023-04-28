@@ -20,6 +20,25 @@
             "text": "<p>American mathematician Alonzo Church proposed a model of computation called the untyped lambda calculus.<br>\"An Unsolvable Problem of Elementary Number Theory\", American Journal of Mathematics.<br><a href=\"https://doi.org/10.2307%2F2371045\">https://doi.org/10.2307%2F2371045</a></p>"
         }
         },
+        {
+        "start_date": {
+          "year": "1976"
+        },
+        "text": {
+            "headline": "Evaluation strategies",
+            "text": "<p>An property that will become an important distinction for language implementation is <i>evaluation strategy</i>. <b>Applicative order</b> (\"strict\") evaluates arguments before evaluating a function. <b>Normal order</b> (\"lazy\") evaluates the function immediately, evaluating its arguments if needed. The implication is that lazy evaluation does less work:</p><table><tr><th style=\"padding-right: 40px\">Applicative order</th><th>Normal order</th></tr><tr><td valign=\"top\">(&lambda; x. 1) (* 5 4)<br>&rArr; (&lambda; x. 1) 20<br>&rArr; 1</td><td valign=\"top\">(&lambda; x. 1) (* 5 4)<br>&rArr; 1</td></tr></table><p>Lazy evaluation is useful to programmers (<a href=\"https://doi.org/10.1145/72551.72554\">ACM Comput Surv, 1989</a>):</p><ol type=\"1\"><li><i>it frees a programmer from concerns about evaluation order</i></li><li><i>it provides the ability to compute with \"infinite\" data structures</i></li></ol><p>The merits of laziness for code modularity and readability are often argued, e.g. in Section 5 of <a href=\"https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf\">Why Functional Programming Matters (1990)</a>.</p>"
+        }
+        },
+        {
+        "start_date": {
+          "month": "01",
+          "year": "1976"
+        },
+        "text": {
+            "headline": "Evaluation strategies",
+            "text": "<p>Early lazy evaluation techniques were developed for Hyper-Pure LISP <a href=\"https://doi.org/10.1145/800168.811543\">(POPL, 1976)</a> and <a href=\"https://web.archive.org/web/20150402133901/http://www.eis.mdx.ac.uk/staffpages/dat/saslman.pdf\">SASL</a> based on Chris Wadsworth's 1971 PhD thesis, where \"graph reduction\" originates. Despite the promises of laziness, most functional languages in the 1980s had strict evaluation semantics, e.g. LISP, ML and Hope, partly due to the relative ease of implemention: reuse call-by-value compiler technology from imperative language implementations (<a href=\"https://doi.org/10.1145/72551.72554\">ACM Comput Surv, 1989</a>). However, the main reason was the challenge of implementing lazy evaluation <i>efficiently</i>.<br><br>As this timeline will show, the last 47 years has seen lazy and strict languages being implemented both in hardware and in software.</p>"
+        }
+        },
       {
         "media": {
             "url": "/images/fp-history/backus-1978.png",
