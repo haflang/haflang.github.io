@@ -26,7 +26,7 @@
         },
         "text": {
             "headline": "Evaluation strategies",
-            "text": "<p>An property that will become an important distinction for language implementation is <i>evaluation strategy</i>. <b>Applicative order</b> (\"strict\") evaluates arguments before evaluating a function. <b>Normal order</b> (\"lazy\") evaluates the function immediately, evaluating its arguments if needed. The implication is that lazy evaluation does less work:</p><table><tr><th style=\"padding-right: 40px\">Applicative order</th><th>Normal order</th></tr><tr><td valign=\"top\">(&lambda; x. 1) (* 5 4)<br>&rArr; (&lambda; x. 1) 20<br>&rArr; 1</td><td valign=\"top\">(&lambda; x. 1) (* 5 4)<br>&rArr; 1</td></tr></table><p>Lazy evaluation is useful to programmers (<a href=\"https://doi.org/10.1145/72551.72554\">ACM Comput Surv, 1989</a>):</p><ol type=\"1\"><li><i>it frees a programmer from concerns about evaluation order</i></li><li><i>it provides the ability to compute with \"infinite\" data structures</i></li></ol><p>The merits of laziness for code modularity and readability are often argued, e.g. in Section 5 of <a href=\"https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf\">Why Functional Programming Matters (1990)</a>.</p>"
+            "text": "<p>A key property of a language is its <i>evaluation strategy</i>. From 1976 this becomes a central component of computer architecture design choices.<br><br><b>Applicative order</b> (\"strict\") evaluates a function's arguments before its body. <b>Normal order</b> (\"lazy\") evaluates the body immediately, evaluating its arguments later if needed. Lazy evaluation does less work:</p><table><tr><th style=\"padding-right: 40px\">Applicative order</th><th>Normal order</th></tr><tr><td valign=\"top\">(&lambda; x. 1) (* 5 4)<br>&rArr; (&lambda; x. 1) 20<br>&rArr; 1</td><td valign=\"top\">(&lambda; x. 1) (* 5 4)<br>&rArr; 1</td></tr></table><p>Lazy evaluation is useful to programmers (<a href=\"https://doi.org/10.1145/72551.72554\">ACM Comput Surv, 1989</a>):</p><ol type=\"1\"><li><i>it frees a programmer from concerns about evaluation order</i></li><li><i>it provides the ability to compute with \"infinite\" data structures</i></li></ol><p>The merits of laziness for code modularity and readability are often argued, e.g. in Section 5 of <a href=\"https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf\">Why Functional Programming Matters (1990)</a>.</p>"
         }
         },
         {
@@ -50,7 +50,7 @@
           "year": "1978"
         },
           "text": {
-            "text": "<p><q>A new class of computing systems uses the functional programming style both in its programming language and in its state transition rules. Unlike von Neumann languages, these systems have semantics loosely coupled to states—only one state transition occurs per major computation.</q><br><a href=\"https://doi.org/10.1145/359576.359579\">https://doi.org/10.1145/359576.359579</a></p>"
+              "text": "<p>John Backus highlights an emerging class of computing systems based on the functional programming style.<br><br><q>Unlike von Neumann languages, these systems have semantics loosely coupled to states—only one state transition occurs per major computation.</q><br><a href=\"https://doi.org/10.1145/359576.359579\">https://doi.org/10.1145/359576.359579</a></p>"
         }
       },
       {
