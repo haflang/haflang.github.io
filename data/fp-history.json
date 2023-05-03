@@ -358,6 +358,21 @@
         }
       },
         {
+        "media": {
+          "url": "/images/fp-history/spj.png",
+          "caption": "Simon Peyton Jones",
+            "credit": "TODO"
+        },
+            "start_date": {
+                "month" : "09",
+                "year": "1987"
+        },
+        "text": {
+          "headline": "Simon Peyton Jones",
+            "text": "<p>TODO</p>"
+        }
+      },
+        {
             "start_date": {
                 "month" : "12",
                 "year": "1987"
@@ -384,6 +399,16 @@
       },
       {
         "start_date": {
+          "month": "06",
+          "year": "1989"
+        },
+        "text": {
+          "headline": "High-performance parallel graph reduction",
+            "text": "<p>Two years after the FPCA 1987 paper about GRIP, Simon Peyton Jones and colleagues reflect on performance considerations for parallel compiled graph reduction.<br>TODO.<br><a href=\"https://doi.org/10.1007/3540512845_40\">https://doi.org/10.1007/3540512845_40</a></p>"
+        }
+      },
+      {
+        "start_date": {
           "month": "03",
           "day": "01",
           "year": "1992"
@@ -391,6 +416,40 @@
         "text": {
           "headline": "Parallel Combinator Reduction: Some Performance Bounds",
             "text": "<p>A parallel graph reduction machine simulator that performs combinator reduction and simulates various different parallel reduction strategies. A number of functional programs are examined, and experimental results presented comparing the amount of parallelism obtainable.<br><a href=\"https://www.dcs.warwick.ac.uk/report/pdfs/cs-rr-210.pdf\">https://www.dcs.warwick.ac.uk/report/pdfs/cs-rr-210.pdf</a></p>"
+        }
+      },
+        {
+        "start_date": {
+                "month" : "04",
+                "year": "1992"
+        },
+        "text": {
+          "headline": "Hardware or compilers?",
+            "text": "<p>The 1980s had seen intense activity at the interface between computer architectures and functional languages research. But some were sceptical.<br><q>Programmed reduction systems are not so elegant as pure reduction systems, but offer the advantage that we can make use of technology developed over the last 35 years to implement von Neumann based architectures</q>, Richard Kieburtz, 1985.<br>Moreover others were unconvinved given the time is takes to develop these physical machines:<q>Current RISC technology will probably have increased in speed enough by the time a [graph reduction] chip could be designed and fabricated to make the exercise pointless</q>, Philip John Koopman Jr, 1990.<br>The decade ended with innovations with compiler technologies, which some <a href=\"https://doi.org/10.1145/1238844.1238856\">later considered</a> had deprecated these hardware approaches.<br><q>Much (but not all) of this architecturally oriented work turned out to be a dead end, when it was later discovered that good compilers for stock architecture could outperform specialised architecture. But at the time it was all radical and exciting.</q><br>Lenart Augustsson wrote his PhD thesis, <q>Compiling Lazy Functional Languages</q>, about the G-Machine. This was <a href=\"https://doi.org/10.1017/S0956796800000319\">extended</a> as Spineless Tagless G-machine by Jones to target CPUs with functional language compilers.</p>"
+        }
+        },
+        {
+        "start_date": {
+                "month" : "10",
+                "year": "1995"
+        },
+        "text": {
+          "headline": "FPCA and LFP",
+            "text": "<p>Functional programming languages and computer architecture (FPCA) was a conference series that ran 1981-1995. There was also a dedicated workshop in 1986, \"Graph Reduction\" in Santa Fé, New Mexico, USA. In 1996, FPCA merged with Lisp and Functional Programming (LFP) to become the International Conference on Functional Programming (ICFP), which remains a premier functional programming conference today.<br>This was the end of an era in the 1980s regarding intense interest in functional language hardware.<br>Papers accepted to ICFP in more recent times predominately focus on formalised language design and type theory, rather than engineered hardware systems.</p>"
+        }
+        },
+        {
+        "media": {
+          "url": "/images/fp-history/fpga-growth.png",
+          "caption": "FPGA attributes relative to 1988",
+            "credit": "IEEE <a href=\"https://doi.org/10.1109/JPROC.2015.2392104\">March 2015</a>"
+        },
+        "start_date": {
+                "year": "2009"
+        },
+        "text": {
+          "headline": "Resurgence of interest",
+            "text": "<p><q>I wonder how popular Haskell needs to become for Intel to optimise their processors for my runtime, rather than the other way around.</q> Simon Marlow.<br>After a lull in computer architecture research, there was about to be a resurgence in the development of computer architectures functional languages. This began with Reduceron (pure graph reduction) and PilGRIM (programmed graph reduction). This renewed excitement was due to the <a href=\"https://doi.org/10.1109/JPROC.2015.2392104\">recent growth</a> in performance of programmable hardware. </p>"
         }
       }
     ]
