@@ -260,6 +260,21 @@
         }
       },
         {
+        "media": {
+          "url": "/images/fp-history/norma-1986.png",
+          "caption": "NORMA graph processor",
+            "credit": "ACM conference on LISP and functional programming"
+        },
+            "start_date": {
+                "month" : "08",
+                "year": "1986"
+        },
+        "text": {
+          "headline": "NORMA: a graph reduction processor",
+            "text": "<p>A microprogrammable machine that could support multiple graph reduction schemes. Turner's S K combinators were implemented in NORMA's hardware. It had a mark-scan garbage collector, based on John Hughes's <a href=\"https://doi.org/10.1002/spe.4380121108\">earlier work</a>. NORMA had very wide words (370 bits) for instruction level parallelism. NORMA performed 250,000 reductions per second, which was considered state-of-the-art performance at this time.<br><a href=\"https://doi.org/10.1145/319838.319864\"></a>https://doi.org/10.1145/319838.319864</p>"
+        }
+      },
+        {
         "start_date": {
           "year": "1987"
         },
