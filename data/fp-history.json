@@ -20,9 +20,22 @@
             "text": "<p>American mathematician Alonzo Church proposed a model of computation called the untyped lambda calculus.<br>\"An Unsolvable Problem of Elementary Number Theory\", American Journal of Mathematics.<br><a href=\"https://doi.org/10.2307%2F2371045\">https://doi.org/10.2307%2F2371045</a></p>"
         }
         },
+      {
+        "media": {
+            "url": "/images/fp-history/backus-1978.png",
+            "caption": "John Backus",
+          "credit": "Communications of the ACM."
+        },
+        "start_date": {
+          "year": "1978"
+        },
+          "text": {
+              "text": "<p>John Backus highlights an emerging class of computing systems based on the functional programming style.<br><br><q>Unlike von Neumann languages, these systems have semantics loosely coupled to states—only one state transition occurs per major computation.</q><br><a href=\"https://doi.org/10.1145/359576.359579\">https://doi.org/10.1145/359576.359579</a></p>"
+        }
+      },
         {
         "start_date": {
-          "year": "1976"
+          "year": "1978"
         },
         "text": {
             "headline": "Evaluation strategies",
@@ -31,28 +44,13 @@
         },
         {
         "start_date": {
-          "month": "01",
-          "year": "1976"
+          "year": "1978"
         },
         "text": {
             "headline": "Evaluation strategies",
             "text": "<p>Early lazy evaluation techniques were developed for Hyper-Pure LISP <a href=\"https://doi.org/10.1145/800168.811543\">(POPL, 1976)</a> and <a href=\"https://web.archive.org/web/20150402133901/http://www.eis.mdx.ac.uk/staffpages/dat/saslman.pdf\">SASL</a> based on Chris Wadsworth's 1971 PhD thesis, where \"graph reduction\" originates. Despite the promises of laziness, most functional languages in the 1980s had strict evaluation semantics, e.g. LISP, ML and Hope, partly due to the relative ease of implemention: reuse call-by-value compiler technology from imperative language implementations (<a href=\"https://doi.org/10.1145/72551.72554\">ACM Comput Surv, 1989</a>). However, the main reason was the challenge of implementing lazy evaluation <i>efficiently</i>.<br><br>As this timeline will show, the last 47 years has seen lazy and strict languages being implemented both in hardware and in software.</p>"
         }
         },
-      {
-        "media": {
-            "url": "/images/fp-history/backus-1978.png",
-            "caption": "John Backus",
-          "credit": "Communications of the ACM."
-        },
-        "start_date": {
-          "month": "08",
-          "year": "1978"
-        },
-          "text": {
-              "text": "<p>John Backus highlights an emerging class of computing systems based on the functional programming style.<br><br><q>Unlike von Neumann languages, these systems have semantics loosely coupled to states—only one state transition occurs per major computation.</q><br><a href=\"https://doi.org/10.1145/359576.359579\">https://doi.org/10.1145/359576.359579</a></p>"
-        }
-      },
       {
         "media": {
           "url": "/images/fp-history/keller-1978.png",
@@ -404,7 +402,7 @@
         },
         "text": {
           "headline": "High-performance parallel graph reduction",
-            "text": "<p>Two years after the FPCA 1987 paper about GRIP, Simon Peyton Jones and colleagues reflect on performance considerations for parallel compiled graph reduction.<br>TODO.<br><a href=\"https://doi.org/10.1007/3540512845_40\">https://doi.org/10.1007/3540512845_40</a></p>"
+            "text": "<p>Two years after their FPCA 1987 paper about GRIP, UCL researchers reflected on two performance factors of compiled graph reduction on GRIP: (1) controlling parallelism and (2) locality in the memory hierarchy.<br><br><B>Parallelism</B> The expression (E<sub>1</sub> + E<sub>2</sub>) can be evaluated by creating a parallel \"spark\" for E<sub>1</sub> or E<sub>2</sub> (nomenclature later adopted by <a href=\"https://doi.org/10.1145/1596550.1596563\">GHC for multi-core CPUs</a>), which the hardware may be schedule on another core. They aimed to support <i>implicit</i> parallelism using compile-time and runtime strategies for partitioning and scheduling. Their scheduler only generated sparks when cores were under-utilised, and did this only for \"conservative parallelism\" when results were definitely needed (as opposed to \"speculative parallelism\"). Echoes of GRIP's architecture for parallelism can be seen in today's GHC runtime system, with the notable change that parallelism became <i>semi-explicit</i> for the programmer to control parallelism.<br><B>Locality</B> Blah.<br><a href=\"https://doi.org/10.1007/3540512845_40\">https://doi.org/10.1007/3540512845_40</a></p>"
         }
       },
       {
