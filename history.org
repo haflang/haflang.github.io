@@ -21,6 +21,6 @@ title: History of Functional Hardware
   timeline = new TL.Timeline('timeline-embed',
                              '/data/fp-history.json');
 </script>
-<br><br>
-<P align="right">by Rob Stewart.</P>
+<br>
+<p align="right">by Rob Stewart.</p>
 #+END_EXPORT
