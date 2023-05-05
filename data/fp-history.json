@@ -407,7 +407,7 @@
         },
         "text": {
           "headline": "Speculative parallelism in a distributed graph reduction machine",
-            "text": "<p>Andew Partridge BLAH.<br><a href=\"https://doi.org/10.1109/HICSS.1989.48085\">https://doi.org/10.1109/HICSS.1989.48085</a></p>"
+            "text": "<p>Andew Partridge and Anthony Dekker presented a <i>speculative parallelism</i> scheme for lazy languages, able to generate more parallel (but potentially irrelevant) work than <i>conservative parallelism</i>. Speculative approaches may generate irrelevant, non-terminating tasks. This paper solves this in two ways: (1) <b>Task prioritisation</b>, <q>definitely needed</q> tasks are assigned a higher priority than speculative tasks; (2) <b>Task termination</b>, to kill irrelevant tasks and reclaim their memory.<br><a href=\"https://doi.org/10.1109/HICSS.1989.48085\">https://doi.org/10.1109/HICSS.1989.48085</a></p>"
         }
       },
       {
