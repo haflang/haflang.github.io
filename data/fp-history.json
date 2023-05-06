@@ -392,7 +392,7 @@
         },
         "text": {
           "headline": "Speculative parallelism in a distributed graph reduction machine",
-            "text": "<p>Andew Partridge and Anthony Dekker presented a <i>speculative parallelism</i> scheme for lazy languages, able to generate more parallel (but potentially irrelevant) work than <i>conservative parallelism</i>. Speculative approaches may generate irrelevant, non-terminating tasks. This paper solves this in two ways: (1) <b>Task prioritisation</b>, <q>definitely needed</q> tasks are assigned a higher priority than speculative tasks; (2) <b>Task termination</b>, to kill irrelevant tasks and reclaim their memory.<br><a href=\"https://doi.org/10.1109/HICSS.1989.48085\">https://doi.org/10.1109/HICSS.1989.48085</a></p>"
+            "text": "<p>Andew Partridge and Anthony Dekker proposed a <i>speculative parallelism</i> scheme for lazy languages, able to generate more parallel (but potentially irrelevant) work than <i>conservative parallelism</i>. Speculative approaches may generate irrelevant, non-terminating tasks. This paper solves this in two ways: (1) <b>Task prioritisation</b>, <q>definitely needed</q> tasks are assigned a higher priority than speculative tasks; (2) <b>Task termination</b>, to kill irrelevant tasks and reclaim their memory.<br><a href=\"https://doi.org/10.1109/HICSS.1989.48085\">https://doi.org/10.1109/HICSS.1989.48085</a></p>"
         }
       },
       {
@@ -402,13 +402,13 @@
         },
         "text": {
           "headline": "GRIP performance factors",
-            "text": "<p>Two years after their FPCA 1987 paper, UCL researchers reflected on two performance factors for GRIP: (1) parallelism and (2) locality.<br><B>Parallelism</B> Expressions were evaluated in parallel by creating \"sparks\" that may be executed by another core. GRIP supported <i>implicit</i> parallelism with partitioning and scheduling schemes. GRIP's scheduler created sparks only when cores became under-utilised, and did so just for \"conservative parallelism\" i.e. when results were definitely needed. Echoes of GRIP's parallelism support and nomenclature are <a href=\"https://doi.org/10.1145/1596550.1596563\">seen in GHC</a>, with one difference being that parallelism is <i>semi-explicit</i> for GHC users.<br><B>Locality</B> Each GRIP board had a two-level store: (1) 4 PE's with fast access to private memory, and (2) 1 IMU that offered slower access to a global address space. The address space of IMU's also had two levels for accessing \"on board\" and remte \"off board\" IMUs. This 1989 paper discusses managing these local and global memories, and GRIP's caching scheme to increase locality i.e. memory references to <i>local</i> data.<br><a href=\"https://doi.org/10.1007/3540512845_40\">https://doi.org/10.1007/3540512845_40</a></p>"
+            "text": "<p>Two years after their FPCA 1987 paper, UCL researchers reflected on two performance factors for GRIP: (1) parallelism and (2) locality.<br><B>Parallelism</B> Expressions were evaluated in parallel by creating \"sparks\" that may be executed by another core. GRIP supported <i>implicit</i> parallelism with partitioning and scheduling schemes. GRIP's scheduler created sparks only when cores became under-utilised, and did so just for <i>conservative parallelism</i> i.e. when results were definitely needed. Echoes of GRIP's parallelism support and nomenclature are <a href=\"https://doi.org/10.1145/1596550.1596563\">seen in GHC</a>, with one difference being that parallelism is <i>semi-explicit</i> for GHC users.<br><B>Locality</B> Each GRIP board had a two-level store: (1) 4 PE's with fast access to private memory, and (2) 1 IMU that offered slower access to a global address space. The address space of IMU's also had two levels for accessing \"on board\" and remte \"off board\" IMUs. This 1989 paper discusses managing these local and global memories, and GRIP's caching scheme to increase locality i.e. memory references to <i>local</i> data.<br><a href=\"https://doi.org/10.1007/3540512845_40\">https://doi.org/10.1007/3540512845_40</a></p>"
         }
       },
          {
         "media": {
           "url": "/images/fp-history/tigre-1989.png",
-          "caption": "Left spine of a TIGRE program graph",
+            "caption": "VAX implementation of ((+ 11) 22) with TIGRE",
             "credit": "ACM SIGPLAN 1989"
         },
         "start_date": {
@@ -416,8 +416,8 @@
           "year": "1989"
         },
         "text": {
-          "headline": "A fresh look at combinator graph reduction",
-            "text": "<p>Philip Koopman Jr's <a href=\"https://users.ece.cmu.edu/~koopman/tigre/index.html\">PhD thesis</a> was about TIGRE, a graph reduction architecture. His PLDI 1989 paper with Peter Lee described the TIGRE abstract graph reduction machine. It addresses: <q>The major sources pf ineffiency in most graph reducers are the traversing of the graph's left spine and the case analysis of node tags<q>. Their key idea is that the spine stack is just a subroutine stack<br><br>TIGRE performed 355,000 reductions per second on a VAX8800 for Turner's S K combinators, compared with 250,000 reductions per second on the NORMA architecture.<br><a href=\"https://doi.org/10.1145/73141.74828\">https://doi.org/10.1145/73141.74828</a></p>"
+          "headline": "TIGRE",
+            "text": "<p>Philip Koopman Jr summarised his <a href=\"https://users.ece.cmu.edu/~koopman/tigre/index.html\">PhD thesis</a> in a <a href=\"https://doi.org/10.1145/74818.74828\">PLDI 1989 paper</a> about his TIGRE graph reduction architecture. It addresses <q>the major source of ineffiency in most graph reducers [...] traversing a graph's left spine and case analysis of node tags<q>. Their key idea was that the spine stack could be implemented with CPU subroutine instructions to eliminate node traversal during stack unwinding. TIGRE targeted VAX (<a href=\"https://www.bloomberg.com/news/articles/2021-01-06/who-remembers-the-vax-minicomputer-icon-of-the-1980s?leadSource=uverify%20wall\">a 1980s icon</a>, ultimately superseded by RISC technology). It performed 355,000 reductions per second on a VAX8800 for Turner's S K combinators, compared with NORMA executing 250,000 reductions per second.</p>"
         }
       },
       {
