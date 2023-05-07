@@ -298,7 +298,7 @@
         },
         {
        "media": {
-          "url": "/images/fp-history/portland-1987.jpg",
+          "url": "https://www.google.com/maps/place/Portland,+OR,+USA/@45.5427139,-122.6544011,11z/data=!3m1!4b1!4m6!3m5!1s0x54950b0b7da97427:0x1c36b9e6f6d18591!8m2!3d45.515232!4d-122.6783853!16s%2Fm%2F02frhbc",
            "caption": "FPCA 1987 at Portland, Oregon, USA,"
         },
         "start_date": {
@@ -307,7 +307,7 @@
         },
         "text": {
           "headline": "Supercombinator architectures",
-            "text": "<p>Multiple architectures adopting the <i>supercombinator</i> approach (Hughes, 1982) were presented at FPCA 1987. Notably: Tim, Flagship and GRIP.</p>"
+            "text": "<p>Three architectures adopting the <i>supercombinator</i> approach (Hughes, 1982) were presented 14-16 September at FPCA 1987: Tim, Flagship and GRIP.</p>"
         }
       },
          {
@@ -354,7 +354,7 @@
             "headline": "GRIP — a high-performance architecture for parallel graph reduction",
             "text": "<p>Developed at University College London, GRIP's <q>Intelligent Memory Units</q> exposed a spectrum of design choices for adding <q>intelligence</q> to <B>memories</B> e.g. reduction, garbage collection and synchronisation (<a href=\"https://doi.org/10.1145/319838.319865\">LFP 1986</a>). GRIP implemented reduction cores (PEs) with von Neumann Motorola 68020 processors. Each board had 4 PEs. 21 boards could fit on a 50cm Futurebus.<br><a href=\"https://doi.org/10.1007/3-540-18317-5_7\">https://doi.org/10.1007/3-540-18317-5_7</a></p>"
         }
-      },
+        },
         {
             "start_date": {
                 "month" : "12",
