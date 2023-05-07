@@ -430,6 +430,15 @@
             "text": "<p>Philip Koopman Jr summarised his <a href=\"https://users.ece.cmu.edu/~koopman/tigre/index.html\">PhD thesis</a> in a <a href=\"https://doi.org/10.1145/74818.74828\">PLDI 1989 paper</a> about his TIGRE graph reduction architecture. It addresses <q>the major source of ineffiency in most graph reducers [...] traversing a graph's left spine and case analysis of node tags<q>. Their key idea was that the spine stack could be implemented with CPU subroutine instructions to eliminate node traversal during stack unwinding. TIGRE targeted VAX (<a href=\"https://www.bloomberg.com/news/articles/2021-01-06/who-remembers-the-vax-minicomputer-icon-of-the-1980s?leadSource=uverify%20wall\">a 1980s icon</a>, ultimately superseded by RISC technology). It performed 355,000 reductions per second on a VAX8800 for Turner's S K combinators, compared with NORMA executing 250,000 reductions per second.</p>"
         }
       },
+        {
+        "media": {
+            "url": "https://www.cs.cmu.edu/~popl-interviews/img/wg2.8_peytonjones.png",
+            "caption": "Haskell is a language designed by this IFIP WG2.8 committee (Oxford, 1992)"
+        },
+            "start_date": {
+                "year": "1992"
+        }
+      },
       {
         "start_date": {
           "month": "03",
