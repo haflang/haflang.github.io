@@ -356,6 +356,16 @@
         }
         },
         {
+        "start_date": {
+          "month": "09",
+          "year": "1987"
+        },
+        "text": {
+            "headline": "A common language",
+            "text": "<p>Supercominators weren't the only FPCA'87 discussion point.</p><section class=\"component\"><blockquote class=\"callout quote EN\">In September of 1987 a meeting was held at FPCA'87 in Portland, Oregon, to discuss an unfortunate situation in the functional programming community: there had come into being more than a dozen non-strict, purely functional programming languages, all similar in expressive power and semantic underpinnings. There was a strong consensus at this meeting that more widespread use of this class of functional languages was being hampered by the lack of a common language. It was decided that a committee should be formed to design such a language, providing faster communication of new ideas, a stable foundation for real applications development, and a vehicle through which others would be encouraged to use functional languages.<cite> Haskell 1998 report</cite></blockquote></section>"
+        }
+      },
+        {
             "start_date": {
                 "month" : "12",
                 "year": "1987"
