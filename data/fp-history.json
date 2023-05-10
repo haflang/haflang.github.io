@@ -437,13 +437,14 @@
         },
         "text": {
           "headline": "Memory bandwidth",
-            "text": "<p>At the Glasgow Workshop on Functional Programming, in Portree on the Isle of Skye, Lenart Augustsson observed that <i>memory bandwidth</i> is the a limiting factor for lazy languages.</p><section class=\"component\"><blockquote class=\"callout quote EN\">For lazy languages [...] instead of computing a value, a suspension of the computations has to be created, to be scrutinized later on. [...] increasing the number of memory references. [...] the speed of functional programs are then limited by the memory bandwidth.<cite> Lenart Augustsson</cite></blockquote></section>"
+            "text": "<p>At the Glasgow Workshop on Functional Programming, in Portree on the Isle of Skye, Lenart Augustsson observed that <i>memory bandwidth</i> is a limiting performance factor for lazy languages.</p><section class=\"component\"><blockquote class=\"callout quote EN\">For lazy languages [...] instead of computing a value, a suspension of the computations has to be created, to be scrutinized later on. [...] increasing the number of memory references. [...] the speed of functional programs are then limited by the memory bandwidth.<cite> Lenart Augustsson</cite></blockquote></section>"
         }
       },
          {
         "media": {
-            "url": "/images/fp-history/lennart_augustsson.png",
-            "caption": "Lennart Augustsson"
+            "url": "/images/fp-history/bwm-1991.png",
+            "caption": "BWM Architecture",
+            "credit": "Springer"
         },
         "start_date": {
           "month": "08",
