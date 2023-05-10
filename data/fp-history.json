@@ -508,17 +508,25 @@
         }
         },
         {
-        "media": {
-          "url": "/images/fp-history/fpga-growth.png",
-          "caption": "FPGA attributes relative to 1988",
-            "credit": "IEEE <a href=\"https://doi.org/10.1109/JPROC.2015.2392104\">March 2015</a>"
+            "media": {
+                "url": "/images/fp-history/fpga-growth.png",
+                "caption": "1988 to 2011 saw exponential growth in FPGA hardware resources",
+                "credit": "Three Ages of FPGAs (<a href=\"https://doi.org/10.1109/JPROC.2015.2392104\">IEEE, March 2015</a>)"
         },
         "start_date": {
                 "year": "2009"
         },
+            "text": {
+                "headline": "FPGAs"
+            }
+        },
+        {
+        "start_date": {
+                "year": "2009"
+        },
         "text": {
-          "headline": "Resurgence of interest",
-            "text": "<p><q>I wonder how popular Haskell needs to become for Intel to optimise their processors for my runtime, rather than the other way around.</q> Simon Marlow.<br>After a lull in computer architecture research, there was about to be a resurgence in the development of computer architectures functional languages. This began with Reduceron (pure graph reduction) and PilGRIM (programmed graph reduction). This renewed excitement was due to the <a href=\"https://doi.org/10.1109/JPROC.2015.2392104\">recent growth</a> in performance of programmable hardware. </p>"
+          "headline": "Functional languages in a chip",
+            "text": "<p>As mainstream adoption functional grew, in 2009 the primary developer of the GHC runtime system asked:</p><section class=\"component\"><blockquote class=\"callout quote EN\">I wonder how popular Haskell needs to become for Intel to optimise their processors for my runtime, rather than the other way around.<cite> Simon Marlow.</cite></blockquote></section><p>Researchers at the University of Twente were investigating this around the same time:</p><section class=\"component\"><blockquote class=\"callout quote EN\">Processor designs specialized for functional languages received very little attention in the past 20 years. The potential for exploiting more parallelism and the developments in hardware technology, ask for renewed investigation of this topic.<cite> Arjan Boeijink et al.</cite></blockquote></section>"
         }
       }
     ]
