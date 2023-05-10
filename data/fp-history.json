@@ -528,6 +528,21 @@
           "headline": "Functional languages in a chip",
             "text": "<p>As mainstream adoption functional grew, in 2009 the primary developer of the GHC runtime system asked:</p><section class=\"component\"><blockquote class=\"callout quote EN\">I wonder how popular Haskell needs to become for Intel to optimise their processors for my runtime, rather than the other way around.<cite> Simon Marlow.</cite></blockquote></section><p>Researchers at the University of Twente were investigating this around the same time:</p><section class=\"component\"><blockquote class=\"callout quote EN\">Processor designs specialized for functional languages received very little attention in the past 20 years. The potential for exploiting more parallelism and the developments in hardware technology, ask for renewed investigation of this topic.<cite> Arjan Boeijink et al., <a href=\"https://doi.org/10.1007/978-3-642-24276-2_4\">IFL 2010</a>.</cite></blockquote></section>"
         }
-      }
+        },
+        {
+        "media": {
+            "url": "/images/fp-history/pilgrim-2010.png",
+            "caption": "PilGRIM Architecture",
+            "credit": "Springer"
+        },
+            "start_date": {
+                "month": "09",
+                "year": "2010"
+        },
+        "text": {
+            "headline": "PilGRIM",
+            "text": "<p>A processor for lazy functional languages with a high-level graph reduction instruction set. It shares principles of Augustsson's BWM and Reduceron by \"exploiting parallelism in data movements by reading multiple values in parallel from the stack and rearranging them through a large crossbar\". It uses modern processor ideas, (1) a pipelined design for parallelism and high clock frequencies, (2) a memory hierarchy with L1 and L2 cache, and DDR-memory. Its frontend language was <a href=\"https://doi.org/10.1007/3-540-63237-9_19\">GRIN</a> after translation from GHC Core, i.e. from Haskell. A PilGRIM clock frequency of 231-728MHz is required to match GHC performance on an Intel i5 CPU.<br><a href=\"https://doi.org/10.1007/978-3-642-24276-2_4\">https://doi.org/10.1007/978-3-642-24276-2_4</a></p>"
+        }
+        }
     ]
 }
