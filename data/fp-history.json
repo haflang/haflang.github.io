@@ -431,6 +431,15 @@
             "text": "<p>Philip Koopman Jr summarised his <a href=\"https://users.ece.cmu.edu/~koopman/tigre/index.html\">PhD thesis</a> in a <a href=\"https://doi.org/10.1145/74818.74828\">PLDI 1989 paper</a> about his TIGRE graph reduction architecture. It addresses <q>the major source of ineffiency in most graph reducers [...] traversing a graph's left spine and case analysis of node tags<q>. Their key idea was that the spine stack could be implemented with CPU subroutine instructions to eliminate node traversal during stack unwinding. TIGRE targeted VAX (<a href=\"https://www.bloomberg.com/news/articles/2021-01-06/who-remembers-the-vax-minicomputer-icon-of-the-1980s?leadSource=uverify%20wall\">a 1980s icon</a>, ultimately superseded by RISC technology). It performed 355,000 reductions per second on a VAX8800 for Turner's S K combinators, compared with NORMA executing 250,000 reductions per second.</p>"
         }
       },
+        {
+        "start_date": {
+                "year": "1990"
+        },
+        "text": {
+            "headline": "Hardware: General or special purpose?",
+            "text": "<p>In the <a href=\"https://users.ece.cmu.edu/~koopman/tigre/chap7.pdf\">chapter 7</a> of Philip Koopman's <a href=\"https://doi.org/10.1016/C2013-0-10999-3\">book</a>, \"An Architecture for Combinator Graph Reduction\", he expresses scepticism about special purpose functional hardware:</p><section class=\"component\"><blockquote class=\"callout quote EN\">An order of magnitude speed improvement is rather unlikely no matter what architectural innovations are possible, since a factor of 10 speedup from the current R2000 TIGRE implementation leaves just 3.009 clock cycles per combinator for program execution time. Speeding up TIGRE operation by that amount exceeds all plausible expectations. So, it is probably not worthwhile building a special-purpose CPU to support TIGRE, since current RISC technology will probably have increased in speed enough by the time a TIGRE chip could be designed and fabricated to make the exercise pointless.<cite> Philip Koopman</cite></blockquote></section>"
+        }
+        },
          {
         "start_date": {
           "month": "08",
@@ -476,7 +485,7 @@
         },
         "text": {
           "headline": "Hardware or compilers?",
-            "text": "<p>The 1980s had seen intense activity at the interface between computer architectures and functional languages research. But some were sceptical.<br><q>Programmed reduction systems are not so elegant as pure reduction systems, but offer the advantage that we can make use of technology developed over the last 35 years to implement von Neumann based architectures</q>, Richard Kieburtz, 1985.<br>Moreover others were unconvinved given the time is takes to develop these physical machines:<q>Current RISC technology will probably have increased in speed enough by the time a [graph reduction] chip could be designed and fabricated to make the exercise pointless</q>, Philip John Koopman Jr, 1990.<br>The decade ended with innovations with compiler technologies, which some <a href=\"https://doi.org/10.1145/1238844.1238856\">later considered</a> had deprecated these hardware approaches.<br><q>Much (but not all) of this architecturally oriented work turned out to be a dead end, when it was later discovered that good compilers for stock architecture could outperform specialised architecture. But at the time it was all radical and exciting.</q><br>Lenart Augustsson wrote his PhD thesis, <q>Compiling Lazy Functional Languages</q>, about the G-Machine. This was <a href=\"https://doi.org/10.1017/S0956796800000319\">extended</a> as Spineless Tagless G-machine by Jones to target CPUs with functional language compilers.</p>"
+            "text": "<p>Moreover others were unconvinved given the time is takes to develop these physical machines:<q>Current RISC technology will probably have increased in speed enough by the time a [graph reduction] chip could be designed and fabricated to make the exercise pointless</q>, Philip John Koopman Jr, 1990.<br>The decade ended with innovations with compiler technologies, which some <a href=\"https://doi.org/10.1145/1238844.1238856\">later considered</a> had deprecated these hardware approaches.<br><q>Much (but not all) of this architecturally oriented work turned out to be a dead end, when it was later discovered that good compilers for stock architecture could outperform specialised architecture. But at the time it was all radical and exciting.</q><br>Lenart Augustsson wrote his PhD thesis, <q>Compiling Lazy Functional Languages</q>, about the G-Machine. This was <a href=\"https://doi.org/10.1017/S0956796800000319\">extended</a> as Spineless Tagless G-machine by Jones to target CPUs with functional language compilers.</p>"
         }
         },
       {
@@ -497,6 +506,15 @@
         "text": {
           "headline": "FPCA + LFP = ICFP",
             "text": "<p>The Functional Programming Languages and Computer Architecture (FPCA) conference series ran 1981-1995. There was also a dedicated workshop in 1986, \"Graph Reduction\" in Santa Fé, New Mexico, USA. In 1996, FPCA merged with Lisp and Functional Programming (LFP) to become the International Conference on Functional Programming (ICFP), which remains a premier functional programming conference today.<br>This marked the end of an era regarding intense interest in functional language hardware in the 1980s.<br><br>Papers accepted to ICFP in more recent times predominately focus on formalised language design and type theory, rather than engineered hardware systems.</p>"
+        }
+        },
+        {
+        "start_date": {
+                "year": "2007"
+        },
+        "text": {
+            "headline": "Retrospective",
+            "text": "<p>In their History of Programming Languages (HOPL) 2007 paper, Paul Hudak, John Hughes, Simon Peyton Jones and Phil Wadler reflected on the excitement in the 1980s about functional architectures.</p><section class=\"component\"><blockquote class=\"callout quote EN\">Much (but not all) of this architecturally oriented work turned out to be a dead end, when it was later discovered that good compilers for stock architecture could outperform specialised architecture. But at the time it was all radical and exciting.<cite> Hudak et al.</cite></blockquote></section>"
         }
         },
         {
