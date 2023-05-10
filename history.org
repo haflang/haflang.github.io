@@ -1,5 +1,5 @@
 ---
-title: History of Functional Hardware
+title: A History of Functional Hardware
 ---
 
 #+BEGIN_EXPORT html
@@ -16,10 +16,10 @@ title: History of Functional Hardware
     position: relative; 
     text-align: center;
     font-size: 14px;
-    padding: 1rem 1.2rem;
-    width: 95%;  /* create space for the quotes */
+    padding: 0.2rem 0.4rem;
+    width: 99%;  /* create space for the quotes */
     color: #484748;
-    margin: 1rem auto 2rem;
+    margin: 0rem 0rem;
 }
 .component blockquote.EN {
     background:
@@ -120,5 +120,5 @@ title: History of Functional Hardware
                              '/data/fp-history.json');
 </script>
 <br>
-<p align="right">by Rob Stewart.</p>
+<p align="right">by <a href="https://www.macs.hw.ac.uk/~rs46/">Rob Stewart</a>.</p>
 #+END_EXPORT
