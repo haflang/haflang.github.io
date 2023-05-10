@@ -495,7 +495,7 @@
         },
         "text": {
           "headline": "FPCA + LFP = ICFP",
-            "text": "<p>The Functional Programming Languages and Computer Architecture (FPCA) conference series ran 1981-1995. There was also a dedicated workshop in 1986, \"Graph Reduction\" in Santa Fé, New Mexico, USA. In 1996, FPCA merged with Lisp and Functional Programming (LFP) to become the International Conference on Functional Programming (ICFP), which remains a premier functional programming conference today.<br>This marked the end of an era regarding intense interest in functional language hardware in the 1980s.<br><br>Papers accepted to ICFP in more recent times predominately focus on formalised language design and type theory, rather than engineered hardware systems.</p>"
+            "text": "<p>The Functional Programming Languages and Computer Architecture (FPCA) conference series ran 1981-1995. There was also a dedicated workshop in 1986, \"Graph Reduction\" in Santa Fé, New Mexico, USA. In 1996, FPCA merged with Lisp and Functional Programming (LFP) to become the International Conference on Functional Programming (ICFP), which remains a premier functional programming conference today.<br>This marked the end of an era regarding intense interest in functional language hardware in the 1980s.<br><br>In the last decade, papers accepted to ICFP predominately focus on formalised language design and type theory, rather than engineered hardware systems.</p>"
         }
         },
         {
@@ -526,7 +526,7 @@
         },
         "text": {
           "headline": "Functional languages in a chip",
-            "text": "<p>As mainstream adoption functional grew, in 2009 the primary developer of the GHC runtime system asked:</p><section class=\"component\"><blockquote class=\"callout quote EN\">I wonder how popular Haskell needs to become for Intel to optimise their processors for my runtime, rather than the other way around.<cite> Simon Marlow.</cite></blockquote></section><p>Researchers at the University of Twente were investigating this around the same time:</p><section class=\"component\"><blockquote class=\"callout quote EN\">Processor designs specialized for functional languages received very little attention in the past 20 years. The potential for exploiting more parallelism and the developments in hardware technology, ask for renewed investigation of this topic.<cite> Arjan Boeijink et al.</cite></blockquote></section>"
+            "text": "<p>As mainstream adoption functional grew, in 2009 the primary developer of the GHC runtime system asked:</p><section class=\"component\"><blockquote class=\"callout quote EN\">I wonder how popular Haskell needs to become for Intel to optimise their processors for my runtime, rather than the other way around.<cite> Simon Marlow.</cite></blockquote></section><p>Researchers at the University of Twente were investigating this around the same time:</p><section class=\"component\"><blockquote class=\"callout quote EN\">Processor designs specialized for functional languages received very little attention in the past 20 years. The potential for exploiting more parallelism and the developments in hardware technology, ask for renewed investigation of this topic.<cite> Arjan Boeijink et al., <a href=\"https://doi.org/10.1007/978-3-642-24276-2_4\">IFL 2010</a>.</cite></blockquote></section>"
         }
       }
     ]
