@@ -430,6 +430,30 @@
             "text": "<p>Philip Koopman Jr summarised his <a href=\"https://users.ece.cmu.edu/~koopman/tigre/index.html\">PhD thesis</a> in a <a href=\"https://doi.org/10.1145/74818.74828\">PLDI 1989 paper</a> about his TIGRE graph reduction architecture. It addresses <q>the major source of ineffiency in most graph reducers [...] traversing a graph's left spine and case analysis of node tags<q>. Their key idea was that the spine stack could be implemented with CPU subroutine instructions to eliminate node traversal during stack unwinding. TIGRE targeted VAX (<a href=\"https://www.bloomberg.com/news/articles/2021-01-06/who-remembers-the-vax-minicomputer-icon-of-the-1980s?leadSource=uverify%20wall\">a 1980s icon</a>, ultimately superseded by RISC technology). It performed 355,000 reductions per second on a VAX8800 for Turner's S K combinators, compared with NORMA executing 250,000 reductions per second.</p>"
         }
       },
+         {
+        "start_date": {
+          "month": "08",
+          "year": "1991"
+        },
+        "text": {
+          "headline": "Memory bandwidth",
+            "text": "<p>At the Glasgow Workshop on Functional Programming, in Portree on the Isle of Skye, Lenart Augustsson observed that <i>memory bandwidth</i> is the a limiting factor for lazy languages.</p><section class=\"component\"><blockquote class=\"callout quote EN\">For lazy languages [...] instead of computing a value, a suspension of the computations has to be created, to be scrutinized later on. [...] increasing the number of memory references. [...] the speed of functional programs are then limited by the memory bandwidth.<cite> Lenart Augustsson</cite></blockquote></section>"
+        }
+      },
+         {
+        "media": {
+            "url": "/images/fp-history/lennart_augustsson.png",
+            "caption": "Lennart Augustsson"
+        },
+        "start_date": {
+          "month": "08",
+          "year": "1991"
+        },
+        "text": {
+          "headline": "BWM: A Concrete Machine for Graph Reduction",
+            "text": "<p>Augustsson's Big Word Machine design uses very large memory words to construct and scrutinize large memory objects with few memory operations. The idea was use of macro-instructions to synthesise sequences of machine instructions for executing combinators. Each supercombinator are built using a sequence of <a href=\"https://doi.org/10.1145/502874.502880\">G-code</a> instructions, which are then expanded into the assembly language of the target system.<br>The BWM was never built. Augustsson wrote “the absolute performance of the machine is hard to determine at this point\".<br><a href=\"https://doi.org/10.1007/978-1-4471-3196-0_3\">https://doi.org/10.1007/978-1-4471-3196-0_3</a></p>"
+        }
+      },
         {
         "media": {
             "url": "https://www.cs.cmu.edu/~popl-interviews/img/wg2.8_peytonjones.png",
@@ -437,17 +461,6 @@
         },
             "start_date": {
                 "year": "1992"
-        }
-      },
-      {
-        "start_date": {
-          "month": "03",
-          "day": "01",
-          "year": "1992"
-        },
-        "text": {
-          "headline": "Parallel Combinator Reduction: Some Performance Bounds",
-            "text": "<p>A parallel graph reduction machine simulator that performs combinator reduction and simulates various different parallel reduction strategies. A number of functional programs are examined, and experimental results presented comparing the amount of parallelism obtainable.<br><a href=\"https://www.dcs.warwick.ac.uk/report/pdfs/cs-rr-210.pdf\">https://www.dcs.warwick.ac.uk/report/pdfs/cs-rr-210.pdf</a></p>"
         }
       },
         {
