@@ -211,12 +211,13 @@
         }
       },
       {
-        "start_date": {
+          "start_date": {
+              "month": "09",    
           "year": "1985"
         },
         "text": {
-          "headline": "Cobweb — A combinator reduction architecture",
-          "text": "<p>A family of machines called COBWEB. The first machine employs normal order reduction to evaluate pure functional programs. The next machine uses a parallel reduction strategy. Later iterations of the architecture supported more sophisticated combinator reduction facilities.<br><a href=\"https://doi.org/10.1007/3-540-15975-4_32\">https://doi.org/10.1007/3-540-15975-4_32</a></p>"
+          "headline": "Pure or Programmed Reduction?",
+            "text": "<p>Richard Kieburtz presented a sequential evaluator of Johnsson's and Augustsson's G-Machine architecture in <a href=\"https://doi.org/10.1007/3-540-15975-4_50\">his FPCA 1985 paper</a>.<br><br>His paper explains the difference between <i>pure</i> and <i>programmed</i> reduction schemes adopted by architectures. <b>Pure</b>: the <i>next</i> reduction step is derived from the expression currently being evaluated (e.g. SKIM, Reduceron). <b>Programmed</b>: this control is derived offline using static analysis with compilation (e.g. G-Machine, GHC).<section class=\"component\"><blockquote class=\"callout quote EN\">Programmed reduction systems are not so elegant as pure reduction systems, but offer the advantage that we can make use of technology developed over the last 35 years to implement von Neumann based architectures.<cite> Richard Kieburtz</cite></blockquote></section></p>"
         }
       },
         {
@@ -322,7 +323,7 @@
         },
         "text": {
           "headline": "Tim: A simple, lazy abstract machine to execute supercombinators",
-            "text": "<p>TIM, developed at the University of Cambridge had three instructions: <i>Take</i> to move items from the argument stack to a frame on the heap, <i>Push</i> to push an item onto the argument stack and <i>Enter</i> to load the current frame and program counter with an item. TIM goes beyond the G-Machine graph reducer, proposing <i>closure</i> reducers that use suspensions to implement laziness (p8 in <a href=\"https://doi.org/10.1145/73141.74828\">Koopman et al., 1989</a>). <q>The simplicity of this machine suggests that it would not be difficult to implement as a chip.</q><br><a href=\"https://doi.org/10.1007/3-540-18317-5_3\">https://doi.org/10.1007/3-540-18317-5_3</a></p>"
+            "text": "<p>TIM (University of Cambridge) had three instructions: <i>Take</i> to move items from the argument stack to a frame on the heap, <i>Push</i> to push an item onto the argument stack and <i>Enter</i> to load the current frame and program counter with an item. TIM goes beyond the G-Machine, proposing <i>closure</i> reducers that use suspensions to implement laziness (p8 in <a href=\"https://doi.org/10.1145/73141.74828\">Koopman et al., 1989</a>). <q>The simplicity of this machine suggests that it would not be difficult to implement as a chip.</q><br><a href=\"https://doi.org/10.1007/3-540-18317-5_3\">https://doi.org/10.1007/3-540-18317-5_3</a></p>"
         }
       },
         {
@@ -458,10 +459,14 @@
         {
         "media": {
             "url": "https://www.cs.cmu.edu/~popl-interviews/img/wg2.8_peytonjones.png",
-            "caption": "Haskell is a language designed by this IFIP WG2.8 committee (Oxford, 1992)"
+            "caption": "The IFIP WG2.8 committee in Oxford, 1992."
         },
             "start_date": {
                 "year": "1992"
+        },
+        "text": {
+          "headline": "Haskell",
+            "text": "<p>Following on from decisions made at FPCA 1987, the <a href=\"https://www.cs.ox.ac.uk/ralf.hinze/WG2.8/\">IFIP WG 2.8 committe</a> continued progress on developing a common language for lazy functional programming research.</p>"
         }
       },
         {
