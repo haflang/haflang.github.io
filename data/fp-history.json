@@ -182,6 +182,34 @@
       },
         {
         "media": {
+          "url": "/images/fp-history/g-machine-1984.png",
+          "caption": "Compiling Lazy ML to G-Machine code",
+            "credit": "\"A compiler for lazy ML\", ACM <a href=\"https://doi.org/10.1145/800055.802038\">LFP 1984</a>"
+        },
+        "start_date": {
+          "month": "08",
+          "year": "1984"
+        },
+        "text": {
+          "headline": "Efficient compilation of lazy evaluation",
+            "text": "<p>The G-Machine separates its abstract intermediate language, designed for graph reduction e.g. EVAL, UNWIND, PUSHFUN and UPDATE, from CPU instruction set backends. Lazy functions are compiled to G-Machine instruction sequence, which are then compiled to VAX11 CPU instruction.<br><br>This G-Machine work later influences an abondonment of special purpose functional hardware in the early 1990s, in favour of compiling lazy functional code to general purpose CPUs e.g. GHC's use of <a href=\"https://doi.org/10.1145/99370.99385\">STG</a>.<br><a href=\"https://doi.org/10.1145/502874.502880\">https://doi.org/10.1145/502874.502880</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/g-machine-compilation-example.png",
+            "caption": "G-Machine reduction of <b>from (succ 0)</b>, from ACM <a href=\"https://doi.org/10.1145/502874.502880\">CC 1984</a>"
+        },
+        "start_date": {
+          "month": "08",
+          "year": "1984"
+        },
+        "text": {
+          "headline": "G-Machine example"
+        }
+      },
+        {
+        "media": {
           "url": "/images/fp-history/traub-1985.png",
             "caption": "Parallel Graph Reduction Machine - design hierarchy",
           "credit": "ACM SIGARCH Computer Architecture News"
