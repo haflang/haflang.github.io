@@ -270,7 +270,7 @@
         },
         "text": {
           "headline": "NORMA: a graph reduction processor",
-            "text": "<p>A microprogrammable machine that could support multiple graph reduction schemes. Turner's S K combinators were implemented in NORMA's hardware. It had a mark-scan garbage collector, based on John Hughes's <a href=\"https://doi.org/10.1002/spe.4380121108\">earlier work</a>. NORMA had very wide words (370 bits) for instruction level parallelism. NORMA performed 250,000 reductions per second, which was considered state-of-the-art performance at this time.<br><a href=\"https://doi.org/10.1145/319838.319864\"></a>https://doi.org/10.1145/319838.319864</p>"
+            "text": "<p>Based on Turner's fine-grained S K combinators, NORMAL is a microprogrammable machine that could support multiple graph reduction schemes. It had a mark-scan garbage collector, based on John Hughes's <a href=\"https://doi.org/10.1002/spe.4380121108\">earlier work</a>. NORMA had very wide words (370 bits) for instruction level parallelism. NORMA performed 250,000 reductions per second at 5MHz (0.125 reductions per cycle), which was considered state-of-the-art performance at this time.<br><a href=\"https://doi.org/10.1145/319838.319864\"></a>https://doi.org/10.1145/319838.319864</p>"
         }
       },
         {
@@ -526,7 +526,27 @@
         },
         "text": {
           "headline": "Functional languages in a chip",
-            "text": "<p>As mainstream adoption functional grew, in 2009 the primary developer of the GHC runtime system asked:</p><section class=\"component\"><blockquote class=\"callout quote EN\">I wonder how popular Haskell needs to become for Intel to optimise their processors for my runtime, rather than the other way around.<cite> Simon Marlow.</cite></blockquote></section><p>Researchers at the University of Twente were investigating this around the same time:</p><section class=\"component\"><blockquote class=\"callout quote EN\">Processor designs specialized for functional languages received very little attention in the past 20 years. The potential for exploiting more parallelism and the developments in hardware technology, ask for renewed investigation of this topic.<cite> Arjan Boeijink et al., <a href=\"https://doi.org/10.1007/978-3-642-24276-2_4\">IFL 2010</a>.</cite></blockquote></section>"
+            "text": "<p>As mainstream adoption functional grew, in 2009 the primary developer of the GHC runtime system asked:</p><section class=\"component\"><blockquote class=\"callout quote EN\">I wonder how popular Haskell needs to become for Intel to optimise their processors for my runtime, rather than the other way around.<cite> Simon Marlow.</cite></blockquote></section><p>Researchers at the University of Twente were investigating this around the same time with their PilGRIM processor:</p><section class=\"component\"><blockquote class=\"callout quote EN\">Processor designs specialized for functional languages received very little attention in the past 20 years. The potential for exploiting more parallelism and the developments in hardware technology, ask for renewed investigation of this topic.<cite> Arjan Boeijink et al., <a href=\"https://doi.org/10.1007/978-3-642-24276-2_4\">IFL 2010</a>.</cite></blockquote></section>"
+        }
+        },
+        {
+            "start_date": {
+                "month": "09",
+                "year": "2010"
+        },
+        "text": {
+            "headline": "Hardware agnostic pure graph reducton",
+            "text": "<p>Matthew Naylor and Colin Runciman developed the Reduceron graph reduction core. It uses <i>pure</i> reduction, rather than <i>programmed</i> reduction used by the G-Machine and STG in GHC.<section class=\"component\"><blockquote class=\"callout quote EN\">In Peyton Jones (1987), template instantiation is presented as a 'simple' first step towards a more sophisticated approach to graph reduction based on the G-machine.  So why is the Reduceron based on template instantiation and not the G-machine? The G-machine approach aims to generate good code for conventional hardware, exploiting its strengths and avoiding its weaknesses. We base the Reduceron on template instantiation precisely because it does not make assumptions about the target hardware. The G-machine executes a sequential stream of fine-grained instructions, many of which could in fact be executed in parallel. The FPGA negates the assumption that such a sequential stream of instructions is necessary to avoid interpretive overhead.<cite> Naylor et al. <a href=\"https://doi.org/10.1017/S0956796812000214\">JFP 2012</a>.</cite></blockquote></section>"
+        }
+        },
+        {
+            "start_date": {
+                "month": "09",
+                "year": "2010"
+        },
+        "text": {
+            "headline": "Reduceron",
+            "text": "<p><a href=\"https://doi.org/10.1145/1863543.1863556\">Reduceron</a> is a processor developed with around 2,000 lines of <a href=\"https://www.cs.york.ac.uk/fp/reduceron/memos/Memo23.txt\">York Lava</a>. It's key feature is the ability to perform reduction in <b>a single cycle</b>, because all the required memory accesses are done in parallel. It performs <i>dynamic</i> program analysis at runtime to enable two performance enhancing optimisations, (1) update avoidance (not writing results back to the heap) and (2) speculative evaluation of primitive redexes (evaluating primitive redexes during function body instantiation).</p><section class=\"component\"><blockquote class=\"callout quote EN\">Within a few years, just as plug-in GPU cards are already used for high-performance graphics, we would like to see FPU cards for high-performance applications of functional languages. We hope our work on the Reduceron makes a small advance in that direction.<cite> Naylor et al. <a href=\"https://doi.org/10.1017/S0956796812000214\">JFP 2012</a>.</cite></blockquote></section><p><br><a href=\"https://doi.org/10.1017/S0956796812000214\">https://doi.org/10.1017/S0956796812000214</a></p>"
         }
         },
         {
