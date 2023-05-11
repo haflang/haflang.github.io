@@ -563,6 +563,16 @@
             "headline": "PilGRIM",
             "text": "<p>A processor for lazy functional languages with a high-level graph reduction instruction set. It shares principles of Augustsson's BWM and Reduceron by \"exploiting parallelism in data movements by reading multiple values in parallel from the stack and rearranging them through a large crossbar\". It uses modern processor ideas, (1) a pipelined design for parallelism and high clock frequencies, (2) a memory hierarchy with L1 and L2 cache, and DDR-memory. Its frontend language was <a href=\"https://doi.org/10.1007/3-540-63237-9_19\">GRIN</a> after translation from GHC Core, i.e. from Haskell. A PilGRIM clock frequency of 231-728MHz is required to match GHC performance on an Intel i5 CPU.<br><a href=\"https://doi.org/10.1007/978-3-642-24276-2_4\">https://doi.org/10.1007/978-3-642-24276-2_4</a></p>"
         }
+        },
+        {
+            "start_date": {
+                "month": "07",
+                "year": "2022"
+        },
+        "text": {
+            "headline": "HAFLANG",
+            "text": "<p>Our EPSRC funded <a href=\"https://haflang.github.io\">HAFLANG project</a> at Heriot-Watt University is extending functional language architecture ideas from the last 40+ yeaars. We are targetting state-of-the-art Xilinx UltraScale+ FPGA technology. Our aim is to outperform the runtime and energy efficiency of software-based language implementations running on modern general purpose CPUs. To meet this aim, our innovation plans focus on parallel reduction, locality, minimising memory traffic and off-chip heap storage.</p>"
+        }
         }
     ]
 }
