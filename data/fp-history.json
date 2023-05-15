@@ -277,16 +277,6 @@
         }
       },
         {
-        "start_date": {
-          "month": "06",
-          "year": "1986"
-        },
-        "text": {
-            "headline": "Towards a parallel architecture for functional languages",
-            "text": "<p>Presents findings of the 18 month Subproject B project on parallel architectures for functional languages, at the GEC Hirst Research Centre in Middlesex. With a focus on COBWEB (1985), they implemented Hankin's <B>P</B> combinator in their hardware for parallelism.<br><a href=\"https://doi.org/10.1007/3-540-18203-9_7\">https://doi.org/10.1007/3-540-18203-9_7</a></p>"
-        }
-      },
-        {
         "media": {
           "url": "/images/fp-history/norma-1986.png",
           "caption": "NORMA graph processor",
@@ -308,6 +298,16 @@
         "text": {
             "headline": "Too much parallelism",
             "text": "<p>The fine-grained <B>P</B> combinator and coarse-grained approaches offered huge promise for parallel functional languages. However, architectures had limits on how much parallelism they could support. This impacted the ALICE project for functional languages. But it was also observed in other computing domains, at <a href=\"http://csg.csail.mit.edu/pubs/memos/Memo-257/Memo-257.pdf\">MIT</a>, for the <a href=\"https://doi.org/10.1007/3-540-18317-5_6\">Flagship re-write rule machine</a>, and in Japanese dataflow projects <a href=\"https://doi.org/10.1145/17356.17383\">Sigma-1</a>, <a href=\"https://doi.org/10.1145/17356.17358\">DFM</a> and <a href=\"https://doi.org/10.1145/17356.17373\">PIM-D</a>.</p>"
+        }
+      },
+        {
+        "start_date": {
+          "month": "06",
+          "year": "1987"
+        },
+        "text": {
+            "headline": "Overview of a parallel reduction machine project",
+            "text": "<p>Presents findings of the 18 month subproject B of the ESPRIT 415 project, on parallel architectures for functional languages, at the GEC Hirst Research Centre in Middlesex. With a focus on COBWEB (1985), they implemented Hankin's <B>P</B> combinator in their hardware for parallelism. Two years after after this PARLE 1987 paper one of the authors, G L Burn, writes an <a href=\"https://doi.org/10.1007/3540512845_52\">updated report</a> on this architecture at PARLE 1989. It describes a move to use of compiling through a G-machine to target transputer machine code. One limitation of this architecture is the lack of load balancing of parallel work, which was implemented in other architectures e.g. <a href=\"\">ZAPP</a>. This 1989 paper came to the same conclusion as others around this time:<section class=\"component\"><blockquote class=\"callout quote EN\">Over the time of the project we have moved from the position of thinking that we might have to build specialised hardware, to the belief that the implementation of lazy functional languages is essentially a problem of compiler technology.<cite> G L Burn.</cite></blockquote></section><br><a href=\"https://doi.org/10.1007/3-540-17943-7_141\"></a>https://doi.org/10.1007/3-540-17943-7_141</p>"
         }
       },
         {
