@@ -292,6 +292,21 @@
         }
       },
         {
+        "media": {
+          "url": "/images/fp-history/rediflow-1986.png",
+          "caption": "",
+            "credit": "Springer"
+        },
+            "start_date": {
+                "month" : "10",
+                "year": "1986"
+        },
+        "text": {
+          "headline": "Rediflow II",
+            "text": "<p>The Rediflow parallel graph reduction architecture supported load balancing, which was highly novel for its time. It was programmed with Redilisp. Parallelism was implicit, the compiler had a <i>demand-propagation</i> phase which inserted <b>demand*</b> calls, which evaluated multiple values in parallel, though the programmer could add <b>demand*</b> calls to have greater control of parallelism. Redilisp is compiled to the PSCED virtual machine instruction set, which they extended with instruction level support for parallelism. Load balancing co-processors obtained the \"pressure\" (load) of their neighbors and determined a gradient in which to distribute work. <br><a href=\"https://doi.org/10.1007/3-540-18420-1_56\">https://doi.org/10.1007/3-540-18420-1_56</a></p>"
+        }
+      },
+        {
         "start_date": {
           "year": "1987"
         },
