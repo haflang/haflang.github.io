@@ -421,6 +421,20 @@
       },
         {
         "media": {
+          "url": "/images/fp-history/benjamin-goldberg.jpg",
+          "caption": "Benjamin Goldberg"
+        },
+            "start_date": {
+                "month": "04",
+                "year": "1988"
+        },
+        "text": {
+          "headline": "Benjamin Goldberg's PhD",
+            "text": "<p><a href=\"https://cs.nyu.edu/~goldberg/\">Benjamin Goldberg</a> did <a href=\"https://cpsc.yale.edu/sites/default/files/files/tr618.pdf\">his PhD</a> at Yale University, supervised by Paul Hudak. Goldberg developed an abstract machine model called <i>heterogeneous graph reduction</i>, a hybrid between graph reduction and stack-oriented execution. Using <a href=\"https://www.cs.yale.edu/publications/techreports/tr322.pdf\">ALFL</a> as the source language, he realised the abstract model twice: <a href=\"https://doi.org/10.1145/62297.62356\">Alfalfa</a> for the Intel iPSC hypercube multiprocessor, and <a href=\"https://doi.org/10.1145/62678.62683\">Buckwheat</a> for the Encore Multimax multiprocessor. Both used a compiler that performed automatic decomposition for parallel execution, using Hudak's <a href=\"https://doi.org/10.1007/3-540-15975-4_49\">approach</a> to infer \"optimal\" parallel granularity. Both implementations supported dynamic load balancing and fast inter-procesor communication.</p>"
+        }
+        },
+        {
+        "media": {
           "url": "/images/fp-history/mars-1988.png",
           "caption": "MaRS architecture",
             "credit": "ACM SIGARCH Computer Architecture News 1988"
