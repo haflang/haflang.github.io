@@ -513,6 +513,16 @@
             "text": "<p>Lal George extended Johnsson's G-Machine for parallelism. The technique involved two phases: (1) spawning evaluation of strict arguments, (2) waiting for parallel evaluation to complete before entering the function's body. The key instructions added to the G-Machine were <b>demand</b> (spawn parallelism) and <b>block</b> (wait for parallel results), to avoid context switching and needless task migration. Experiments were ran on an 18 node BBN Butteryfly multiprocessor. Each processor was a 16MHz MC68020 microprocessor.<br><a href=\"https://doi.org/10.1145/99370.99387\">https://doi.org/10.1145/99370.99387</a></p>"
         }
       },
+      {
+        "start_date": {
+          "month": "11",
+          "year": "1989"
+        },
+        "text": {
+          "headline": "Parallel graph reduction with the (v , G)-machine",
+            "text": "<p>Independently of Lal George's work, although presented at the same FPCA event, the inventors of the G-Machine (Johnsson and Augustsson) were also extending the G-Machine for parallelism. They added support for user-specified spark annotations, which had support with a new G-Machine <b>SPARK</b> instruction. The presentation of the transition rule for <b>SPARK</b> in this FPCA paper is:<img src=\"/images/fp-history/spark-instruction-1989.png\"/>This was implemented on shared-memory multiprocessor called Sequent Symmetry with 15 processors, and achieved speedups between 5 and 11. The idea of spark annotations (originally from <a href=\"https://doi.org/10.1145/319838.319865\">LFP 1986</a>) and sparkpools have been carried into today's GHC software implementation with the <a href=\"https://hackage.haskell.org/package/parallel-3.2.2.0/docs/Control-Parallel-Strategies.html#v:rpar\">rpar</a> function.<br><a href=\"https://doi.org/10.1145/99370.99386\">https://doi.org/10.1145/99370.99386</a></p>"
+        }
+      },
         {
         "start_date": {
                 "year": "1990"
