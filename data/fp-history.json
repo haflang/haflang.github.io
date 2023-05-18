@@ -420,6 +420,16 @@
         }
       },
         {
+        "start_date": {
+          "month": "12",
+          "year": "1987"
+        },
+        "text": {
+            "headline": "Strictness analysis",
+            "text": "<p>Parallel graph reduction architectures that supported <i>implicit</i> parallelism relied on compiler support for strictness analysis. This <i>conservative parallelism</i> technique identifies function arguments whose values are definitely needed to evaluate the function's body and those arguments are evaluated in parallel before or during entering the body. In his MSc project \"Static Evaluation of a Functional Language Through Strictness Analysis\" at the University of Utah in 1987, Dowming Yeh developed a technique for identifying strict arguments. Take this example:</p><!-- HTML generated using hilite.me --><div style=\"background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;\"><pre style=\"margin: 0; line-height: 125%\"><span style=\"color: #0066BB; font-weight: bold\">filter</span> p <span style=\"color: #333399; font-weight: bold\">[]</span> <span style=\"color: #000000; font-weight: bold\">=</span> <span style=\"color: #333399; font-weight: bold\">[]</span><br><span style=\"color: #0066BB; font-weight: bold\">filter</span> p (x<span style=\"color: #000000; font-weight: bold\">::</span>xs) <span style=\"color: #000000; font-weight: bold\">=</span>   <br>&nbsp;&nbsp;<span style=\"color: #008800; font-weight: bold\">if</span> (x mod p) <span style=\"color: #333333\">==</span> <span style=\"color: #0000DD; font-weight: bold\">0</span> <span style=\"color: #008800; font-weight: bold\">then</span> filter p xs   <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color: #008800; font-weight: bold\">else</span> x <span style=\"color: #000000; font-weight: bold\">::</span> filter p xs </pre></div><p>Yeh's technique could determine that this function was strict on its 2nd argument to test for an empty list, and if not then the head of that list and the first argument are strict for the <b>mod</b> computation in the conditional <b>if</b>. His technique inspired <a href=\"https://doi.org/10.1145/99370.99387\">later work</a> presented at FPCA 1989.</p>"
+        }
+        },
+        {
         "media": {
           "url": "/images/fp-history/benjamin-goldberg.jpg",
           "caption": "Benjamin Goldberg"
@@ -486,6 +496,21 @@
         "text": {
           "headline": "TIGRE",
             "text": "<p>Philip Koopman Jr summarised his <a href=\"https://users.ece.cmu.edu/~koopman/tigre/index.html\">PhD thesis</a> in a <a href=\"https://doi.org/10.1145/74818.74828\">PLDI 1989 paper</a> about his TIGRE graph reduction architecture. It addresses <q>the major source of ineffiency in most graph reducers [...] traversing a graph's left spine and case analysis of node tags<q>. Their key idea was that the spine stack could be implemented with CPU subroutine instructions to eliminate node traversal during stack unwinding. TIGRE targeted VAX (<a href=\"https://www.bloomberg.com/news/articles/2021-01-06/who-remembers-the-vax-minicomputer-icon-of-the-1980s?leadSource=uverify%20wall\">a 1980s icon</a>, ultimately superseded by RISC technology). It performed 355,000 reductions per second on a VAX8800 for Turner's S K combinators, compared with NORMA executing 250,000 reductions per second.</p>"
+        }
+      },
+      {
+        "media": {
+            "url": "/images/fp-history/george-1989.png",
+            "caption": "Extending G-Machine instructions for parallelism",
+            "credit": "ACM"
+        },
+        "start_date": {
+          "month": "11",
+          "year": "1989"
+        },
+        "text": {
+          "headline": "An abstract machine for parallel graph reduction",
+            "text": "<p>Lal George extended Johnsson's G-Machine for parallelism. The technique involved two phases: (1) spawning evaluation of strict arguments, (2) waiting for parallel evaluation to complete before entering the function's body. The key instructions added to the G-Machine were <b>demand</b> (spawn parallelism) and <b>block</b> (wait for parallel results), to avoid context switching and needless task migration. Experiments were ran on an 18 node BBN Butteryfly multiprocessor. Each processor was a 16MHz MC68020 microprocessor.<br><a href=\"https://doi.org/10.1145/99370.99387\">https://doi.org/10.1145/99370.99387</a></p>"
         }
       },
         {
