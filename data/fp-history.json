@@ -137,7 +137,7 @@
         },
         "text": {
           "headline": "ALICE a multi-processor reduction machine for the parallel evaluation CF applicative languages",
-            "text": "<p>Developed at Imperial College London, ALICE was the first implemented parallel graph reduction machine. It was a highly modular machine architecture for the parallel evaluation of a variety of applicative languages. The graph was held in a global memory which its processors accessed via a switching network. Processors performed fine grained reduction steps. This paper compares with related architectures including dataflow, string reduction and tree machines.<br><a href=\"https://doi.org/10.1145/800223.806764\">https://doi.org/10.1145/800223.806764</a></p>"
+            "text": "<p>Developed at Imperial College, ALICE was the first implemented parallel graph reduction machine. It was a highly modular machine architecture for the parallel evaluation of a variety of applicative languages. The graph was held in a global memory which its processors accessed via a switching network. Processors performed fine grained reduction steps. This paper compared ALICE with related architectures including dataflow, string reduction and tree machines.<br><a href=\"https://doi.org/10.1145/800223.806764\">https://doi.org/10.1145/800223.806764</a></p>"
         }
       },
         {
@@ -147,7 +147,7 @@
         },
         "text": {
           "headline": "Executing functional programs on a virtual tree of processors",
-            "text": "<p>Warren Burton and Ronan Sleep mapped Turner's SASL language to their Zero Assignment Parallel Processor (ZAPP) at the univerity of East Anglia. They presented a simple concurrency model for executing <q>process trees</q>. Their FPCA 1981 paper: <q>Many potential users say 'Applicative languages are great to program in - they really speed up software development. But I have to reprogram in FORTRAN to get a speed I can use.'. We aim to considerably reduce the force of this argument by explofting the natural parallelism in an applicative language</q>.<br><a href=\"https://doi.org/10.1145/800223.806778\">https://doi.org/10.1145/800223.806778</a></p>"
+            "text": "<p>Warren Burton and Ronan Sleep mapped Turner's SASL language to their Zero Assignment Parallel Processor (ZAPP) at the univerity of East Anglia. They presented a simple concurrency model for executing <q>process trees</q>. Their FPCA 1981 paper: <section class=\"component\"><blockquote class=\"callout quote EN\">Many potential users say 'Applicative languages are great to program in - they really speed up software development. But I have to reprogram in FORTRAN to get a speed I can use.'. We aim to considerably reduce the force of this argument by explofting the natural parallelism in an applicative language.<cite>  Burton et al., FPCA 1981.</cite></blockquote></section><a href=\"https://doi.org/10.1145/800223.806778\">https://doi.org/10.1145/800223.806778</a></p>"
         }
       },
         {
@@ -288,7 +288,7 @@
         },
         "text": {
           "headline": "NORMA: a graph reduction processor",
-            "text": "<p>Based on Turner's fine-grained S K combinators, NORMAL was a microprogrammable machine that could support multiple graph reduction schemes. It had a mark-scan garbage collector, based on John Hughes's <a href=\"https://doi.org/10.1002/spe.4380121108\">earlier work</a>. NORMA had very wide words (370 bits) for instruction level parallelism. NORMA performed 250,000 reductions per second at 5MHz (0.125 reductions per cycle), which was considered state-of-the-art performance at this time.<br><a href=\"https://doi.org/10.1145/319838.319864\"></a>https://doi.org/10.1145/319838.319864</p>"
+            "text": "<p>Based on Turner's fine-grained S K combinators, NORMA was a microprogrammable machine that could support multiple graph reduction schemes. It had a mark-scan garbage collector, based on John Hughes's <a href=\"https://doi.org/10.1002/spe.4380121108\">earlier work</a>. NORMA had very wide words (370 bits) for instruction level parallelism. NORMA performed 250,000 reductions per second at 5MHz (0.125 reductions per cycle), which was considered state-of-the-art performance at this time.<br><a href=\"https://doi.org/10.1145/319838.319864\"></a>https://doi.org/10.1145/319838.319864</p>"
         }
       },
         {
@@ -322,7 +322,7 @@
         },
         "text": {
             "headline": "Overview of a parallel reduction machine project",
-            "text": "<p>Presented findings of the 18 month subproject B of the ESPRIT 415 project, on parallel architectures for functional languages, at the GEC Hirst Research Centre in Middlesex. With a focus on COBWEB (1985), they implemented Hankin's <B>P</B> combinator in their hardware for parallelism. Two years after after this PARLE 1987 paper one of the authors, G L Burn, writes an <a href=\"https://doi.org/10.1007/3540512845_52\">updated report</a> on this architecture at PARLE 1989. It describes a move to use of compiling through a G-machine to target transputer machine code. One limitation of this architecture was the lack of load balancing of parallel work, which was implemented in other architectures e.g. <a href=\"\">ZAPP</a>. This 1989 paper came to the same conclusion as others around this time:<section class=\"component\"><blockquote class=\"callout quote EN\">Over the time of the project we have moved from the position of thinking that we might have to build specialised hardware, to the belief that the implementation of lazy functional languages was essentially a problem of compiler technology.<cite> G L Burn.</cite></blockquote></section><br><a href=\"https://doi.org/10.1007/3-540-17943-7_141\"></a>https://doi.org/10.1007/3-540-17943-7_141</p>"
+            "text": "<p>Research withing the 18 month ESPRIT 415 project, on parallel architectures for functional languages, at the GEC Hirst Research Centre in Middlesex. They implemented Hankin's <B>P</B> combinator in their hardware for parallelism. Two years after after this PARLE 1987 paper, one of the authors, G L Burn, writes an <a href=\"https://doi.org/10.1007/3540512845_52\">updated architecture report</a> describeing a move to use of G-Machine based compilation to target transputer machine code. A limitation of the architecture was the lack of parallel load balancing, which was implemented in other architectures e.g. <a href=\"\">ZAPP</a>. This 1989 paper came to the same conclusion as others around this time:<section class=\"component\"><blockquote class=\"callout quote EN\">Over the time of the project we have moved from the position of thinking that we might have to build specialised hardware, to the belief that the implementation of lazy functional languages was essentially a problem of compiler technology.<cite> G L Burn.</cite></blockquote></section><br><a href=\"https://doi.org/10.1007/3-540-17943-7_141\"></a>https://doi.org/10.1007/3-540-17943-7_141</p>"
         }
       },
         {
@@ -554,7 +554,7 @@
         },
         "text": {
           "headline": "BWM: A Concrete Machine for Graph Reduction",
-            "text": "<p>Augustsson's Big Word Machine design used very large memory words to construct and scrutinize large memory objects with few memory operations. The idea was use of macro-instructions to synthesise sequences of machine instructions for executing combinators. Each supercombinator were built using a sequence of <a href=\"https://doi.org/10.1145/502874.502880\">G-code</a> instructions, which were then expanded into the assembly language of the target system.<br>The BWM was never built. Augustsson wrote “the absolute performance of the machine was hard to determine at this point\".<br><a href=\"https://doi.org/10.1007/978-1-4471-3196-0_3\">https://doi.org/10.1007/978-1-4471-3196-0_3</a></p>"
+            "text": "<p>Augustsson's Big Word Machine design used large memory words to construct and scrutinize large memory objects with few memory operations. The idea was use of macro-instructions to synthesise sequences of machine instructions for executing combinators. Each supercombinator were built using a sequence of <a href=\"https://doi.org/10.1145/502874.502880\">G-code</a> instructions, which were then expanded into the assembly language of the target system. The BWM was never built. Augustsson wrote “the absolute performance of the machine was hard to determine at this point\".<br><a href=\"https://doi.org/10.1007/978-1-4471-3196-0_3\">https://doi.org/10.1007/978-1-4471-3196-0_3</a></p>"
         }
       },
         {
