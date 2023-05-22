@@ -667,8 +667,18 @@
         },
         {
             "start_date": {
-                "month": "07",
-                "year": "2022"
+                "month": "01",
+                "year": "2023"
+        },
+        "text": {
+            "headline": "A soft core with accelerators",
+            "text": "<p>Researchers in France took a hybrid approach for accelerating OCaml on FPGAs. They implemented OCaml's entire virtual machine as a softcore processor. They also developed a compiler Macle, an ML-style language, to VHDL that translated user defined OCaml functions as hardware accelerators at the level of gates and registers. These hardware blocks can be called by OCaml running on the O2B softcore.<img src=\"/images/fp-history/o2b-macl-2023.png\"/>The motivation is to support single-source programs with both numeric and symbolic computations on one FPGA.<br><a href=\"https://doi.org/10.1007/s10766-022-00748-z\">https://doi.org/10.1007/s10766-022-00748-z</a></p>"
+        }
+        },
+        {
+            "start_date": {
+                "month": "02",
+                "year": "2023"
         },
         "text": {
             "headline": "HAFLANG",
