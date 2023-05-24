@@ -117,7 +117,8 @@ title: A History of Functional Hardware
 <!-- 3 -->
 <script type="text/javascript">
   timeline = new TL.Timeline('timeline-embed',
-                             '/data/fp-history.json');
+                             '/data/fp-history.json',
+                             {scale_factor : 0.7});
 </script>
 <br>
 <p align="right">by <a href="https://www.macs.hw.ac.uk/~rs46/">Rob Stewart</a>.</p>
