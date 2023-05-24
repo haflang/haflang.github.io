@@ -661,7 +661,7 @@
                 "year": "2010"
         },
         "text": {
-            "headline": "Hardware agnostic pure graph reducton",
+            "headline": "Removing the CPU shackles",
             "text": "<p>Matthew Naylor and Colin Runciman developed the Reduceron graph reduction core. It used <i>pure</i> reduction, rather than <i>programmed</i> reduction used by the G-Machine and STG in GHC. They explain why:<section class=\"component\"><blockquote class=\"callout quote EN\">In Peyton Jones (1987), template instantiation was presented as a 'simple' first step towards a more sophisticated approach to graph reduction based on the G-machine.  So why was the Reduceron based on template instantiation and not the G-machine? The G-machine approach aims to generate good code for conventional hardware, exploiting its strengths and avoiding its weaknesses. We base the Reduceron on template instantiation precisely because it does not make assumptions about the target hardware. The G-machine executes a sequential stream of fine-grained instructions, many of which could in fact be executed in parallel. The FPGA negates the assumption that such a sequential stream of instructions was necessary to avoid interpretive overhead.<cite> Naylor et al. <a href=\"https://doi.org/10.1017/S0956796812000214\">JFP 2012</a>.</cite></blockquote></section>"
         }
         },
