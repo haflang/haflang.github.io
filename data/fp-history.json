@@ -20,6 +20,15 @@
             "text": "<p>American mathematician Alonzo Church proposed a model of computation called the untyped lambda calculus in \"An Unsolvable Problem of Elementary Number Theory\", American Journal of Mathematics.<br><a href=\"https://doi.org/10.2307%2F2371045\">https://doi.org/10.2307%2F2371045</a></p>"
         }
         },
+        {
+        "start_date": {
+          "year": "1978"
+        },
+        "text": {
+          "headline": "Three Generations",
+            "text": "<p>This timeline covers three generations of functional architectures.<ul><li><b>1st generation</b> John Backus issued a rallying cry in 1978 for new special purpose hardware research. The community responded. The 1980s saw the dawn of new and exciting architectures.</li><li><b>2nd generation</b> Around 2010 the growth of Field Programmable Gate Array (FPGA) technology enabled researchers to shrink these architecture ideas onto a single chip.</li><li><b>3rd generation</b> FPGAs today have the capacity to scale sophisticated architectures to depart from commercial CPUs.</li></ul></p>"
+        }
+        },
       {
         "media": {
             "url": "/images/fp-history/backus-1978.png",
@@ -30,7 +39,7 @@
           "year": "1978"
         },
           "text": {
-              "text": "<p>John Backus highlights an emerging class of computing systems based on the functional programming style.<br><br><q>Unlike von Neumann languages, these systems have semantics loosely coupled to states—only one state transition occurs per major computation.</q><br><a href=\"https://doi.org/10.1145/359576.359579\">https://doi.org/10.1145/359576.359579</a></p>"
+              "text": "<p>John Backus received the 1977 ACM Turing Award at the ACM Annual Conference in Seattle, October 1977. Backus gave a lecture, \"Can Programming Be Liberated From the von Neumann Style?\" which he later wrote up as a paper. It highlighted an emerging class of computing systems based on the functional programming style.<br><br><q>Unlike von Neumann languages, these systems have semantics loosely coupled to states—only one state transition occurs per major computation.</q><br><br>This paper sparked a decade of computer architecture research.<br><a href=\"https://doi.org/10.1145/359576.359579\">https://doi.org/10.1145/359576.359579</a></p>"
         }
       },
         {
@@ -51,6 +60,14 @@
             "text": "<p>Early lazy evaluation techniques were developed for Hyper-Pure LISP <a href=\"https://doi.org/10.1145/800168.811543\">(POPL, 1976)</a> and <a href=\"https://web.archive.org/web/20150402133901/http://www.eis.mdx.ac.uk/staffpages/dat/saslman.pdf\">SASL</a> based on Chris Wadsworth's 1971 PhD thesis, where \"graph reduction\" originates. Despite the promises of laziness, most functional languages in the 1980s had strict evaluation semantics, e.g. LISP, ML and Hope, partly due to the relative ease of implemention: reuse call-by-value compiler technology from imperative language implementations (<a href=\"https://doi.org/10.1145/72551.72554\">ACM Comput Surv, 1989</a>). However, the main challenge was implementing lazy evaluation <i>efficiently</i>.<br><br>As this timeline will show, the last 47 years has seen lazy and strict languages being implemented both in hardware and in software.</p>"
         }
         },
+      {
+        "start_date": {
+          "year": "1978"
+        },
+        "text": {
+          "headline": "1st generation"
+        }
+      },
       {
         "media": {
           "url": "/images/fp-history/keller-1978.png",
@@ -192,7 +209,7 @@
         },
         "text": {
           "headline": "Efficient compilation of lazy evaluation",
-            "text": "<p>The G-Machine separates its abstract intermediate language, designed for graph reduction e.g. EVAL, UNWIND, PUSHFUN and UPDATE, from CPU instruction set backends. Lazy functions were compiled to G-Machine instruction sequence, which were then compiled to VAX11 CPU instruction.<br><br>This G-Machine work later influences an abondonment of special purpose functional hardware in the early 1990s, in favour of compiling lazy functional code to general purpose CPUs e.g. GHC's use of <a href=\"https://doi.org/10.1145/99370.99385\">STG</a>.<br><a href=\"https://doi.org/10.1145/502874.502880\">https://doi.org/10.1145/502874.502880</a></p>"
+            "text": "<p>The G-Machine separates its abstract intermediate language, designed for graph reduction e.g. EVAL, UNWIND, PUSHFUN and UPDATE, from CPU instruction set backends. Lazy functions were compiled to G-Machine instruction sequence, which were then compiled to VAX11 CPU instruction.<br><br>This G-Machine work later influences an abandonment of special purpose functional hardware in the early 1990s, in favour of compiling lazy functional code to general purpose CPUs e.g. GHC's use of <a href=\"https://doi.org/10.1145/99370.99385\">STG</a>.<br><a href=\"https://doi.org/10.1145/502874.502880\">https://doi.org/10.1145/502874.502880</a></p>"
         }
       },
         {
@@ -587,7 +604,7 @@
         },
         "text": {
           "headline": "FPCA + LFP = ICFP",
-            "text": "<p>The Functional Programming Languages and Computer Architecture (FPCA) conference series ran 1981-1995. There was also a dedicated workshop in 1986, \"Graph Reduction\" in Santa Fé, New Mexico, USA. In 1996, FPCA merged with Lisp and Functional Programming (LFP) to become the International Conference on Functional Programming (ICFP), which remains a premier functional programming conference today.<br>This marked the end of an era regarding intense interest in functional language hardware in the 1980s.<br><br>In the last decade, papers accepted to ICFP predominately focus on formalised language design and type theory, rather than engineered hardware systems.</p>"
+            "text": "<p>The Functional Programming Languages and Computer Architecture (FPCA) conference series ran 1981-1995. There was also a dedicated workshop in 1986, \"Graph Reduction\" in Santa Fé, New Mexico, USA. In 1996, FPCA merged with Lisp and Functional Programming (LFP) to become the International Conference on Functional Programming (ICFP), which remains a premier functional programming conference today.<br>In the last decade, papers accepted to ICFP predominately focus on formalised language design and type theory, rather than engineered hardware systems.<br><br>The end of FPCA and LFP marked the end of an era for functional language hardware in the 1980s. Researchers would later reflect that most functional hardware efforts led to dead ends.</p>"
         }
         },
         {
@@ -599,6 +616,14 @@
             "text": "<p>In their History of Programming Languages (HOPL) 2007 paper, Paul Hudak, John Hughes, Simon Peyton Jones and Phil Wadler reflected on the excitement in the 1980s about functional architectures.</p><section class=\"component\"><blockquote class=\"callout quote EN\">Much (but not all) of this architecturally oriented work turned out to be a dead end, when it was later discovered that good compilers for stock architecture could outperform specialised architecture. But at the time it was all radical and exciting.<cite> Hudak et al.</cite></blockquote></section>"
         }
         },
+      {
+        "start_date": {
+          "year": "2009"
+        },
+        "text": {
+          "headline": "2nd generation"
+        }
+      },
         {
             "media": {
                 "url": "/images/fp-history/fpga-growth.png",
@@ -627,7 +652,7 @@
         },
         "text": {
           "headline": "Functional languages in a chip",
-            "text": "<p>As mainstream adoption functional grew, in 2009 the primary developer of the GHC runtime system asked:</p><section class=\"component\"><blockquote class=\"callout quote EN\">I wonder how popular Haskell needs to become for Intel to optimise their processors for my runtime, rather than the other way around.<cite> Simon Marlow.</cite></blockquote></section><p>Researchers at the University of Twente were investigating this around the same time with their PilGRIM processor:</p><section class=\"component\"><blockquote class=\"callout quote EN\">Processor designs specialized for functional languages received very little attention in the past 20 years. The potential for exploiting more parallelism and the developments in hardware technology, ask for renewed investigation of this topic.<cite> Arjan Boeijink et al., <a href=\"https://doi.org/10.1007/978-3-642-24276-2_4\">IFL 2010</a>.</cite></blockquote></section>"
+            "text": "<p>As the adoption of functional langauges grew, in 2009 the primary developer of the GHC runtime system asked:</p><section class=\"component\"><blockquote class=\"callout quote EN\">I wonder how popular Haskell needs to become for Intel to optimise their processors for my runtime, rather than the other way around.<cite> Simon Marlow.</cite></blockquote></section><p>Researchers at the University of Twente were investigating this around the same time with their PilGRIM processor:</p><section class=\"component\"><blockquote class=\"callout quote EN\">Processor designs specialized for functional languages received very little attention in the past 20 years. The potential for exploiting more parallelism and the developments in hardware technology, ask for renewed investigation of this topic.<cite> Arjan Boeijink et al., <a href=\"https://doi.org/10.1007/978-3-642-24276-2_4\">IFL 2010</a>.</cite></blockquote></section>"
         }
         },
         {
@@ -665,6 +690,14 @@
             "text": "<p>A processor for lazy functional languages with a high-level graph reduction instruction set. It shared principles of Augustsson's BWM and Reduceron by \"exploiting parallelism in data movements by reading multiple values in parallel from the stack and rearranging them through a large crossbar\". It used modern processor ideas, (1) a pipelined design for parallelism and high clock frequencies, (2) a memory hierarchy with L1 and L2 cache, and DDR-memory. Its frontend language was <a href=\"https://doi.org/10.1007/3-540-63237-9_19\">GRIN</a> after translation from GHC Core, i.e. from Haskell. A PilGRIM clock frequency of 231-728MHz was required to match GHC performance on an Intel i5 CPU.<br><a href=\"https://doi.org/10.1007/978-3-642-24276-2_4\">https://doi.org/10.1007/978-3-642-24276-2_4</a></p>"
         }
         },
+      {
+        "start_date": {
+          "year": "2023"
+        },
+        "text": {
+          "headline": "3rd generation"
+        }
+      },
         {
             "start_date": {
                 "month": "01",
