@@ -115,7 +115,8 @@
       {
         "media": {
           "url": "/images/fp-history/skim.png",
-          "caption": "SKIM Machine Block Diagram"
+            "caption": "SKIM Machine Block Diagram",
+            "credit": "ACM"
         },
         "start_date": {
           "month": "08",
