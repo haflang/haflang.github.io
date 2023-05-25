@@ -1,0 +1,723 @@
+{
+    "title": {
+        "text": {
+          "headline": "Functional hardware<br/> 1936 - 2023",
+          "text": "<p>A history of hardware implementations of functional languages.</p>"
+        }
+    },
+    "events": [
+        {
+        "media": {
+          "url": "https://upload.wikimedia.org/wikipedia/en/a/a6/Alonzo_Church.jpg",
+          "caption": "Alonzo Church."
+        },
+        "start_date": {
+          "month": "04",
+          "year": "1936"
+        },
+        "text": {
+          "headline": "The Lambda Calculus",
+            "text": "<p>American mathematician Alonzo Church proposed a model of computation called the untyped lambda calculus in \"An Unsolvable Problem of Elementary Number Theory\", American Journal of Mathematics.<br><a href=\"https://doi.org/10.2307%2F2371045\">https://doi.org/10.2307%2F2371045</a></p>"
+        }
+        },
+        {
+        "start_date": {
+          "year": "1978"
+        },
+        "text": {
+          "headline": "Three Generations",
+            "text": "<p>This timeline covers three generations of functional architectures.<ul><li><b>1st generation</b> John Backus issued a rallying cry in 1978 for new special purpose hardware research. The community responded. The 1980s saw the dawn of new and exciting architectures.</li><li><b>2nd generation</b> Around 2010 the growth of Field Programmable Gate Array (FPGA) technology enabled researchers to shrink these architecture ideas onto a single chip.</li><li><b>3rd generation</b> FPGAs today have the capacity to scale sophisticated architectures to depart from commercial CPUs.</li></ul></p>"
+        }
+        },
+      {
+        "media": {
+            "url": "/images/fp-history/backus-1978.png",
+            "caption": "John Backus",
+          "credit": "Communications of the ACM."
+        },
+        "start_date": {
+          "year": "1978"
+        },
+          "text": {
+              "text": "<p>John Backus received the 1977 ACM Turing Award at the ACM Annual Conference in Seattle, October 1977. Backus gave a lecture, \"Can Programming Be Liberated From the von Neumann Style?\" which he later wrote up as a paper. It highlighted an emerging class of computing systems based on the functional programming style.<br><br><q>Unlike von Neumann languages, these systems have semantics loosely coupled to states—only one state transition occurs per major computation.</q><br><br>This paper sparked a decade of computer architecture research.<br><a href=\"https://doi.org/10.1145/359576.359579\">https://doi.org/10.1145/359576.359579</a></p>"
+        }
+      },
+        {
+        "start_date": {
+          "year": "1978"
+        },
+        "text": {
+            "headline": "Evaluation strategies",
+            "text": "<p>A key property of a language was its <i>evaluation strategy</i>. From 1976 this becomes a central component of computer architecture design choices.<br><br><b>Applicative order</b> (\"strict\") evaluates a function's arguments before its body. <b>Normal order</b> (\"lazy\") evaluates the body immediately, evaluating its arguments later if needed. Lazy evaluation does less work:</p><table><tr><th style=\"padding-right: 40px\">Applicative order</th><th>Normal order</th></tr><tr><td valign=\"top\">(&lambda; x. 1) (* 5 4)<br>&rArr; (&lambda; x. 1) 20<br>&rArr; 1</td><td valign=\"top\">(&lambda; x. 1) (* 5 4)<br>&rArr; 1</td></tr></table><p>Lazy evaluation was useful to programmers (<a href=\"https://doi.org/10.1145/72551.72554\">ACM Comput Surv, 1989</a>):</p><ol type=\"1\"><li><i>it frees a programmer from concerns about evaluation order</i></li><li><i>it provides the ability to compute with \"infinite\" data structures</i></li></ol><p>The merits of laziness for code modularity and readability were often argued, e.g. in Section 5 of <a href=\"https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf\">Why Functional Programming Matters (1990)</a>.</p>"
+        }
+        },
+        {
+        "start_date": {
+          "year": "1978"
+        },
+        "text": {
+            "headline": "Evaluation strategies",
+            "text": "<p>Early lazy evaluation techniques were developed for Hyper-Pure LISP <a href=\"https://doi.org/10.1145/800168.811543\">(POPL, 1976)</a> and <a href=\"https://web.archive.org/web/20150402133901/http://www.eis.mdx.ac.uk/staffpages/dat/saslman.pdf\">SASL</a> based on Chris Wadsworth's 1971 PhD thesis, where \"graph reduction\" originates. Despite the promises of laziness, most functional languages in the 1980s had strict evaluation semantics, e.g. LISP, ML and Hope, partly due to the relative ease of implemention: reuse call-by-value compiler technology from imperative language implementations (<a href=\"https://doi.org/10.1145/72551.72554\">ACM Comput Surv, 1989</a>). However, the main challenge was implementing lazy evaluation <i>efficiently</i>.<br><br>As this timeline will show, the last 47 years has seen lazy and strict languages being implemented both in hardware and in software.</p>"
+        }
+        },
+      {
+        "start_date": {
+          "year": "1978"
+        },
+        "text": {
+          "headline": "1st generation"
+        }
+      },
+      {
+        "media": {
+          "url": "/images/fp-history/keller-1978.png",
+          "caption": "Compiling function closures",
+          "credit": "Technical Report UUCS-78-105, University of Utah."
+        },
+        "start_date": {
+          "month": "10",
+          "year": "1978"
+        },
+        "text": {
+          "headline": "An Architecture for a Loosely-Coupled Parallel Processor",
+            "text": "<p>A large (e.g. 1,000 processor) parallel architecture that executes demand-driven applicative LISP code. Locality of task allocation and communication was a key objective. Opportunities for concurrency arose in the parallel evaluation of strict operators, i.e . those known to require evaluation of their full set of arguments.<br><a href=\"https://collections.lib.utah.edu/ark:/87278/s6g73z2w\">https://collections.lib.utah.edu/ark:/87278/s6g73z2w</a></p>"
+        }
+      },
+      {
+        "media": {
+          "url": "/images/fp-history/david_turner.jpg",
+          "caption": "David Turner"
+        },
+        "start_date": {
+          "month": "01",
+          "year": "1979"
+        },
+        "text": {
+          "headline": "A new implementation technique for applicative languages",
+            "text": "<p>David Turner demonstrated with SASL (1975), and later Miranda (1986), that compiling functional code to simple S K combinators had practical application for efficient language interpreters. Others later showed that these simple combinators lent themselves to direct hardware implementations like SKIM and NORMA, described later in this timeline.<br><a href=\"https://doi.org/10.1002/spe.4380090105\">https://doi.org/10.1002/spe.4380090105</a></p>"
+        }
+      },
+      {
+        "media": {
+          "url": "/images/fp-history/mago-1979.png",
+            "caption": "tree-structured network of identical cells",
+            "credit": "US Patent - Cellular Network of Processors"
+        },
+        "start_date": {
+          "month": "10",
+          "year": "1979"
+        },
+        "text": {
+          "headline": "A network of microprocessors to execute reduction languages",
+            "text": "<p>Building on Backus's work, Gyula Mago presented a cellular processor architecture capable of directly and efficiently executing reduction languages. The processor consisted of two interconnected networks of microprocessors, one of which was a linear array of identical cells, and the other a tree-structured network of identical cells.<br><a href=\"https://doi.org/10.1007/BF00995174\">https://doi.org/10.1007/BF00995174</a></p>"
+        }
+      },
+      {
+        "media": {
+          "url": "/images/fp-history/skim.png",
+            "caption": "SKIM Machine Block Diagram",
+            "credit": "ACM"
+        },
+        "start_date": {
+          "month": "08",
+          "day": "25",
+          "year": "1980"
+        },
+        "text": {
+          "headline": "SKIM - The S, K, I reduction machine",
+            "text": "<p>Building on Turner's abstract machine for S K combinators, SKIM was a computer built to explore fine grained combinators as a machine language, and use of hardware to provide direct support for high level pure functional languages. Its hardware design stressed simplicity.<br><a href=\"https://doi.org/10.1145/800087.802798\">https://doi.org/10.1145/800087.802798</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/tolle-1981.png",
+          "caption": "Partitioning inner-most applications into into a tree network",
+          "credit": "ACM Programming Languages and Computer Architecture"
+        },
+        "start_date": {
+          "month": "10",
+          "year": "1981"
+        },
+        "text": {
+          "headline": "Implanting FFP trees in binary trees: An architectural proposal",
+            "text": "<p>Other researchers continued to extend Magó's tree-based cellular computer. Donald Tolle proposed an architecture that he claimed had advantages over Magó's machine in terms of simplicity, flexibility of functional operators and potential for more parallelism.<br><a href=\"https://doi.org/10.1145/800223.806770\">https://doi.org/10.1145/800223.806770</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/alice-architecture.png",
+          "caption": "ALICE abstract architecture",
+          "credit": "ACM Programming Languages and Computer Architecture"
+        },
+        "start_date": {
+          "month": "10",
+          "year": "1981"
+        },
+        "text": {
+          "headline": "ALICE a multi-processor reduction machine for the parallel evaluation CF applicative languages",
+            "text": "<p>Developed at Imperial College, ALICE was the first implemented parallel graph reduction machine. It was a highly modular machine architecture for the parallel evaluation of a variety of applicative languages. The graph was held in a global memory which its processors accessed via a switching network. Processors performed fine grained reduction steps. This paper compared ALICE with related architectures including dataflow, string reduction and tree machines.<br><a href=\"https://doi.org/10.1145/800223.806764\">https://doi.org/10.1145/800223.806764</a></p>"
+        }
+      },
+        {
+        "start_date": {
+          "month": "10",
+          "year": "1981"
+        },
+        "text": {
+          "headline": "Executing functional programs on a virtual tree of processors",
+            "text": "<p>Warren Burton and Ronan Sleep mapped Turner's SASL language to their Zero Assignment Parallel Processor (ZAPP) at the univerity of East Anglia. They presented a simple concurrency model for executing <q>process trees</q>. Their FPCA 1981 paper: <section class=\"component\"><blockquote class=\"callout quote EN\">Many potential users say 'Applicative languages are great to program in - they really speed up software development. But I have to reprogram in FORTRAN to get a speed I can use.'. We aim to considerably reduce the force of this argument by explofting the natural parallelism in an applicative language.<cite>  Burton et al., FPCA 1981.</cite></blockquote></section><a href=\"https://doi.org/10.1145/800223.806778\">https://doi.org/10.1145/800223.806778</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/moor-1982-hope.png",
+          "caption": "Append function in HOPE compiled to CTL for the ALICE machine",
+          "credit": "ACM SIGPLAN Notes"
+        },
+        "start_date": {
+          "month": "06",
+          "year": "1982"
+        },
+        "text": {
+          "headline": "An applicative compiler for a parallel machine",
+            "text": "<p>Work on evaluating the ALICE machine continued. This paper presented a compiler from HOPE to Compiler Target Language (CTL) for the ALICE simulator. Performance was quite slow: 5-10 minutes for 20 lines of HOPE, though extensions to HOPE and the compiler to exploit parallelism on ALICE were described.<br><a href=\"https://doi.org/10.1145/872726.807002\">https://doi.org/10.1145/872726.807002</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/john-hughes.jpg",
+          "caption": "John Hughes invented super-combinators for efficient language implementation",
+          "credit": "<a href=\"https://www.cse.chalmers.se/~rjmh/\">https://www.cse.chalmers.se/~rjmh/</a>"
+        },
+        "start_date": {
+          "month": "08",
+          "year": "1982"
+        },
+        "text": {
+          "headline": "Super-combinators a new implementation method for applicative languages",
+            "text": "<p>Efforts so far were based on combinatory logic (<a href=\"https://www.cambridge.org/core/journals/journal-of-symbolic-logic/article/abs/haskell-b-curry-and-robert-feys-combinatory-logic-volume-i-with-two-sections-by-william-craig-studies-in-logic-and-the-foundations-of-mathematics-northholland-publishing-company-amsterdam1958-xvi-417-pp/ADC0261CC1D952E97468E2803D4D7721\">Curry and Feys, 1958</a>). For example, Turner compiled SASL to S K combinators (1979). With that approach, Hughes argued that (1) machine code was far removed from the program, (2) compilation was slow, (3) execution was broken into many very small fine-grained steps. Hughes proposed super-combinators to overcome these problems.<br><a href=\"https://doi.org/10.1145/800068.802129\">https://doi.org/10.1145/800068.802129</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/g-machine-1984.png",
+          "caption": "Compiling Lazy ML to G-Machine code",
+            "credit": "\"A compiler for lazy ML\", ACM <a href=\"https://doi.org/10.1145/800055.802038\">LFP 1984</a>"
+        },
+        "start_date": {
+          "month": "08",
+          "year": "1984"
+        },
+        "text": {
+          "headline": "Efficient compilation of lazy evaluation",
+            "text": "<p>The G-Machine separates its abstract intermediate language, designed for graph reduction e.g. EVAL, UNWIND, PUSHFUN and UPDATE, from CPU instruction set backends. Lazy functions were compiled to G-Machine instruction sequence, which were then compiled to VAX11 CPU instruction.<br><br>This G-Machine work later influences an abandonment of special purpose functional hardware in the early 1990s, in favour of compiling lazy functional code to general purpose CPUs e.g. GHC's use of <a href=\"https://doi.org/10.1145/99370.99385\">STG</a>.<br><a href=\"https://doi.org/10.1145/502874.502880\">https://doi.org/10.1145/502874.502880</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/g-machine-compilation-example.png",
+            "caption": "G-Machine reduction of <b>from (succ 0)</b>, from ACM <a href=\"https://doi.org/10.1145/502874.502880\">CC 1984</a>"
+        },
+        "start_date": {
+          "month": "08",
+          "year": "1984"
+        },
+        "text": {
+          "headline": "G-Machine example"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/traub-1985.png",
+            "caption": "Parallel Graph Reduction Machine - design hierarchy",
+          "credit": "ACM SIGARCH Computer Architecture News"
+        },
+        "start_date": {
+          "month": "06",
+          "year": "1985"
+        },
+        "text": {
+          "headline": "An abstract parallel graph reduction machine",
+            "text": "<p>Presented a systematic approach to the study of parallel graph reduction machines. Proposes an abstract parallel graph reduction architecture that was independent of the base language and communication network chosen for an actual implementation.<br><a href=\"https://doi.org/10.1145/327070.328253\">https://doi.org/10.1145/327070.328253</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/odonnell-1985.png",
+          "caption": "Associative Aggregate Representation",
+          "credit": "Springer Programming Languages and Computer Architecture"
+        },
+        "start_date": {
+          "month": "09",
+          "year": "1985"
+        },
+        "text": {
+          "headline": "An architecture that efficiently updates associative aggregates in applicative programming languages",
+            "text": "<p>Data structures in pure languages are expensive to maintain. Implementations often created complete copies of data structures when one element was updated. John O'Donnell proposed a solution with <q>associative aggregate</q> data structures and an <q>Associate Aggregate Machine</q> hardware memory design, with a linear sequence of cells forming a shift register that supported efficient insertion and deletion.<br><a href=\"https://doi.org/10.1007/3-540-15975-4_36\">https://doi.org/10.1007/3-540-15975-4_36</a></p>"
+        }
+      },
+      {
+          "start_date": {
+              "month": "09",    
+          "year": "1985"
+        },
+        "text": {
+          "headline": "Pure or Programmed Reduction?",
+            "text": "<p>Richard Kieburtz presented a sequential evaluator of Johnsson's and Augustsson's G-Machine architecture in <a href=\"https://doi.org/10.1007/3-540-15975-4_50\">his FPCA 1985 paper</a>.<br><br>His paper explains the difference between <i>pure</i> and <i>programmed</i> reduction schemes adopted by architectures. <b>Pure</b>: the <i>next</i> reduction step was derived from the expression currently being evaluated (e.g. SKIM, Reduceron). <b>Programmed</b>: this control was derived offline using static analysis with compilation (e.g. G-Machine, GHC).<section class=\"component\"><blockquote class=\"callout quote EN\">Programmed reduction systems are not so elegant as pure reduction systems, but offer the advantage that we can make use of technology developed over the last 35 years to implement von Neumann based architectures.<cite> Richard Kieburtz</cite></blockquote></section></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/wise-perlis.png",
+            "caption": "David Wise meets Alan Perlis",
+            "credit": "<a href=\"https://legacy.cs.indiana.edu/~dswise/\">https://legacy.cs.indiana.edu/~dswise/</a>"
+        },
+        "start_date": {
+          "year": "1985"
+        },
+        "text": {
+            "headline": "Garbage collection in hardware",
+            "text": "<p>Researchers explored hardware mechanisms for efficient garbage collection, including David Wise who published <q>Design for a multiprocessing heap with on-board reference counting</q> at FPCA 1985. Wise met Alan Perlis, head of Maths, when he was a freshman. Wise became an ACM Fellow in 2007, and Alan Perlis became the first recipient of the Turing Award.<br><a href=\"https://doi.org/10.1007/3-540-15975-4_43\">https://doi.org/10.1007/3-540-15975-4_43</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/p-combinator-1986.png",
+            "caption": "Two new <B>P</B> combinators for parallelism appears in ESOP 1986.",
+          "credit": "<a href=\"https://doi.org/10.1007/3-540-16442-1_7\">https://doi.org/10.1007/3-540-16442-1_7</a>"
+        },
+        "start_date": {
+          "month": "03",
+          "year": "1986"
+        },
+        "text": {
+            "headline": "A safe approach to parallel combinator reduction"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/norma-1986.png",
+          "caption": "NORMA graph processor",
+            "credit": "ACM conference on LISP and functional programming"
+        },
+            "start_date": {
+                "month" : "08",
+                "year": "1986"
+        },
+        "text": {
+          "headline": "NORMA: a graph reduction processor",
+            "text": "<p>Based on Turner's fine-grained S K combinators, NORMA was a microprogrammable machine that could support multiple graph reduction schemes. It had a mark-scan garbage collector, based on John Hughes's <a href=\"https://doi.org/10.1002/spe.4380121108\">earlier work</a>. NORMA had very wide words (370 bits) for instruction level parallelism. NORMA performed 250,000 reductions per second at 5MHz (0.125 reductions per cycle), which was considered state-of-the-art performance at this time.<br><a href=\"https://doi.org/10.1145/319838.319864\"></a>https://doi.org/10.1145/319838.319864</p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/rediflow-1986.png",
+          "caption": "",
+            "credit": "Springer"
+        },
+            "start_date": {
+                "month" : "10",
+                "year": "1986"
+        },
+        "text": {
+          "headline": "Rediflow II",
+            "text": "<p>The Rediflow parallel graph reduction architecture supported load balancing, which was highly novel for its time. It was programmed with Redilisp. Parallelism was implicit, the compiler had a <i>demand-propagation</i> phase which inserted <b>demand*</b> calls, which evaluated multiple values in parallel, though the programmer could add <b>demand*</b> calls to have greater control of parallelism. Redilisp was compiled to the PSCED virtual machine instruction set, which they extended with instruction level support for parallelism. Load balancing co-processors obtained the \"pressure\" (load) of their neighbors and determined a gradient in which to distribute work. <br><a href=\"https://doi.org/10.1007/3-540-18420-1_56\">https://doi.org/10.1007/3-540-18420-1_56</a></p>"
+        }
+      },
+        {
+        "start_date": {
+          "year": "1987"
+        },
+        "text": {
+            "headline": "Too much parallelism",
+            "text": "<p>The fine-grained <B>P</B> combinator and coarse-grained approaches offered much promise for parallel functional languages. However, architectures had limits on how much parallelism they could support. This impacted the ALICE project for functional languages. But it was also observed in other computing domains, at <a href=\"http://csg.csail.mit.edu/pubs/memos/Memo-257/Memo-257.pdf\">MIT</a>, for the <a href=\"https://doi.org/10.1007/3-540-18317-5_6\">Flagship re-write rule machine</a>, and in Japanese dataflow projects <a href=\"https://doi.org/10.1145/17356.17383\">Sigma-1</a>, <a href=\"https://doi.org/10.1145/17356.17358\">DFM</a> and <a href=\"https://doi.org/10.1145/17356.17373\">PIM-D</a>.</p>"
+        }
+      },
+        {
+        "start_date": {
+          "month": "06",
+          "year": "1987"
+        },
+        "text": {
+            "headline": "Overview of a parallel reduction machine project",
+            "text": "<p>Research withing the 18 month ESPRIT 415 project, on parallel architectures for functional languages, at the GEC Hirst Research Centre in Middlesex. They implemented Hankin's <B>P</B> combinator in their hardware for parallelism. Two years after after this PARLE 1987 paper, one of the authors, G L Burn, writes an <a href=\"https://doi.org/10.1007/3540512845_52\">updated architecture report</a> describeing a move to use of G-Machine based compilation to target transputer machine code. A limitation of the architecture was the lack of parallel load balancing, which was implemented in other architectures e.g. <a href=\"\">ZAPP</a>. This 1989 paper came to the same conclusion as others around this time:<section class=\"component\"><blockquote class=\"callout quote EN\">Over the time of the project we have moved from the position of thinking that we might have to build specialised hardware, to the belief that the implementation of lazy functional languages was essentially a problem of compiler technology.<cite> G L Burn.</cite></blockquote></section><br><a href=\"https://doi.org/10.1007/3-540-17943-7_141\"></a>https://doi.org/10.1007/3-540-17943-7_141</p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/manchester-dataflow-computer.png",
+          "caption": "Manchester Dataflow Computer",
+            "credit": "Communications of the ACM, <a href=\"https://doi.org/10.1145/2465.2468\">January 1985</a>"
+        },
+        "start_date": {
+          "month": "09",
+          "year": "1987"
+        },
+        "text": {
+          "headline": "Control of parallelism in the Manchester dataflow machine",
+            "text": "<p>The solution to the <q>too much parallelism</q> problem in the Manchester Dataflow Machine was coarse-grained, process-based throttling of parallelism.<br><a href=\"https://doi.org/10.1007/3-540-15975-4_36\">https://doi.org/10.1007/3-540-15975-4_36</a></p>"
+        }
+        },
+        {
+       "media": {
+          "url": "https://www.google.com/maps/place/Portland,+OR,+USA/@45.5427139,-122.6544011,11z/data=!3m1!4b1!4m6!3m5!1s0x54950b0b7da97427:0x1c36b9e6f6d18591!8m2!3d45.515232!4d-122.6783853!16s%2Fm%2F02frhbc",
+           "caption": "FPCA 1987 at Portland, Oregon, USA,"
+        },
+        "start_date": {
+          "month": "09",
+          "year": "1987"
+        },
+        "text": {
+          "headline": "Supercombinator architectures",
+            "text": "<p>Three architectures adopting the <i>supercombinator</i> approach (Hughes, 1982) were presented 14-16 September at FPCA 1987: Tim, Flagship and GRIP.</p>"
+        }
+      },
+         {
+        "media": {
+          "url": "/images/fp-history/tim-1987.png",
+          "caption": "Machine state was a function applied to arguments on the stack",
+            "credit": "Springer, FPCA 1987"
+        },
+        "start_date": {
+          "month": "09",
+          "year": "1987"
+        },
+        "text": {
+          "headline": "Tim: A simple, lazy abstract machine to execute supercombinators",
+            "text": "<p>TIM (University of Cambridge) had three instructions: <i>Take</i> to move items from the argument stack to a frame on the heap, <i>Push</i> to push an item onto the argument stack and <i>Enter</i> to load the current frame and program counter with an item. TIM goes beyond the G-Machine, proposing <i>closure</i> reducers that use suspensions to implement laziness (p8 in <a href=\"https://doi.org/10.1145/73141.74828\">Koopman et al., 1989</a>). <q>The simplicity of this machine suggests that it would not be difficult to implement as a chip.</q><br><a href=\"https://doi.org/10.1007/3-540-18317-5_3\">https://doi.org/10.1007/3-540-18317-5_3</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/flagship-1987.png",
+          "caption": "Flagship architecture",
+            "credit": "Springer, FPCA 1987"
+        },
+        "start_date": {
+          "month": "09",
+          "year": "1987"
+        },
+        "text": {
+            "headline": "Evaluating functional programs on the flagship machine",
+            "text": "<p>Flagship was developed by the University of Manchester, Imperial College London and International Computers Ltd. Each processor performed reductions on the sub-graph in its local store, removing contention on a single store. A detailed description of a 16 processor Flagship machine was <a href=\"https://doi.org/10.1017/S0956796800000927\">described</a> in the Journal of Functional Programm, 1994. Early prototypes used Turner's fixed combinators, however switching to supercombinators turned out to be 10-100x more efficient.<br><a href=\"https://doi.org/10.1007/3-540-18317-5_6\">https://doi.org/10.1007/3-540-18317-5_6</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/grip-1987.png",
+          "caption": "Architecture of a GRIP board",
+            "credit": "Springer, FPCA 1987"
+        },
+        "start_date": {
+          "month": "09",
+          "year": "1987"
+        },
+        "text": {
+            "headline": "GRIP — a high-performance architecture for parallel graph reduction",
+            "text": "<p>Developed at University College London, GRIP's <q>Intelligent Memory Units</q> exposed a spectrum of design choices for adding <q>intelligence</q> to <B>memories</B> e.g. reduction, garbage collection and synchronisation (<a href=\"https://doi.org/10.1145/319838.319865\">LFP 1986</a>). GRIP implemented reduction cores (PEs) with von Neumann Motorola 68020 processors. Each board had 4 PEs. 21 boards could fit on a 50cm Futurebus.<br><a href=\"https://doi.org/10.1007/3-540-18317-5_7\">https://doi.org/10.1007/3-540-18317-5_7</a></p>"
+        }
+        },
+        {
+        "start_date": {
+          "month": "09",
+          "year": "1987"
+        },
+        "text": {
+            "headline": "A common language",
+            "text": "<p>Supercominators weren't the only FPCA'87 discussion point.</p><section class=\"component\"><blockquote class=\"callout quote EN\">In September of 1987 a meeting was held at FPCA'87 in Portland, Oregon, to discuss an unfortunate situation in the functional programming community: there had come into being more than a dozen non-strict, purely functional programming languages, all similar in expressive power and semantic underpinnings. There was a strong consensus at this meeting that more widespread use of this class of functional languages was being hampered by the lack of a common language. It was decided that a committee should be formed to design such a language, providing faster communication of new ideas, a stable foundation for real applications development, and a vehicle through which others would be encouraged to use functional languages.<cite> Haskell 1998 report</cite></blockquote></section>"
+        }
+      },
+        {
+            "start_date": {
+                "month" : "12",
+                "year": "1987"
+        },
+        "text": {
+          "headline": "The Dutch Parallel Reduction Machine Project",
+            "text": "<p>In 1984 three Dutch universities, Amsterdam, Nijmegen and Utrecht, started work on a parallel reduction machine. They used their graph rewriting language <a href=\"https://doi.org/10.1007/3-540-18317-5_20\">Clean</a> as the Intermediate Representation (IR) between source languages, SASL and Miranda, and their achitecture. Unlike the GRIP and Flagship machines, the Dutch Parallel Reduction Machine did not have a global address space, instead focusing on low latency memories local to reduction processors. The authors proposed a <q>sandwich reduction strategy</q> for coarse grained parallel reduction in this local memory architecture. To avoid work duplication, it fully reduced redexes before communicating them to other processors. Reduction cores were built using M68000 with a VME-bus. They collaborated with the University of East Anglia on an extension to Clean, called <a href=\"https://doi.org/10.1007/3-540-17945-3_9\">Lean</a>, which they envisaged would become a reusable IR between declarative languages and parallel architectures in the future.<br><a href=\"https://www.sciencedirect.com/science/article/abs/pii/0167739X87900306\">https://www.sciencedirect.com/science/article/abs/pii/0167739X87900306</a></p>"
+        }
+      },
+        {
+        "start_date": {
+          "month": "12",
+          "year": "1987"
+        },
+        "text": {
+            "headline": "Strictness analysis",
+            "text": "<p>Parallel graph reduction architectures that supported <i>implicit</i> parallelism relied on compiler support for strictness analysis. This <i>conservative parallelism</i> technique identifies function arguments whose values are definitely needed. Those arguments are evaluated in parallel before or during entering the body. In his MSc project \"Static Evaluation of a Functional Language Through Strictness Analysis\" at the University of Utah in 1987, Dowming Yeh developed a technique for identifying strict arguments. Take this example:</p><!-- HTML generated using hilite.me --><div style=\"background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;\"><pre style=\"margin: 0; line-height: 125%\"><span style=\"color: #0066BB; font-weight: bold\">filter</span> p <span style=\"color: #333399; font-weight: bold\">[]</span> <span style=\"color: #000000; font-weight: bold\">=</span> <span style=\"color: #333399; font-weight: bold\">[]</span><br><span style=\"color: #0066BB; font-weight: bold\">filter</span> p (x<span style=\"color: #000000; font-weight: bold\">::</span>xs) <span style=\"color: #000000; font-weight: bold\">=</span>   <br>&nbsp;&nbsp;<span style=\"color: #008800; font-weight: bold\">if</span> (x mod p) <span style=\"color: #333333\">==</span> <span style=\"color: #0000DD; font-weight: bold\">0</span> <span style=\"color: #008800; font-weight: bold\">then</span> filter p xs   <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color: #008800; font-weight: bold\">else</span> x <span style=\"color: #000000; font-weight: bold\">::</span> filter p xs </pre></div><p>Yeh's technique could determine that this function was strict on its 2nd argument to test for an empty list, and if not then the head of that list and the first argument are strict for the <b>mod</b> computation in the conditional <b>if</b>. His technique inspired <a href=\"https://doi.org/10.1145/99370.99387\">later work</a> presented at FPCA 1989.</p>"
+        }
+        },
+        {
+        "media": {
+          "url": "/images/fp-history/benjamin-goldberg.jpg",
+          "caption": "Benjamin Goldberg"
+        },
+            "start_date": {
+                "month": "04",
+                "year": "1988"
+        },
+        "text": {
+          "headline": "Benjamin Goldberg's PhD",
+            "text": "<p><a href=\"https://cs.nyu.edu/~goldberg/\">Benjamin Goldberg</a> did <a href=\"https://cpsc.yale.edu/sites/default/files/files/tr618.pdf\">his PhD</a> at Yale University, supervised by Paul Hudak. Goldberg developed an abstract machine model called <i>heterogeneous graph reduction</i>, a hybrid between graph reduction and stack-oriented execution. Using <a href=\"https://www.cs.yale.edu/publications/techreports/tr322.pdf\">ALFL</a> as the source language, he realised the abstract model twice: <a href=\"https://doi.org/10.1145/62297.62356\">Alfalfa</a> for the Intel iPSC hypercube multiprocessor, and <a href=\"https://doi.org/10.1145/62678.62683\">Buckwheat</a> for the Encore Multimax multiprocessor. Both used a compiler that performed automatic decomposition for parallel execution, using Hudak's <a href=\"https://doi.org/10.1007/3-540-15975-4_49\">approach</a> to infer \"optimal\" parallel granularity. Both implementations supported dynamic load balancing and fast inter-procesor communication.</p>"
+        }
+        },
+        {
+        "media": {
+          "url": "/images/fp-history/mars-1988.png",
+          "caption": "MaRS architecture",
+            "credit": "ACM SIGARCH Computer Architecture News 1988"
+        },
+            "start_date": {
+                "month" : "06",
+                "year": "1988"
+        },
+        "text": {
+          "headline": "MaRS: a parallel graph reduction multiprocessor",
+            "text": "<p>An extension of Curry's S K combinators and Turner's practical utility of them, the MaRS functional machine language comprised 8 combinators. MaRS-LISP, a simple pure language, was compiled to these combinators. The VLSI 1.5-micron CMOS based hardware comprised three processor types for reduction, memory and communication.<br><a href=\"https://doi.org/10.1145/48675.48678\">https://doi.org/10.1145/48675.48678</a></p>"
+        }
+      },
+        {
+        "media": {
+          "url": "/images/fp-history/speculative-parallelism-1989.png",
+          "caption": "Graph reduction with speculative sub-tasks",
+            "credit": "IEEE"
+        },
+            "start_date": {
+                "month" : "01",
+                "year": "1989"
+        },
+        "text": {
+          "headline": "Speculative parallelism in a distributed graph reduction machine",
+            "text": "<p>Andew Partridge and Anthony Dekker proposed a <i>speculative parallelism</i> scheme for lazy languages, able to generate more parallel (but potentially irrelevant) work than <i>conservative parallelism</i>. Speculative approaches may generate irrelevant, non-terminating tasks. This paper solves this in two ways: (1) <b>Task prioritisation</b>, <q>definitely needed</q> tasks were assigned a higher priority than speculative tasks; (2) <b>Task termination</b>, to kill irrelevant tasks and reclaim their memory.<br><a href=\"https://doi.org/10.1109/HICSS.1989.48085\">https://doi.org/10.1109/HICSS.1989.48085</a></p>"
+        }
+      },
+      {
+        "start_date": {
+          "month": "06",
+          "year": "1989"
+        },
+        "text": {
+          "headline": "GRIP performance factors",
+            "text": "<p>Two years after their FPCA 1987 paper, UCL researchers reflected on two performance factors for GRIP: (1) parallelism and (2) locality.<br><B>Parallelism</B> Expressions were evaluated in parallel by creating \"sparks\" that may be executed by another core. GRIP supported <i>implicit</i> parallelism with partitioning and scheduling schemes. GRIP's scheduler created sparks only when cores became under-utilised, and did so just for <i>conservative parallelism</i> i.e. when results were definitely needed. Echoes of GRIP's parallelism support and nomenclature are <a href=\"https://doi.org/10.1145/1596550.1596563\">seen in GHC</a>, with one difference being that parallelism was <i>semi-explicit</i> for GHC users.<br><B>Locality</B> Each GRIP board had a two-level store: (1) 4 PE's with fast access to private memory, and (2) 1 IMU that offered slower access to a global address space. The address space of IMU's also had two levels for accessing \"on board\" and remte \"off board\" IMUs. This 1989 paper discusses managing these local and global memories, and GRIP's caching scheme to increase locality i.e. memory references to <i>local</i> data.<br><a href=\"https://doi.org/10.1007/3540512845_40\">https://doi.org/10.1007/3540512845_40</a></p>"
+        }
+      },
+         {
+        "media": {
+          "url": "/images/fp-history/tigre-1989.png",
+            "caption": "VAX implementation of ((+ 11) 22) with TIGRE",
+            "credit": "ACM SIGPLAN 1989"
+        },
+        "start_date": {
+          "month": "09",
+          "year": "1989"
+        },
+        "text": {
+          "headline": "TIGRE",
+            "text": "<p>Philip Koopman Jr summarised his <a href=\"https://users.ece.cmu.edu/~koopman/tigre/index.html\">PhD thesis</a> in a <a href=\"https://doi.org/10.1145/74818.74828\">PLDI 1989 paper</a> about his TIGRE graph reduction architecture. It addresses <q>the major source of ineffiency in most graph reducers [...] traversing a graph's left spine and case analysis of node tags<q>. Their key idea was that the spine stack could be implemented with CPU subroutine instructions to eliminate node traversal during stack unwinding. TIGRE targeted VAX (<a href=\"https://www.bloomberg.com/news/articles/2021-01-06/who-remembers-the-vax-minicomputer-icon-of-the-1980s?leadSource=uverify%20wall\">a 1980s icon</a>, ultimately superseded by RISC technology). It performed 355,000 reductions per second on a VAX8800 for Turner's S K combinators, compared with NORMA executing 250,000 reductions per second.</p>"
+        }
+      },
+      {
+        "media": {
+            "url": "/images/fp-history/george-1989.png",
+            "caption": "Extending G-Machine instructions for parallelism",
+            "credit": "ACM"
+        },
+        "start_date": {
+          "month": "11",
+          "year": "1989"
+        },
+        "text": {
+          "headline": "An abstract machine for parallel graph reduction",
+            "text": "<p>Lal George extended Johnsson's G-Machine for parallelism. The technique involved two phases: (1) spawning evaluation of strict arguments, (2) waiting for parallel evaluation to complete before entering the function's body. The key instructions added to the G-Machine were <b>demand</b> (spawn parallelism) and <b>block</b> (wait for parallel results), to avoid context switching and needless task migration. Experiments were ran on an 18 node BBN Butteryfly multiprocessor. Each processor was a 16MHz MC68020 microprocessor.<br><a href=\"https://doi.org/10.1145/99370.99387\">https://doi.org/10.1145/99370.99387</a></p>"
+        }
+      },
+      {
+        "start_date": {
+          "month": "11",
+          "year": "1989"
+        },
+        "text": {
+          "headline": "Parallel graph reduction with the (v , G)-machine",
+            "text": "<p>Independently of Lal George's work, although presented at the same FPCA event, the inventors of the G-Machine (Johnsson and Augustsson) were also extending the G-Machine for parallelism. They added support for user-specified spark annotations, which had support with a new G-Machine <b>SPARK</b> instruction. The presentation of the transition rule for <b>SPARK</b> in this FPCA paper is:<img src=\"/images/fp-history/spark-instruction-1989-2.png\"/>This was implemented on shared-memory multiprocessor called Sequent Symmetry with 15 processors, and achieved speedups between 5 and 11. The idea of spark annotations (originally from <a href=\"https://doi.org/10.1145/319838.319865\">LFP 1986</a>) and sparkpools have been carried into today's GHC software implementation with the <a href=\"https://hackage.haskell.org/package/parallel-3.2.2.0/docs/Control-Parallel-Strategies.html#v:rpar\">rpar</a> function.<br><a href=\"https://doi.org/10.1145/99370.99386\">https://doi.org/10.1145/99370.99386</a></p>"
+        }
+      },
+        {
+        "start_date": {
+                "year": "1990"
+        },
+        "text": {
+            "headline": "Hardware: General or special purpose?",
+            "text": "<p>In the <a href=\"https://users.ece.cmu.edu/~koopman/tigre/chap7.pdf\">chapter 7</a> of Philip Koopman's <a href=\"https://doi.org/10.1016/C2013-0-10999-3\">book</a>, \"An Architecture for Combinator Graph Reduction\", he expresses scepticism about special purpose functional hardware:</p><section class=\"component\"><blockquote class=\"callout quote EN\">An order of magnitude speed improvement was rather unlikely no matter what architectural innovations are possible, since a factor of 10 speedup from the current R2000 TIGRE implementation leaves just 3.009 clock cycles per combinator for program execution time. Speeding up TIGRE operation by that amount exceeds all plausible expectations. So, it was probably not worthwhile building a special-purpose CPU to support TIGRE, since current RISC technology will probably have increased in speed enough by the time a TIGRE chip could be designed and fabricated to make the exercise pointless.<cite> Philip Koopman</cite></blockquote></section>"
+        }
+        },
+         {
+        "start_date": {
+          "month": "08",
+          "year": "1991"
+        },
+        "text": {
+          "headline": "Memory bandwidth",
+            "text": "<p>There were still some in this research community keen to explore functional hardware innovations.<br><br>At the Glasgow Workshop on Functional Programming, in Portree on the Isle of Skye, Lenart Augustsson observed that <i>memory bandwidth</i> was a limiting performance factor for lazy languages.</p><section class=\"component\"><blockquote class=\"callout quote EN\">For lazy languages [...] instead of computing a value, a suspension of the computations has to be created, to be scrutinized later on. [...] increasing the number of memory references. [...] the speed of functional programs are then limited by the memory bandwidth.<cite> Lenart Augustsson</cite></blockquote></section>"
+        }
+      },
+         {
+        "media": {
+            "url": "/images/fp-history/bwm-1991.png",
+            "caption": "BWM Architecture",
+            "credit": "Springer"
+        },
+        "start_date": {
+          "month": "08",
+          "year": "1991"
+        },
+        "text": {
+          "headline": "BWM: A Concrete Machine for Graph Reduction",
+            "text": "<p>Augustsson's Big Word Machine design used large memory words to construct and scrutinize large memory objects with few memory operations. The idea was use of macro-instructions to synthesise sequences of machine instructions for executing combinators. Each supercombinator were built using a sequence of <a href=\"https://doi.org/10.1145/502874.502880\">G-code</a> instructions, which were then expanded into the assembly language of the target system. The BWM was never built. Augustsson wrote “the absolute performance of the machine was hard to determine at this point\".<br><a href=\"https://doi.org/10.1007/978-1-4471-3196-0_3\">https://doi.org/10.1007/978-1-4471-3196-0_3</a></p>"
+        }
+      },
+        {
+        "media": {
+            "url": "https://www.cs.cmu.edu/~popl-interviews/img/wg2.8_peytonjones.png",
+            "caption": "The IFIP WG2.8 committee in Oxford, 1992."
+        },
+            "start_date": {
+                "year": "1992"
+        },
+        "text": {
+          "headline": "Haskell",
+            "text": "<p>Following on from decisions made at FPCA 1987, the <a href=\"https://www.cs.ox.ac.uk/ralf.hinze/WG2.8/\">IFIP WG 2.8 committe</a> continued progress on developing a common language for lazy functional programming research.</p>"
+        }
+      },
+      {
+        "start_date": {
+          "month": "09",
+          "year": "1994"
+        },
+        "text": {
+          "headline": "Beyond GRIP",
+            "text": "<p>Researchers at the Univeristy of Glasgow confirmed in 1994 their abandonment of GRIP and explained their reasons.</p><section class=\"component\"><blockquote class=\"callout quote EN\">At Glasgow our research into parallel functional programming has been moving away from our novel architecture, GRIP, towards the provision of a general parallel runtime environment. [...] While this machine has proved useful as a basis to explore many aspects of real-machine functional parallelism [...] it was clear that for our work to be generally useful a more portable, a less specialised environment was required. This was also mandated by the age of the GRIP design: although the GRIP processors were state-of-the-art when the machine was designed, the pace of advance in computer architecture means that a single modern RISC processor can outperformance even half-a-dozen of GRIP's processor, and a modern commercial parallel machine has the potential to significantly outperform GRIP.<cite> Hammond et al., IFL 1994.</cite></blockquote></section><a href=\"https://www.macs.hw.ac.uk/~dsg/gph/papers/ps/graphing.ps\">https://www.macs.hw.ac.uk/~dsg/gph/papers/ps/graphing.ps</a></p>"
+        }
+      },
+        {
+        "start_date": {
+                "month" : "10",
+                "year": "1995"
+        },
+        "text": {
+          "headline": "FPCA + LFP = ICFP",
+            "text": "<p>The Functional Programming Languages and Computer Architecture (FPCA) conference series ran 1981-1995. There was also a dedicated workshop in 1986, \"Graph Reduction\" in Santa Fé, New Mexico, USA. In 1996, FPCA merged with Lisp and Functional Programming (LFP) to become the International Conference on Functional Programming (ICFP), which remains a premier functional programming conference today.<br>In the last decade, papers accepted to ICFP predominately focus on formalised language design and type theory, rather than engineered hardware systems.<br><br>The end of FPCA and LFP marked the end of an era for functional language hardware in the 1980s. Researchers would later reflect that most functional hardware efforts led to dead ends.</p>"
+        }
+        },
+        {
+        "start_date": {
+                "year": "2007"
+        },
+        "text": {
+            "headline": "Retrospective",
+            "text": "<p>In their History of Programming Languages (HOPL) 2007 paper, Paul Hudak, John Hughes, Simon Peyton Jones and Phil Wadler reflected on the excitement in the 1980s about functional architectures.</p><section class=\"component\"><blockquote class=\"callout quote EN\">Much (but not all) of this architecturally oriented work turned out to be a dead end, when it was later discovered that good compilers for stock architecture could outperform specialised architecture. But at the time it was all radical and exciting.<cite> Hudak et al.</cite></blockquote></section>"
+        }
+        },
+      {
+        "start_date": {
+          "year": "2009"
+        },
+        "text": {
+          "headline": "2nd generation"
+        }
+      },
+        {
+            "media": {
+                "url": "/images/fp-history/fpga-growth.png",
+                "caption": "1988 to 2011 saw exponential growth in FPGA hardware resources",
+                "credit": "Three Ages of FPGAs (<a href=\"https://doi.org/10.1109/JPROC.2015.2392104\">IEEE, March 2015</a>)"
+        },
+        "start_date": {
+                "year": "2009"
+        },
+            "text": {
+                "headline": "FPGAs"
+            }
+        },
+        {
+        "start_date": {
+                "year": "2009"
+        },
+            "text": {
+                "headline": "Reconfigurability spectrum",
+                "text": "<p>FPGAs offer a spectrum of possible architectures. At one extreme are <i>general purpose</i> CPUs, which most compilers target. The other extreme was application specific circuits that do one task extremely efficiently, but nothing else. These circuits can expressed with hardware description languages (even functional ones like <a href=\"https://doi.org/10.1109/DSD.2010.21\">Clash</a> and <a href=\"https://doi.org/10.1145/291251.289440\">Lava</a>), or can be generated by <a href=\"https://doi.org/10.1145/3315454.3329957\">functional language compilers</a>. These circuits can be reconfigured for FPGAs, or synthesised once to ASICs with the circuit drawn into silicon.<img src=\"/images/fp-history/modern-spectrum.svg\"/>There is, however, a spectrum. Recent architectures shrink 1980s functional architecture ideas onto a single chip - PilGRIM (ASIC) and Reduceron (FPGA). Another recent approach exploits reconfigurability properties of FPGAs, compiling functional OCaml code to a softcore processor alongside per-function generated circuits, all in one FPGA.</p>"
+            }
+        },
+        {
+        "start_date": {
+                "year": "2009"
+        },
+        "text": {
+          "headline": "Functional languages in a chip",
+            "text": "<p>As the adoption of functional langauges grew, in 2009 the primary developer of the GHC runtime system asked:</p><section class=\"component\"><blockquote class=\"callout quote EN\">I wonder how popular Haskell needs to become for Intel to optimise their processors for my runtime, rather than the other way around.<cite> Simon Marlow.</cite></blockquote></section><p>Researchers at the University of Twente were investigating this around the same time with their PilGRIM processor:</p><section class=\"component\"><blockquote class=\"callout quote EN\">Processor designs specialized for functional languages received very little attention in the past 20 years. The potential for exploiting more parallelism and the developments in hardware technology, ask for renewed investigation of this topic.<cite> Arjan Boeijink et al., <a href=\"https://doi.org/10.1007/978-3-642-24276-2_4\">IFL 2010</a>.</cite></blockquote></section>"
+        }
+        },
+        {
+            "start_date": {
+                "month": "09",
+                "year": "2010"
+        },
+        "text": {
+            "headline": "Removing the CPU shackles",
+            "text": "<p>Matthew Naylor and Colin Runciman developed the Reduceron graph reduction core. It used <i>pure</i> reduction, rather than <i>programmed</i> reduction used by the G-Machine and STG in GHC. They explain why:<section class=\"component\"><blockquote class=\"callout quote EN\">In Peyton Jones (1987), template instantiation was presented as a 'simple' first step towards a more sophisticated approach to graph reduction based on the G-machine.  So why was the Reduceron based on template instantiation and not the G-machine? The G-machine approach aims to generate good code for conventional hardware, exploiting its strengths and avoiding its weaknesses. We base the Reduceron on template instantiation precisely because it does not make assumptions about the target hardware. The G-machine executes a sequential stream of fine-grained instructions, many of which could in fact be executed in parallel. The FPGA negates the assumption that such a sequential stream of instructions was necessary to avoid interpretive overhead.<cite> Naylor et al. <a href=\"https://doi.org/10.1017/S0956796812000214\">JFP 2012</a>.</cite></blockquote></section>"
+        }
+        },
+        {
+            "start_date": {
+                "month": "09",
+                "year": "2010"
+        },
+        "text": {
+            "headline": "Reduceron",
+            "text": "<p><a href=\"https://doi.org/10.1145/1863543.1863556\">Reduceron</a> was a processor developed with around 2,000 lines of <a href=\"https://www.cs.york.ac.uk/fp/reduceron/memos/Memo23.txt\">York Lava</a>. It's key feature was the ability to perform reduction in <b>a single cycle</b>, because all the required memory accesses were done in parallel. It performs <i>dynamic</i> program analysis at runtime to enable two performance enhancing optimisations, (1) update avoidance (not writing results back to the heap) and (2) speculative evaluation of primitive redexes (evaluating primitive redexes during function body instantiation).</p><section class=\"component\"><blockquote class=\"callout quote EN\">Within a few years, just as plug-in GPU cards are already used for high-performance graphics, we would like to see FPU cards for high-performance applications of functional languages. We hope our work on the Reduceron makes a small advance in that direction.<cite> Naylor et al. <a href=\"https://doi.org/10.1017/S0956796812000214\">JFP 2012</a>.</cite></blockquote></section><p><br><a href=\"https://doi.org/10.1017/S0956796812000214\">https://doi.org/10.1017/S0956796812000214</a></p>"
+        }
+        },
+        {
+        "media": {
+            "url": "/images/fp-history/pilgrim-2010.png",
+            "caption": "PilGRIM Architecture",
+            "credit": "Springer"
+        },
+            "start_date": {
+                "month": "09",
+                "year": "2010"
+        },
+        "text": {
+            "headline": "PilGRIM",
+            "text": "<p>A processor for lazy functional languages with a high-level graph reduction instruction set. It shared principles of Augustsson's BWM and Reduceron by \"exploiting parallelism in data movements by reading multiple values in parallel from the stack and rearranging them through a large crossbar\". It used modern processor ideas, (1) a pipelined design for parallelism and high clock frequencies, (2) a memory hierarchy with L1 and L2 cache, and DDR-memory. Its frontend language was <a href=\"https://doi.org/10.1007/3-540-63237-9_19\">GRIN</a> after translation from GHC Core, i.e. from Haskell. A PilGRIM clock frequency of 231-728MHz was required to match GHC performance on an Intel i5 CPU.<br><a href=\"https://doi.org/10.1007/978-3-642-24276-2_4\">https://doi.org/10.1007/978-3-642-24276-2_4</a></p>"
+        }
+        },
+      {
+        "start_date": {
+          "year": "2023"
+        },
+        "text": {
+          "headline": "3rd generation"
+        }
+      },
+        {
+            "start_date": {
+                "month": "01",
+                "year": "2023"
+        },
+        "text": {
+            "headline": "A soft core with accelerators",
+            "text": "<p>Researchers in France took a hybrid approach for accelerating OCaml on FPGAs. They implemented OCaml's entire virtual machine as a softcore processor. They also developed a compiler Macle, an ML-style language, to VHDL that translated user defined OCaml functions as hardware accelerators at the level of gates and registers. These hardware blocks can be called by OCaml running on the O2B softcore.<img src=\"/images/fp-history/o2b-macl-2023.png\"/>The motivation was to support single-source programs with both numeric and symbolic computations on one FPGA.<br><a href=\"https://doi.org/10.1007/s10766-022-00748-z\">https://doi.org/10.1007/s10766-022-00748-z</a></p>"
+        }
+        },
+        {
+            "start_date": {
+                "month": "02",
+                "year": "2023"
+        },
+        "text": {
+            "headline": "HAFLANG",
+            "text": "<p>Our EPSRC funded <a href=\"https://haflang.github.io\">HAFLANG project</a> at Heriot-Watt University was extending functional language architecture ideas from the last 40+ yeaars. We are targetting state-of-the-art Xilinx UltraScale+ FPGA technology. Our aim is to outperform the runtime and energy efficiency of software-based language implementations running on modern general purpose CPUs. To meet this aim, our innovation plans focus on parallel reduction, locality, minimising memory traffic and off-chip heap storage.</p>"
+        }
+        }
+    ]
+}
