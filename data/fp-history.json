@@ -557,7 +557,7 @@
         },
         "text": {
           "headline": "Memory bandwidth",
-            "text": "<p>There were still some in this research community keen to explore functional hardware innovations.<br><br>At the Glasgow Workshop on Functional Programming, in Portree on the Isle of Skye, Lenart Augustsson observed that <i>memory bandwidth</i> was a limiting performance factor for lazy languages.</p><section class=\"component\"><blockquote class=\"callout quote EN\">For lazy languages [...] instead of computing a value, a suspension of the computations has to be created, to be scrutinized later on. [...] increasing the number of memory references. [...] the speed of functional programs are then limited by the memory bandwidth.<cite> Lenart Augustsson</cite></blockquote></section>"
+            "text": "<p>There were still some in this research community keen to explore functional hardware innovations.<br><br>At the Glasgow Workshop on Functional Programming, in Portree on the Isle of Skye, Lennart Augustsson observed that <i>memory bandwidth</i> was a limiting performance factor for lazy languages.</p><section class=\"component\"><blockquote class=\"callout quote EN\">For lazy languages [...] instead of computing a value, a suspension of the computations has to be created, to be scrutinized later on. [...] increasing the number of memory references. [...] the speed of functional programs are then limited by the memory bandwidth.<cite> Lennart Augustsson</cite></blockquote></section>"
         }
       },
          {
