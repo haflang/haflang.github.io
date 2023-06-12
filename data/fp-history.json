@@ -22,13 +22,90 @@
         },
         {
         "start_date": {
+          "year": "1960"
+        },
+        "text": {
+          "headline": "Four Generations",
+            "text": "<p>This timeline covers four generations of functional architectures.<ul><li><b>1st generation</b> John McCarthy designed Lisp, a functional language that became popular for AI programming. AI performance became an issue, prompting the emergence of Lisp machines in the 1970s.</li><li><b>2nd generation</b> John Backus issued a rallying cry in 1978 for new special purpose hardware research. The community responded. The 1980s saw the dawn of graph reduction architectures.</li><li><b>3rd generation</b> Around 2010 the growth of Field Programmable Gate Array (FPGA) technology enabled researchers to shrink these architecture ideas onto a single chip.</li><li><b>4th generation</b> FPGAs today have the capacity to scale sophisticated architectures to depart from commercial CPUs.</li></ul></p>"
+        }
+        },
+       {
+        "start_date": {
+          "year": "1960"
+        },
+        "text": {
+            "headline": "1st generation: Lisp Machines"
+        }
+      },
+     {
+        "media": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/John_McCarthy_Stanford.jpg/207px-John_McCarthy_Stanford.jpg",
+            "caption": "John McCarthy",
+            "credit": "<a href=\"https://commons.wikimedia.org/wiki/File:John_McCarthy_Stanford.jpg\">CC-BY-SA-2.0</a>"
+        },
+         "start_date": {
+             "month": "04",
+          "year": "1960"
+        },
+          "text": {
+              "headline": "Lisp",
+              "text": "<p>John McCarthy at MIT created Lisp, a language to provide practical mathematical notation influenced by Church's lambda calculus. It was designed to be extensible and flexible, and became a popular AI prgramming language. The first Lisp implementation in 1958 ran on the IBM 704, introduced by IBM 4 years earler. From 1966, Lisp could run on the <a href=\"http://www.bitsavers.org/www.computer.museum.uq.edu.au/pdf/DEC-10-HMAA-D%20PDP-10%20KA10%20Central%20Processor%20Maintenance%20Manual%20Volume%20I.pdf\">DEC PDP-10 machine</a>, which featured half-word instructions and stack instructions, included in the hardware specifically with Lisp in mind.<br><a href=\"http://www-formal.stanford.edu/jmc/recursive.html\">Recursive Functions of Symbolic Expressions and Their Computation By Machine (Part I)</a></p>"
+        }
+      },
+     {
+        "media": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/DECSystem10-KI10.JPG/640px-DECSystem10-KI10.JPG",
+            "caption": "DECsystem-10",
+            "credit": "<a href=\"https://commons.wikimedia.org/wiki/File:DECSystem10-KI10.JPG\">CC-BY-SA-4.0</a>"
+        },
+         "start_date": {
+          "year": "1966"
+        },
+          "text": {
+              "headline": "PDP-10",
+              "text": "<p>Although the DEC PDP-10 machine had instruction-level support for efficient Lisp execution, Lisp's popularity as an AI language was hitting performance bottlenecks. The memory needs of AI programs hit the limits of the address space of the PDP-10, so researchers started designing dedicated AI machines that more directly matched the semantics of Lisp.</p>"
+        }
+      },
+     {
+        "media": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/LISP_machine.jpg/363px-LISP_machine.jpg",
+            "caption": "The Knight machine (the CONS machine)",
+            "credit": "<a href=\"https://commons.wikimedia.org/wiki/File:LISP_machine.jpg\">CC-BY-SA-3.0</a>"
+        },
+         "start_date": {
+          "year": "1973"
+        },
+          "text": {
+              "headline": "The Knight machine",
+              "text": "<p>Richard Greenblatt and Thomas Knight at MIT in 1973 developed a 24-bit tagged architecture machine that was <i>hardwired</i> to perform Lisp operations. It performed several runtime checks <i>in parallel</i> to code execution, including type checking (discarding the result if type checking failed) and array bounds testing. This work would evolve into the MIT Lisp Machine in 1977, a microprogrammed architecture that executed core Lisp functions directly in microcode. Many subsequent Lisp machines borrowed this idea including <a href=\"https://en.wikipedia.org/wiki/Symbolics#The_3600_series\">Symbolics 3600</a>, the <a href=\"https://www.computerhistory.org/revolution/artificial-intelligence-robotics/13/290/1252\">LMI Lambda</a>, and the <a href=\"https://en.wikipedia.org/wiki/TI_Explorer\">TI Explorer</a> (<a href=\"https://doi.org/10.1109/MC.1987.1663507\">Computer 1987</a>).</p>"
+        }
+      },
+     {
+         "start_date": {
+          "year": "1977"
+        },
+          "text": {
+              "headline": "Lisp machine classes",
+              "text": "<section class=\"component\"><blockquote class=\"callout quote EN\">Although a popular AI language, Lisp does not run efficiently on conventional systems.  Our survey identifies architectural features needed for good machine performance.<cite>  Pleszkun et al., <a href=\"https://doi.org/10.1109/MC.1987.1663507\">Computer 1987</a>.</cite></blockquote></section><p>Andrew Pleszkun (Wisconsin) and Matthew Thazhuthaveetil (Pennsylvania State) categorised Lisp machiens into three classes:<ul><li><b>Class M</b> unspecialized microcoded Lisp processors e.g. the MIT Lisp Machine.</li><li><b>Class S</b> multiprocessor systems where each processor serves a specialized function e.g. the <a href=\"http://ijcai.org/Proceedings/85-1/Papers/008.pdf\">FAIM-1 multiprocessor AI machine</a></li><li><b>Class P</b> multiprocessor systems composed of pools of identical processing elements, aiming for high performance through concurrent evaluation of different parts of a Lisp program e.g. Guzman's <a href=\"https://www.cic.ipn.mx/aguzman/papers/48%20A%20Heterarchical%20multi-microprocessor%20Lisp%20Machine.pdf\">AHR Lisp machine</a>, the <a href=\"https://doi.org/10.1145/800046.801675\">EM-3 machine</a> and the <a href=\"https://doi.ieeecomputersociety.org/10.1109/C-M.1981.220532\">Evlis machine project</a> in Japan.</li></ul></p>"
+        }
+      },
+     {
+         "start_date": {
+          "year": "1977"
+        },
+          "text": {
+              "headline": "Lisp machine challenges",
+              "text": "<p>Pleszkun and Thazhuthaveetil <a href=\"https://doi.org/10.1109/MC.1987.1663507\">highlighted</a> four Lisp machine challenges:</p><ul><li><b>Efficient function calling</b> Some were optimised for a small number of function arguments, some had instructions for argument binding, some evaluated arguments in parallel.</li><li><b>Environment maintenance</b> Simple context storage techniques used a linear linked list of name-value pairs, with updates at the head. Alternatively, look-up tables represented a trade-off between fast function calls vs fast variable lookup.</li><li><b>List representation</b> Vector-coded, with lists stored in vectors for space efficiency. Or structure-coded, where cells are tagged with their position for potentially fast list access and traversal.</li><li><b>Heap maintenance</b> Different tagging schemes and garbage collection algorithms each exhibited trade-offs between time and space efficiency, simplicity and expressivity.</li></ul><p>Each Lisp machine had its place on these design spectrums.</p>"
+        }
+      },
+      {
+        "start_date": {
           "year": "1978"
         },
         "text": {
-          "headline": "Three Generations",
-            "text": "<p>This timeline covers three generations of functional architectures.<ul><li><b>1st generation</b> John Backus issued a rallying cry in 1978 for new special purpose hardware research. The community responded. The 1980s saw the dawn of new and exciting architectures.</li><li><b>2nd generation</b> Around 2010 the growth of Field Programmable Gate Array (FPGA) technology enabled researchers to shrink these architecture ideas onto a single chip.</li><li><b>3rd generation</b> FPGAs today have the capacity to scale sophisticated architectures to depart from commercial CPUs.</li></ul></p>"
+            "headline": "2nd generation: Graph Reduction"
         }
-        },
+      },
       {
         "media": {
             "url": "/images/fp-history/backus-1978.png",
@@ -57,17 +134,9 @@
         },
         "text": {
             "headline": "Evaluation strategies",
-            "text": "<p>Early lazy evaluation techniques were developed for Hyper-Pure LISP by Peter Henderson et al. <a href=\"https://doi.org/10.1145/800168.811543\">(POPL, 1976)</a> and <a href=\"https://web.archive.org/web/20150402133901/http://www.eis.mdx.ac.uk/staffpages/dat/saslman.pdf\">SASL</a> by David Turner, based on Chris Wadsworth's 1971 PhD thesis, where \"graph reduction\" originates. Despite the promises of laziness, most functional languages in the 1980s had strict evaluation semantics, e.g. LISP, ML and Hope, partly due to the relative ease of implemention: reuse call-by-value compiler technology from imperative language implementations (<a href=\"https://doi.org/10.1145/72551.72554\">ACM Comput Surv, 1989</a>). However, the main challenge was implementing lazy evaluation <i>efficiently</i>.<br><br>As this timeline will show, the last 47 years has seen lazy and strict languages being implemented both in hardware and in software.</p>"
+            "text": "<p>Early lazy evaluation techniques were developed for Hyper-Pure LISP by Peter Henderson et al. <a href=\"https://doi.org/10.1145/800168.811543\">(POPL, 1976)</a> and <a href=\"https://web.archive.org/web/20150402133901/http://www.eis.mdx.ac.uk/staffpages/dat/saslman.pdf\">SASL</a> by David Turner, based on Chris Wadsworth's 1971 PhD thesis, where \"graph reduction\" originates. Despite the promises of laziness, most functional languages in the 1980s had strict evaluation semantics, e.g. LISP, ML and Hope, partly due to the relative ease of implemention: reuse call-by-value compiler technology from imperative language implementations (<a href=\"https://doi.org/10.1145/72551.72554\">ACM Comput Surv, 1989</a>). However, the main challenge was implementing lazy evaluation <i>efficiently</i>.<br><br>As the rest of this timeline will show, the following 47 years saw lazy and strict languages being implemented both in hardware and in software.</p>"
         }
         },
-      {
-        "start_date": {
-          "year": "1978"
-        },
-        "text": {
-          "headline": "1st generation"
-        }
-      },
       {
         "media": {
           "url": "/images/fp-history/keller-1978.png",
@@ -622,7 +691,7 @@
           "year": "2009"
         },
         "text": {
-          "headline": "2nd generation"
+            "headline": "3rd generation: FPGAs in 2010"
         }
       },
         {
@@ -696,7 +765,7 @@
           "year": "2023"
         },
         "text": {
-          "headline": "3rd generation"
+            "headline": "4th generation: FPGAs in 2023"
         }
       },
         {
