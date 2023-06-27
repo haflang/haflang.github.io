@@ -46,3 +46,6 @@ h1 {
   justify-content: space-between;
   align-items: center;
 }
+
+/* https://stackoverflow.com/a/68742704/1526266 */
+a { display: contents; }
