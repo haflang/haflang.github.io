@@ -1,11 +1,25 @@
 {
     "title": {
         "text": {
-          "headline": "Functional hardware<br/> 1936 - 2023",
+          "headline": "Functional hardware<br/> 1924 - 2023",
           "text": "<p>A history of hardware implementations of functional languages.</p>"
         }
     },
     "events": [
+        {
+        "media": {
+          "url": "/images/fp-history/haskell-curry.png",
+          "caption": "Haskell Curry"
+        },
+        "start_date": {
+          "month": "09",
+          "year": "1924"
+        },
+        "text": {
+          "headline": "Combinatory Logic",
+            "text": "<p>Moses Schönfinkel <a href=\"https://doi.org/10.1007/BF01448013\">introdced</a> combinatory logic to eliminate quantified variables in mathematical logic. At Princeton, Haskell Curry discovered Schönfinkel's work. Curry's <a href=\"https://doi.org/10.2307/2370619\">1930 article</a> explains combinators:<br><img src=\"/images/fp-history/haskell-curry-1930.png\"/><br>Theoriticians studied Curry's work in the 1960/70s in the context of computability and proof theory. David Turner would later show how combinators have a practical use for functional language implementation.</p>"
+        }
+        },
         {
         "media": {
           "url": "https://upload.wikimedia.org/wikipedia/en/a/a6/Alonzo_Church.jpg",
@@ -13,11 +27,11 @@
         },
         "start_date": {
           "month": "04",
-          "year": "1936"
+          "year": "1932"
         },
         "text": {
           "headline": "The Lambda Calculus",
-            "text": "<p>American mathematician Alonzo Church proposed a model of computation called the untyped lambda calculus in \"An Unsolvable Problem of Elementary Number Theory\", American Journal of Mathematics.<br><a href=\"https://doi.org/10.2307%2F2371045\">https://doi.org/10.2307%2F2371045</a></p>"
+            "text": "<p>American mathematician Alonzo Church introduces the lambda calculus in \"A Set of Postulates for the Foundation of Logic\", in Annals of Mathematics.<br>Modern functional languages have strong foundations in Church's seminal work from the 1930s. Programming language developers, targeting both software and hardware, have used Schönfinkel and Curry's combinatory logic to <i>implement</i> Church's lambda calculus.<br><a href=\"https://doi.org/10.2307/1968337\">https://doi.org/10.2307/1968337</a></p>"
         }
         },
         {
