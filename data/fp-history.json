@@ -68,9 +68,9 @@
       },
      {
         "media": {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/DECSystem10-KI10.JPG/640px-DECSystem10-KI10.JPG",
-            "caption": "DECsystem-10",
-            "credit": "<a href=\"https://commons.wikimedia.org/wiki/File:DECSystem10-KI10.JPG\">CC-BY-SA-4.0</a>"
+            "url": "https://archive.computerhistory.org/resources/still-image/DEC/PDP-11/102685442.03.01.lg.jpg",
+            "caption": "Ken Thompson (Unix inventor) and Dennis Ritchie (C programming language inventor) in front of a DEC PDP-11",
+            "credit": "<a href=\"https://www.computerhistory.org/collections/catalog/102685442\">Computer History</a>"
         },
          "start_date": {
           "year": "1966"
