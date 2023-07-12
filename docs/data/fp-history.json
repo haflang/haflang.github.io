@@ -248,7 +248,7 @@
         },
         "text": {
           "headline": "Executing functional programs on a virtual tree of processors",
-            "text": "<p>Warren Burton and Ronan Sleep mapped Turner's SASL language to their Zero Assignment Parallel Processor (ZAPP) at the univerity of East Anglia. They presented a simple concurrency model for executing <q>process trees</q>. Their FPCA 1981 paper: <section class=\"component\"><blockquote class=\"callout quote EN\">Many potential users say 'Applicative languages are great to program in - they really speed up software development. But I have to reprogram in FORTRAN to get a speed I can use.'. We aim to considerably reduce the force of this argument by explofting the natural parallelism in an applicative language.<cite>  Burton et al., FPCA 1981.</cite></blockquote></section><a href=\"https://doi.org/10.1145/800223.806778\">https://doi.org/10.1145/800223.806778</a></p>"
+            "text": "<p>Warren Burton and Ronan Sleep mapped Turner's SASL language to their Zero Assignment Parallel Processor (ZAPP) at the univerity of East Anglia. They presented a simple concurrency model for executing <q>process trees</q>. Their FPCA 1981 paper: <section class=\"component\"><blockquote class=\"callout quote EN\">Many potential users say 'Applicative languages are great to program in - they really speed up software development. But I have to reprogram in FORTRAN to get a speed I can use.'. We aim to considerably reduce the force of this argument by exploiting the natural parallelism in an applicative language.<cite>  Burton et al., FPCA 1981.</cite></blockquote></section><a href=\"https://doi.org/10.1145/800223.806778\">https://doi.org/10.1145/800223.806778</a></p>"
         }
       },
         {
