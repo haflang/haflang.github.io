@@ -82,9 +82,9 @@
       },
      {
         "media": {
-            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/LISP_machine.jpg/363px-LISP_machine.jpg",
-            "caption": "The Knight machine (the CONS machine)",
-            "credit": "<a href=\"https://commons.wikimedia.org/wiki/File:LISP_machine.jpg\">CC-BY-SA-3.0</a>"
+            "url": "https://www.chessprogramming.org/images/0/07/2-4.Greenblatt-Richard_Knight.1978.L02645385.MIT.lg.jpg",
+            "caption": "Tom Knight (left) and Richard Greenblatt (right) with the CADR LISP Machine at MIT",
+            "credit": "<a href=\"https://www.computerhistory.org/chess/stl-431614f64ea3e/\">Computer History</a>"
         },
          "start_date": {
           "year": "1973"
