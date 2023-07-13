@@ -799,7 +799,7 @@
         },
         "text": {
             "headline": "HAFLANG",
-            "text": "<p>Our EPSRC funded <a href=\"https://haflang.github.io\">HAFLANG project</a> at Heriot-Watt University is extending functional language architecture ideas from the last 40+ yeaars. We are targetting state-of-the-art Xilinx UltraScale+ FPGA technology. Our aim is to outperform the runtime and energy efficiency of software-based language implementations running on modern general purpose CPUs. To meet this aim, our innovation plans focus on parallel reduction, locality, minimising memory traffic and off-chip heap storage.</p>"
+            "text": "<p>Our EPSRC funded <a href=\"https://haflang.github.io\">HAFLANG project</a> at Heriot-Watt University is extending functional language architecture ideas from the last 40+ years. We are targetting state-of-the-art Xilinx UltraScale+ FPGA technology. Our aim is to outperform the runtime and energy efficiency of software-based language implementations running on modern general purpose CPUs. To meet this aim, our innovation plans focus on parallel reduction, locality, minimising memory traffic and off-chip heap storage.</p>"
         }
         }
     ]
