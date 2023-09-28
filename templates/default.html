@@ -62,9 +62,17 @@
                         $endfor$
                     </ul>
                   </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown11" data-bs-toggle="dropdown" aria-expanded="false">Workshops</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown11">
+                        $for(workshops)$
+                        <li><a class="dropdown-item" href="$url$">$title$</a></li>
+                        $endfor$
+                    </ul>
+                  </li>
                   <li class="nav-item">
                       <a class="nav-link"  aria-current="page" href="/history.html">History</a>
-                    </li>
+                  </li>
                 </ul>
               </div>
             </div>

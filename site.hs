@@ -52,6 +52,15 @@ main = hakyllWith siteConfig $ do
         >>= loadAndApplyTemplate "templates/default.html" ctxt'
         >>= relativizeUrls
 
+  match "workshops/*" $ do
+    route idRoute
+    compile $ do
+      ctxt <- getBaseCtxt
+      getResourceBody
+        >>= applyAsTemplate ctxt
+        >>= loadAndApplyTemplate "templates/default.html" ctxt
+        >>= relativizeUrls
+
   match (fromList ["index.html", "people.html", "about.html", "history.html"]) $ do
     route idRoute
     compile $ do
@@ -72,7 +81,11 @@ getBaseCtxt :: Compiler (Context String)
 getBaseCtxt = do
   posts <- getMatches "posts/*"
   let postIds = [Item id "" | id <- posts]
-  return $ listField "posts" postCtx (return postIds) `mappend` defaultContext
+  workshops <- getMatches "workshops/*"
+  let workshopIds = [Item id "" | id <- workshops]
+  return $ listField "posts" postCtx (return postIds) `mappend`
+           listField "workshops" defaultContext (return workshopIds) `mappend`
+           defaultContext
 
 pandocCompiler' :: Compiler (Item String)
 pandocCompiler' =
