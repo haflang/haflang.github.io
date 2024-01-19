@@ -187,6 +187,185 @@
 
   <div class="row justify-content-center"><hr class="col-md-12 col-lg-10 mb-5 ma-5"></div>
 
+<div class="row g-5 justify-content-center">
+    <div class="col-md-12 col-lg-10">
+    <h2>Conference Programme</h2>
+
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb-0">
+                <button class="btn btn-wide" data-toggle="collapse" data-target="#talk1">
+                    <b>Christiaan Baaij</b> </br>
+                    <i>Reflections on compiling Haskell to Hardware</i>
+                </button>
+            </h2>
+        </div>
+        <div id="talk1" class="collapse show">
+            <div class="card-body">
+                <p>
+                    Clash is a functional hardware description language, but it’s also just a
+                    combination of a regular Haskell library with type and function definitions for
+                    circuit design and a compiler that translates Haskell programs to digital
+                    circuits.
+                </p>
+
+                <p>
+                There are many ways a Haskell program can be interpreted as a circuit
+                description, where the Clash project picks a particular one. Even more broadly,
+                the Clash project is one of many approaches to "circuit design using a
+                functional/declarative language". This talk will explore some of those options,
+                how the Clash approach compares to them: what has worked well for Clash and in
+                what aspects other options will most likely always be better.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-header">
+            <h2 class="mb-0">
+                <button class="btn btn-wide" data-toggle="collapse" data-target="#talk2">
+                    <b>Carl-Johan Seger</b> </br>
+                    <i>TBC</i>
+                </button>
+            </h2>
+        </div>
+        <div id="talk2" class="collapse">
+            <div class="card-body">
+                <p>
+                    TBC
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-header">
+            <h2 class="mb-0">
+                <button class="btn btn-wide" data-toggle="collapse" data-target="#talk3">
+                    <b>Sam Ainsworth</b> </br>
+          <i>Prefetching in Functional Languages: a Hardware-Software Retrospective</i>
+                </button>
+            </h2>
+        </div>
+        <div id="talk3" class="collapse">
+            <div class="card-body">
+                <p>
+                    This talk is a look back on work published at ISMM 2020, on
+    how the language features and data structures typical in OCaml conspire to
+    have interesting memory-system performance effects that result in different
+    optimisation strategies in both hardware and software from imperative
+    languages. I will discuss the unique design patterns for software
+    prefetching that can be used to alleviate these, the reasons for different
+    parts of the modern microarchitecture stack reacting unusually to the code
+    and with varying levels of success, the factors that matter for other
+    languages, and ways forward for both next-generation hardware and software.
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-header">
+            <h2 class="mb-0">
+                <button class="btn btn-wide" data-toggle="collapse" data-target="#talk4">
+                    <b>Craig Ramsay</b> </br>
+          <i>Heron: A graph reduction processor with concurrent garbage collection</i>
+                </button>
+            </h2>
+        </div>
+        <div id="talk4" class="collapse">
+            <div class="card-body">
+                <p>
+                    Implementations of general purpose functional languages overwhelmingly target
+                    CPUs. This choice is despite the semantic gap between their high-level execution
+                    model and CPU assembly. Meanwhile, advances in FPGAs continue to improve the
+                    density of <i>custom</i> hardware resources offered to wide audiences. We consider
+                    this a call to reinvestigate <i>hardware</i> implementations of functional languages.
+                    We present “Heron”, a special purpose processor core for pure, non-strict
+                    functional languages. This talk recaps Heron's reduction core, compares its
+                    performance to a variety of stock CPU implementations, and presents work
+                    towards its concurrent hardware garbage collector.
+                </p>
+                <p>(Subject to change)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-header">
+            <h2 class="mb-0">
+                <button class="btn btn-wide" data-toggle="collapse" data-target="#talk5">
+                    <b>Julian Kemmerer</b> </br>
+                    <i>PipelineC: Easier hardware description between RTL and HLS</i>
+                </button>
+            </h2>
+        </div>
+        <div id="talk5" class="collapse">
+            <div class="card-body">
+                <p>
+                    This talk presents PipelineC, an open source project which sits between
+                    traditional register transfer language (RTL) and high-level synthesis (HLS).
+                    PipelineC aims to make hardware design accessible to domain specialists with
+                    basic programming skills by using C-like syntax. Major features include: timing
+                    feedback from synthesis and place and route (PnR) tools that drives automatic
+                    pipelining of combinatorial logic, as well as derived finite state machines and
+                    global point to point wires/clock crossings for composing complex designs
+                    outside of feedforward dataflow function call syntax
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-header">
+            <h2 class="mb-0">
+                <button class="btn btn-wide" data-toggle="collapse" data-target="#talk6">
+                    <b>Jon Balkind</b> </br>
+                    <i>From Open Hardware Design to Silicon: Lessons From Some Big (Academic) Chips</i>
+                </button>
+            </h2>
+        </div>
+        <div id="talk6" class="collapse">
+            <div class="card-body">
+                <p>
+                    Building your first silicon prototype can be a significant effort. There is
+                    always more work that you could do before your tapeout deadline and so balancing
+                    risk with opportunity is key. By exploiting open-source infrastructure (in our
+                    team's case, OpenPiton) and making long term decisions, you can build chips with
+                    increasing capabilities. In this talk I will share our team's experience on the
+                    design side (rather than backend) that can make tapeouts more achievable.
+                </p>
+                <p>(Subject to change)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-header">
+            <h2 class="mb-0">
+                <button class="btn btn-wide disabled" data-toggle="collapse" data-target="#talk7">
+                    <i>More to be confirmed shortly...</i>
+                </button>
+            </h2>
+        </div>
+        <div id="talk7" class="collapse">
+            <div class="card-body">
+                <p>
+                    More slots to be confirmed shortly
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add more talks as needed -->
+
+</div>
+</div>
+
+  <div class="row justify-content-center"><hr class="col-md-12 col-lg-10 mb-5 ma-5"></div>
+
   <div class="row g-4 justify-content-center">
       <div class="col-md-5 col-lg-4">
           <h2>Key Dates</h2>
@@ -244,6 +423,10 @@
 
   </div>
 
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <style>
  .carousel {
      border-radius: 20px 20px 20px 20px;
@@ -261,6 +444,9 @@
  }
  h1, h3 {
      text-align: center;
+ }
+ .btn-wide {
+     width: 100%;
  }
 </style>
 
