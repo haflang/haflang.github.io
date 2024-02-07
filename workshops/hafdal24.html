@@ -53,6 +53,422 @@ title: HAFDAL Workshop '24
 
   <div class="row justify-content-center"><hr class="col-md-12 col-lg-10 mb-5 ma-5"></div>
 
+<div class="row g-5 justify-content-center">
+    <div class="col-md-12 col-lg-10">
+    <h2>Workshop Programme</h2>
+
+    <!-- https://getbootstrap.com/docs/5.0/components/accordion/ -->
+    <!-- https://stackoverflow.com/questions/65913347/bootstrap-5-accordion-button-center-align-and-line-break -->
+    
+<div class="accordion" id="talks">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#talk1" aria-expanded="false" aria-controls="talk1">
+        <span class="d-block w-100 text-center">
+            <b>Christiaan Baaij (QBayLogic)</b>
+            <br>
+            <i>Reflections on compiling Haskell to Hardware</i>
+        </span>
+      </button>
+    </h2>
+    <div id="talk1" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#talks">
+      <div class="accordion-body">
+                <p>
+                    Clash is a functional hardware description language, but it’s also just a
+                    combination of a regular Haskell library with type and function definitions for
+                    circuit design and a compiler that translates Haskell programs to digital
+                    circuits.
+                </p>
+
+                <p>
+                There are many ways a Haskell program can be interpreted as a circuit
+                description, where the Clash project picks a particular one. Even more broadly,
+                the Clash project is one of many approaches to "circuit design using a
+                functional/declarative language". This talk will explore some of those options,
+                how the Clash approach compares to them: what has worked well for Clash and in
+                what aspects other options will most likely always be better.
+                </p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#talk2" aria-expanded="false" aria-controls="talk2">
+        <span class="d-block w-100 text-center">
+            <b>Carl-Johan Seger (Chalmers University of Technology)</b>
+            <br>
+            <i>The Cephalopode Project: Creating a low-power IoT device aimed at functional language execution</i>
+        </span>
+      </button>
+    </h2>
+    <div id="talk2" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#talks">
+      <div class="accordion-body">
+                <p>
+                    A major challenge with the practical deployment of Internet-of-Things (IoTs) is how to develop the high-quality code needed in order to produce robust and secure IoT devices.  In other domains, high-level programming languages have shown to be efficient vehicles towards this.  However, the very limited compute power provided by IoT devices have made it difficult to apply the same approach to IoT devices.  The Cephalopode processor is an attempt at implementing a low power hardware device directly aimed at running a high-level functional language.  By integrating many resource-heavy tasks like garbage collection, arbitrary precision arithmetic, process management and scheduling, etc.  into dedicated hardware, the Cephalopode processor explore the hypothesis that high-level functional languages can be used even for low-power IoT devices.
+                </p><p>
+                    The talk will provide an overview of the Cephalopode project, including stops at the input language, the compiler, the processor architecture, the tool environment we created to design the processor, as well as some early results on the practicality of the approach.
+                </p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#talk3" aria-expanded="false" aria-controls="talk3">
+        <span class="d-block w-100 text-center">
+            <b>Sam Ainsworth (Research Consultant and University of Edinburgh, remote)</b>
+            <br>
+            <i>Prefetching in Functional Languages: a Hardware-Software Retrospective</i>
+        </span>
+      </button>
+    </h2>
+    <div id="talk3" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#talks">
+      <div class="accordion-body">
+                <p>
+                    This talk is a look back on work published at ISMM 2020, on
+    how the language features and data structures typical in OCaml conspire to
+    have interesting memory-system performance effects that result in different
+    optimisation strategies in both hardware and software from imperative
+    languages. I will discuss the unique design patterns for software
+    prefetching that can be used to alleviate these, the reasons for different
+    parts of the modern microarchitecture stack reacting unusually to the code
+    and with varying levels of success, the factors that matter for other
+    languages, and ways forward for both next-generation hardware and software.
+                </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#talk4" aria-expanded="false" aria-controls="talk4">
+        <span class="d-block w-100 text-center">
+            <b>Craig Ramsay (Heriot-Watt University)</b>
+            <br>
+            <i>Heron: A graph reduction processor with concurrent garbage collection</i>
+        </span>
+      </button>
+    </h2>
+    <div id="talk4" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#talks">
+      <div class="accordion-body">
+                <p>
+                    Implementations of general purpose functional languages overwhelmingly target
+                    CPUs. This choice is despite the semantic gap between their high-level execution
+                    model and CPU assembly. Meanwhile, advances in FPGAs continue to improve the
+                    density of <i>custom</i> hardware resources offered to wide audiences. We consider
+                    this a call to reinvestigate <i>hardware</i> implementations of functional languages.
+                    We present “Heron”, a special purpose processor core for pure, non-strict
+                    functional languages. This talk recaps Heron's reduction core, compares its
+                    performance to a variety of stock CPU implementations, and presents work
+                    towards its concurrent hardware garbage collector.
+                </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#talk5" aria-expanded="false" aria-controls="talk5">
+        <span class="d-block w-100 text-center">
+            <b>Julian Kemmerer (Deepwave Digital, remote)</b>
+            <br>
+            <i>PipelineC: Easier hardware description between RTL and HLS</i>
+        </span>
+      </button>
+    </h2>
+    <div id="talk5" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#talks">
+      <div class="accordion-body">
+                <p>
+                    This talk presents PipelineC, an open source project which sits between
+                    traditional register transfer language (RTL) and high-level synthesis (HLS).
+                    PipelineC aims to make hardware design accessible to domain specialists with
+                    basic programming skills by using C-like syntax. Major features include: timing
+                    feedback from synthesis and place and route (PnR) tools that drives automatic
+                    pipelining of combinatorial logic, as well as derived finite state machines and
+                    global point to point wires/clock crossings for composing complex designs
+                    outside of feedforward dataflow function call syntax.
+                </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#talk6" aria-expanded="false" aria-controls="talk6">
+        <span class="d-block w-100 text-center">
+            <b>Jon Balkind (UC Santa Barbara, remote)</b>
+            <br>
+            <i>From Open Hardware Design to Silicon: Lessons From Some Big (Academic) Chips</i>
+        </span>
+      </button>
+    </h2>
+    <div id="talk6" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#talks">
+      <div class="accordion-body">
+                <p>
+                    Building your first silicon prototype can be a significant effort. There is
+                    always more work that you could do before your tapeout deadline and so balancing
+                    risk with opportunity is key. By exploiting open-source infrastructure (in our
+                    team's case, OpenPiton) and making long term decisions, you can build chips with
+                    increasing capabilities. In this talk I will share our team's experience on the
+                    design side (rather than backend) that can make tapeouts more achievable.
+                </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#talk7" aria-expanded="false" aria-controls="talk7">
+        <span class="d-block w-100 text-center">
+            <b>Craig Roy (Quantinuum)</b>
+            <br>
+            <i>BRAT: Compositional programming for hybrid quantum algorithms</i>
+        </span>
+      </button>
+    </h2>
+    <div id="talk7" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#talks">
+      <div class="accordion-body">
+		    <p>
+		    When running quantum circuits on a quantum computer, we're dealing with
+		    a world with very different capabilities to the classical one in which
+		    they were generated. For example, the famous "No-cloning Theorem" means
+		    that arbitrary values cannot be copied. If these differences aren't
+		    respected, it can lead to very costly runtime errors.</p>
+		    <p>
+		    In this talk, I will present BRAT: a functional programming language for
+		    writing programs which interleave quantum and classical execution, and
+		    quantum resource limitations are enforced by the type system. Moreover,
+		    programs in the two worlds are united by a compositional syntax, thanks
+		    to their affinities for monoidal structure.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#talk8" aria-expanded="false" aria-controls="talk8">
+        <span class="d-block w-100 text-center">
+            <b>Shane Fleming (AMD)</b>
+            <br>
+            <i>TBC</i>
+        </span>
+      </button>
+    </h2>
+    <div id="talk8" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#talks">
+      <div class="accordion-body">
+      </div>
+    </div>
+  </div>
+  
+</div>
+    
+<!--     <div class="card mt-3"> -->
+<!--       <div class="card-header"> -->
+<!--             <h2 class="mb-0"> -->
+<!--                 <button class="btn btn-wide" data-toggle="collapse" data-target="#talk1"> -->
+<!--                     <b>Christiaan Baaij</b> </br> -->
+<!-- <i>Reflections on compiling Haskell to Hardware</i> -->
+<!--                 </button> -->
+<!--             </h2> -->
+<!--         </div> -->
+<!--         <div id="talk1" class="collapse"> -->
+<!--             <div class="card-body"> -->
+<!--                 <p> -->
+<!--                     Clash is a functional hardware description language, but it’s also just a -->
+<!--                     combination of a regular Haskell library with type and function definitions for -->
+<!--                     circuit design and a compiler that translates Haskell programs to digital -->
+<!--                     circuits. -->
+<!--                 </p> -->
+
+<!--                 <p> -->
+<!--                 There are many ways a Haskell program can be interpreted as a circuit -->
+<!--                 description, where the Clash project picks a particular one. Even more broadly, -->
+<!--                 the Clash project is one of many approaches to "circuit design using a -->
+<!--                 functional/declarative language". This talk will explore some of those options, -->
+<!--                 how the Clash approach compares to them: what has worked well for Clash and in -->
+<!--                 what aspects other options will most likely always be better. -->
+<!--                 </p> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </div> -->
+
+<!--     <div class="card mt-3"> -->
+<!--         <div class="card-header"> -->
+<!--             <h2 class="mb-0"> -->
+<!--                 <button class="btn btn-wide" data-toggle="collapse" data-target="#talk2"> -->
+<!--                     <b>Carl-Johan Seger</b> </br> -->
+<!--                     <i>The Cephalopode Project: Creating a low-power IoT device aimed at functional language execution</i> -->
+<!--                 </button> -->
+<!--             </h2> -->
+<!--         </div> -->
+<!--         <div id="talk2" class="collapse show"> -->
+<!--             <div class="card-body"> -->
+<!--                 <p> -->
+<!--                     A major challenge with the practical deployment of Internet-of-Things (IoTs) is how to develop the high-quality code needed in order to produce robust and secure IoT devices.  In other domains, high-level programming languages have shown to be efficient vehicles towards this.  However, the very limited compute power provided by IoT devices have made it difficult to apply the same approach to IoT devices.  The Cephalopode processor is an attempt at implementing a low power hardware device directly aimed at running a high-level functional language.  By integrating many resource-heavy tasks like garbage collection, arbitrary precision arithmetic, process management and scheduling, etc.  into dedicated hardware, the Cephalopode processor explore the hypothesis that high-level functional languages can be used even for low-power IoT devices. -->
+<!--                 </p><p> -->
+<!--                     The talk will provide an overview of the Cephalopode project, including stops at the input language, the compiler, the processor architecture, the tool environment we created to design the processor, as well as some early results on the practicality of the approach. -->
+<!--                 </p> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </div> -->
+
+<!--     <div class="card mt-3"> -->
+<!--         <div class="card-header"> -->
+<!--             <h2 class="mb-0"> -->
+<!--                 <button class="btn btn-wide" data-toggle="collapse" data-target="#talk3"> -->
+<!--                     <b>Sam Ainsworth</b> </br> -->
+<!--           <i>Prefetching in Functional Languages: a Hardware-Software Retrospective</i> -->
+<!--                 </button> -->
+<!--             </h2> -->
+<!--         </div> -->
+<!--         <div id="talk3" class="collapse show"> -->
+<!--             <div class="card-body"> -->
+<!--                 <p> -->
+<!--                     This talk is a look back on work published at ISMM 2020, on -->
+<!--     how the language features and data structures typical in OCaml conspire to -->
+<!--     have interesting memory-system performance effects that result in different -->
+<!--     optimisation strategies in both hardware and software from imperative -->
+<!--     languages. I will discuss the unique design patterns for software -->
+<!--     prefetching that can be used to alleviate these, the reasons for different -->
+<!--     parts of the modern microarchitecture stack reacting unusually to the code -->
+<!--     and with varying levels of success, the factors that matter for other -->
+<!--     languages, and ways forward for both next-generation hardware and software. -->
+
+<!--                 </p> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </div> -->
+
+<!--     <div class="card mt-3"> -->
+<!--         <div class="card-header"> -->
+<!--             <h2 class="mb-0"> -->
+<!--                 <button class="btn btn-wide" data-toggle="collapse" data-target="#talk4"> -->
+<!--                     <b>Craig Ramsay</b> </br> -->
+<!--           <i>Heron: A graph reduction processor with concurrent garbage collection</i> -->
+<!--                 </button> -->
+<!--             </h2> -->
+<!--         </div> -->
+<!--         <div id="talk4" class="collapse show"> -->
+<!--             <div class="card-body"> -->
+<!--                 <p> -->
+<!--                     Implementations of general purpose functional languages overwhelmingly target -->
+<!--                     CPUs. This choice is despite the semantic gap between their high-level execution -->
+<!--                     model and CPU assembly. Meanwhile, advances in FPGAs continue to improve the -->
+<!--                     density of <i>custom</i> hardware resources offered to wide audiences. We consider -->
+<!--                     this a call to reinvestigate <i>hardware</i> implementations of functional languages. -->
+<!--                     We present “Heron”, a special purpose processor core for pure, non-strict -->
+<!--                     functional languages. This talk recaps Heron's reduction core, compares its -->
+<!--                     performance to a variety of stock CPU implementations, and presents work -->
+<!--                     towards its concurrent hardware garbage collector. -->
+<!--                 </p> -->
+<!--                 <\!-- <p>(Subject to change)</p> -\-> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </div> -->
+
+<!--     <div class="card mt-3"> -->
+<!--         <div class="card-header"> -->
+<!--             <h2 class="mb-0"> -->
+<!--                 <button class="btn btn-wide" data-toggle="collapse" data-target="#talk5"> -->
+<!--                     <b>Julian Kemmerer</b> </br> -->
+<!--                     <i>PipelineC: Easier hardware description between RTL and HLS</i> -->
+<!--                 </button> -->
+<!--             </h2> -->
+<!--         </div> -->
+<!--         <div id="talk5" class="collapse show"> -->
+<!--             <div class="card-body"> -->
+<!--                 <p> -->
+<!--                     This talk presents PipelineC, an open source project which sits between -->
+<!--                     traditional register transfer language (RTL) and high-level synthesis (HLS). -->
+<!--                     PipelineC aims to make hardware design accessible to domain specialists with -->
+<!--                     basic programming skills by using C-like syntax. Major features include: timing -->
+<!--                     feedback from synthesis and place and route (PnR) tools that drives automatic -->
+<!--                     pipelining of combinatorial logic, as well as derived finite state machines and -->
+<!--                     global point to point wires/clock crossings for composing complex designs -->
+<!--                     outside of feedforward dataflow function call syntax -->
+<!--                 </p> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </div> -->
+
+<!--     <div class="card mt-3"> -->
+<!--         <div class="card-header"> -->
+<!--             <h2 class="mb-0"> -->
+<!--                 <button class="btn btn-wide" data-toggle="collapse" data-target="#talk6"> -->
+<!--                     <b>Jon Balkind</b> </br> -->
+<!--                     <i>From Open Hardware Design to Silicon: Lessons From Some Big (Academic) Chips</i> -->
+<!--                 </button> -->
+<!--             </h2> -->
+<!--         </div> -->
+<!--         <div id="talk6" class="collapse show"> -->
+<!--             <div class="card-body"> -->
+<!--                 <p> -->
+<!--                     Building your first silicon prototype can be a significant effort. There is -->
+<!--                     always more work that you could do before your tapeout deadline and so balancing -->
+<!--                     risk with opportunity is key. By exploiting open-source infrastructure (in our -->
+<!--                     team's case, OpenPiton) and making long term decisions, you can build chips with -->
+<!--                     increasing capabilities. In this talk I will share our team's experience on the -->
+<!--                     design side (rather than backend) that can make tapeouts more achievable. -->
+<!--                 </p> -->
+<!--                 <\!-- <p>(Subject to change)</p> -\-> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </div> -->
+
+<!--     <div class="card mt-3"> -->
+<!--         <div class="card-header"> -->
+<!--             <h2 class="mb-0"> -->
+<!--                 <button class="btn btn-wide" data-toggle="collapse" data-target="#talk7"> -->
+<!--                     <b>Craig Roy</b> </br> -->
+<!--                     <i>BRAT: Compositional programming for hybrid quantum algorithms</i> -->
+<!--                 </button> -->
+<!--             </h2> -->
+<!--         </div> -->
+<!--         <div id="talk7" class="collapse show"> -->
+<!--             <div class="card-body"> -->
+<!-- 		    <p> -->
+<!-- 		    When running quantum circuits on a quantum computer, we're dealing with -->
+<!-- 		    a world with very different capabilities to the classical one in which -->
+<!-- 		    they were generated. For example, the famous "No-cloning Theorem" means -->
+<!-- 		    that arbitrary values cannot be copied. If these differences aren't -->
+<!-- 		    respected, it can lead to very costly runtime errors.</p> -->
+<!-- 		    <p> -->
+<!-- 		    In this talk, I will present BRAT: a functional programming language for -->
+<!-- 		    writing programs which interleave quantum and classical execution, and -->
+<!-- 		    quantum resource limitations are enforced by the type system. Moreover, -->
+<!-- 		    programs in the two worlds are united by a compositional syntax, thanks -->
+<!-- 		    to their affinities for monoidal structure.</p> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </div> -->
+
+      <p><br>
+          Workshop registration includes lunch, coffee and access to <a href="https://www.hpca-conf.org/2024/program/workshops-tutorials.php">industry tutorials</a> in the morning. Registration is £150 (£120 for IEEE/ACM members), £110 for students (£90 for members). Register on the main <a href="https://hpca-conf.org/2024/">HPCA website</a>.
+      </p>
+
+      <!-- <div class="card mt-3"> -->
+    <!--     <div class="card-header"> -->
+    <!--         <h2 class="mb-0"> -->
+    <!--             <button class="btn btn-wide disabled" data-toggle="collapse" data-target="#talk8"> -->
+    <!--                 <i>More to be confirmed shortly...</i> -->
+    <!--             </button> -->
+    <!--         </h2> -->
+    <!--     </div> -->
+    <!--     <div id="talk8" class="collapse"> -->
+    <!--         <div class="card-body"> -->
+    <!--             <p> -->
+    <!--                 More slots to be confirmed shortly -->
+    <!--             </p> -->
+    <!--         </div> -->
+    <!--     </div> -->
+    <!-- </div> -->
+
+    <!-- Add more talks as needed -->
+
+</div>
+</div>
+
+  <div class="row justify-content-center"><hr class="col-md-12 col-lg-10 mb-5 ma-5"></div>
+
   <div class="row justify-content-center">
     <div class="col-md-12 col-lg-10">
       <h2>Workshop Scope</h2>
@@ -90,241 +506,30 @@ title: HAFDAL Workshop '24
         </li>
       </ul>
 
-      <p>
-          Demonstrating these themes, we are excited to announce <b>Christiaan
-          Baaij</b> (QBayLogic) and <b>Carl-Johan Seger</b> (Chalmers University) as
-          <b>invited speakers</b>. 
-      </p>
-
-      <p>
-          Workshop registration will take place on the main <a href="https://hpca-conf.org/2024/">HPCA website</a>.
-      </p>
+      <!-- <p> -->
+      <!--     Demonstrating these themes, we are excited to announce <b>Christiaan -->
+      <!--     Baaij</b> (QBayLogic) and <b>Carl-Johan Seger</b> (Chalmers University) as -->
+      <!--     <b>invited speakers</b>.  -->
+      <!-- </p> -->
     </div>
   </div>
 
   <div class="row justify-content-center"><hr class="col-md-12 col-lg-10 mb-5 ma-5"></div>
 
-<div class="row g-5 justify-content-center">
-    <div class="col-md-12 col-lg-10">
-    <h2>Workshop Programme</h2>
+  <div class="row justify-content-center">
+  <!-- <div class="row g-4 justify-content-center"> -->
+      <!-- <div class="col-md-5 col-lg-4"> -->
+      <!--     <h2>Key Dates</h2> -->
+      <!--     <ul class="icon-list"> -->
+      <!--         <li>3 March 2024: Workshop</li> -->
+      <!--         <li>20 November 2023: Submission deadline (AoE)</li> -->
+      <!--         <li>18 December 2023: Author notification</li> -->
+      <!--         <li>15 January  2024: Final manuscript due</li> -->
+      <!--         <li>3  March    2024: Workshop</li> -->
+      <!--     </ul> -->
+      <!-- </div> -->
 
-    <div class="card">
-        <div class="card-header">
-            <h2 class="mb-0">
-                <button class="btn btn-wide" data-toggle="collapse" data-target="#talk1">
-                    <b>Christiaan Baaij</b> </br>
-                    <i>Reflections on compiling Haskell to Hardware</i>
-                </button>
-            </h2>
-        </div>
-        <div id="talk1" class="collapse show">
-            <div class="card-body">
-                <p>
-                    Clash is a functional hardware description language, but it’s also just a
-                    combination of a regular Haskell library with type and function definitions for
-                    circuit design and a compiler that translates Haskell programs to digital
-                    circuits.
-                </p>
-
-                <p>
-                There are many ways a Haskell program can be interpreted as a circuit
-                description, where the Clash project picks a particular one. Even more broadly,
-                the Clash project is one of many approaches to "circuit design using a
-                functional/declarative language". This talk will explore some of those options,
-                how the Clash approach compares to them: what has worked well for Clash and in
-                what aspects other options will most likely always be better.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="card mt-3">
-        <div class="card-header">
-            <h2 class="mb-0">
-                <button class="btn btn-wide" data-toggle="collapse" data-target="#talk2">
-                    <b>Carl-Johan Seger</b> </br>
-                    <i>The Cephalopode Project: Creating a low-power IoT device aimed at functional language execution</i>
-                </button>
-            </h2>
-        </div>
-        <div id="talk2" class="collapse show">
-            <div class="card-body">
-                <p>
-                    A major challenge with the practical deployment of Internet-of-Things (IoTs) is how to develop the high-quality code needed in order to produce robust and secure IoT devices.  In other domains, high-level programming languages have shown to be efficient vehicles towards this.  However, the very limited compute power provided by IoT devices have made it difficult to apply the same approach to IoT devices.  The Cephalopode processor is an attempt at implementing a low power hardware device directly aimed at running a high-level functional language.  By integrating many resource-heavy tasks like garbage collection, arbitrary precision arithmetic, process management and scheduling, etc.  into dedicated hardware, the Cephalopode processor explore the hypothesis that high-level functional languages can be used even for low-power IoT devices.
-                </p><p>
-                    The talk will provide an overview of the Cephalopode project, including stops at the input language, the compiler, the processor architecture, the tool environment we created to design the processor, as well as some early results on the practicality of the approach.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="card mt-3">
-        <div class="card-header">
-            <h2 class="mb-0">
-                <button class="btn btn-wide" data-toggle="collapse" data-target="#talk3">
-                    <b>Sam Ainsworth</b> </br>
-          <i>Prefetching in Functional Languages: a Hardware-Software Retrospective</i>
-                </button>
-            </h2>
-        </div>
-        <div id="talk3" class="collapse show">
-            <div class="card-body">
-                <p>
-                    This talk is a look back on work published at ISMM 2020, on
-    how the language features and data structures typical in OCaml conspire to
-    have interesting memory-system performance effects that result in different
-    optimisation strategies in both hardware and software from imperative
-    languages. I will discuss the unique design patterns for software
-    prefetching that can be used to alleviate these, the reasons for different
-    parts of the modern microarchitecture stack reacting unusually to the code
-    and with varying levels of success, the factors that matter for other
-    languages, and ways forward for both next-generation hardware and software.
-
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="card mt-3">
-        <div class="card-header">
-            <h2 class="mb-0">
-                <button class="btn btn-wide" data-toggle="collapse" data-target="#talk4">
-                    <b>Craig Ramsay</b> </br>
-          <i>Heron: A graph reduction processor with concurrent garbage collection</i>
-                </button>
-            </h2>
-        </div>
-        <div id="talk4" class="collapse show">
-            <div class="card-body">
-                <p>
-                    Implementations of general purpose functional languages overwhelmingly target
-                    CPUs. This choice is despite the semantic gap between their high-level execution
-                    model and CPU assembly. Meanwhile, advances in FPGAs continue to improve the
-                    density of <i>custom</i> hardware resources offered to wide audiences. We consider
-                    this a call to reinvestigate <i>hardware</i> implementations of functional languages.
-                    We present “Heron”, a special purpose processor core for pure, non-strict
-                    functional languages. This talk recaps Heron's reduction core, compares its
-                    performance to a variety of stock CPU implementations, and presents work
-                    towards its concurrent hardware garbage collector.
-                </p>
-                <p>(Subject to change)</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="card mt-3">
-        <div class="card-header">
-            <h2 class="mb-0">
-                <button class="btn btn-wide" data-toggle="collapse" data-target="#talk5">
-                    <b>Julian Kemmerer</b> </br>
-                    <i>PipelineC: Easier hardware description between RTL and HLS</i>
-                </button>
-            </h2>
-        </div>
-        <div id="talk5" class="collapse show">
-            <div class="card-body">
-                <p>
-                    This talk presents PipelineC, an open source project which sits between
-                    traditional register transfer language (RTL) and high-level synthesis (HLS).
-                    PipelineC aims to make hardware design accessible to domain specialists with
-                    basic programming skills by using C-like syntax. Major features include: timing
-                    feedback from synthesis and place and route (PnR) tools that drives automatic
-                    pipelining of combinatorial logic, as well as derived finite state machines and
-                    global point to point wires/clock crossings for composing complex designs
-                    outside of feedforward dataflow function call syntax
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="card mt-3">
-        <div class="card-header">
-            <h2 class="mb-0">
-                <button class="btn btn-wide" data-toggle="collapse" data-target="#talk6">
-                    <b>Jon Balkind</b> </br>
-                    <i>From Open Hardware Design to Silicon: Lessons From Some Big (Academic) Chips</i>
-                </button>
-            </h2>
-        </div>
-        <div id="talk6" class="collapse show">
-            <div class="card-body">
-                <p>
-                    Building your first silicon prototype can be a significant effort. There is
-                    always more work that you could do before your tapeout deadline and so balancing
-                    risk with opportunity is key. By exploiting open-source infrastructure (in our
-                    team's case, OpenPiton) and making long term decisions, you can build chips with
-                    increasing capabilities. In this talk I will share our team's experience on the
-                    design side (rather than backend) that can make tapeouts more achievable.
-                </p>
-                <p>(Subject to change)</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="card mt-3">
-        <div class="card-header">
-            <h2 class="mb-0">
-                <button class="btn btn-wide" data-toggle="collapse" data-target="#talk7">
-                    <b>Craig Roy</b> </br>
-                    <i>BRAT: Compositional programming for hybrid quantum algorithms</i>
-                </button>
-            </h2>
-        </div>
-        <div id="talk7" class="collapse show">
-            <div class="card-body">
-		    <p>
-		    When running quantum circuits on a quantum computer, we're dealing with
-		    a world with very different capabilities to the classical one in which
-		    they were generated. For example, the famous "No-cloning Theorem" means
-		    that arbitrary values cannot be copied. If these differences aren't
-		    respected, it can lead to very costly runtime errors.</p>
-		    <p>
-		    In this talk, I will present BRAT: a functional programming language for
-		    writing programs which interleave quantum and classical execution, and
-		    quantum resource limitations are enforced by the type system. Moreover,
-		    programs in the two worlds are united by a compositional syntax, thanks
-		    to their affinities for monoidal structure.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="card mt-3">
-        <div class="card-header">
-            <h2 class="mb-0">
-                <button class="btn btn-wide disabled" data-toggle="collapse" data-target="#talk8">
-                    <i>More to be confirmed shortly...</i>
-                </button>
-            </h2>
-        </div>
-        <div id="talk8" class="collapse">
-            <div class="card-body">
-                <p>
-                    More slots to be confirmed shortly
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add more talks as needed -->
-
-</div>
-</div>
-
-  <div class="row justify-content-center"><hr class="col-md-12 col-lg-10 mb-5 ma-5"></div>
-
-  <div class="row g-4 justify-content-center">
-      <div class="col-md-5 col-lg-4">
-          <h2>Key Dates</h2>
-          <ul class="icon-list">
-              <li>20 November 2023: Submission deadline (AoE)</li>
-              <li>18 December 2023: Author notification</li>
-              <li>15 January  2024: Final manuscript due</li>
-              <li>3  March    2024: Workshop</li>
-          </ul>
-
-      </div>
-
-      <div class="col-md-7 col-lg-6">
+      <div class="col-md-7 col-lg-10">
           <h2>Announcements</h2>
           <ul class="icon-list">
               <li>
