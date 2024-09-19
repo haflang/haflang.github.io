@@ -20,6 +20,12 @@ title: People
         <p><a class="btn btn-secondary" href="https://github.com/cramsay" target="_blank">Website &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
 
+      <div class="col-lg-4">
+      <img src="images/YukangXie.jpg" alt="Yukang Xie" class="rounded-circle" height="180">
+        <h2>PhD student</h2>
+        <p>Yukang has a background in FPGA implementations of crytography algorithms. Yukang developed a keen interest in functional programming during his MSc in China.</p>
+      </div><!-- /.col-lg-4 -->
+
       </div><!-- /.row -->
 
 #+end_export
