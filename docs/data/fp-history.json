@@ -1,7 +1,7 @@
 {
     "title": {
         "text": {
-          "headline": "Functional Hardware<br/>1924 - 2023",
+          "headline": "Functional Hardware<br/>1924 - 2024",
           "text": "<p>A 100 year history of hardware implementations of functional languages.</p>"
         }
     },
@@ -630,7 +630,7 @@
         },
         "text": {
           "headline": "Parallel graph reduction with the (v , G)-machine",
-            "text": "<p>Independently of Lal George's work, although presented at the same FPCA event, the inventors of the G-Machine (Johnsson and Augustsson) were also extending the G-Machine for parallelism. They added support for user-specified spark annotations, which had support with a new G-Machine <b>SPARK</b> instruction. The presentation of the transition rule for <b>SPARK</b> in this FPCA paper is:<img src=\"/images/fp-history/spark-instruction-1989-2.png\"/>This was implemented on shared-memory multiprocessor called Sequent Symmetry with 15 processors, and achieved speedups between 5 and 11. The idea of spark annotations (originally from <a href=\"https://doi.org/10.1145/319838.319865\">LFP 1986</a>) and sparkpools have been carried into today's GHC software implementation with the <a href=\"https://hackage.haskell.org/package/parallel-3.2.2.0/docs/Control-Parallel-Strategies.html#v:rpar\">rpar</a> function.<br><a href=\"https://doi.org/10.1145/99370.99386\">https://doi.org/10.1145/99370.99386</a></p>"
+            "text": "<p>Independently of Lal George's work, although presented at the same FPCA event, the inventors of the G-Machine (Johnsson and Augustsson) were also extending the G-Machine for parallelism. They added support for user-specified spark annotations, which had support with a new G-Machine <b>SPARK</b> instruction. The presentation of the transition rule for <b>SPARK</b> in this FPCA paper is:<br><img src=\"/images/fp-history/spark-instruction-1989-2.png\"/><br>This was implemented on shared-memory multiprocessor called Sequent Symmetry with 15 processors, and achieved speedups between 5 and 11. The idea of spark annotations (originally from <a href=\"https://doi.org/10.1145/319838.319865\">LFP 1986</a>) and sparkpools have been carried into today's GHC software implementation with the <a href=\"https://hackage.haskell.org/package/parallel-3.2.2.0/docs/Control-Parallel-Strategies.html#v:rpar\">rpar</a> function.<br><a href=\"https://doi.org/10.1145/99370.99386\">https://doi.org/10.1145/99370.99386</a></p>"
         }
       },
         {
@@ -642,6 +642,16 @@
             "text": "<p>In the <a href=\"https://users.ece.cmu.edu/~koopman/tigre/chap7.pdf\">chapter 7</a> of Philip Koopman's <a href=\"https://doi.org/10.1016/C2013-0-10999-3\">book</a>, \"An Architecture for Combinator Graph Reduction\", he expresses scepticism about special purpose functional hardware:</p><section class=\"component\"><blockquote class=\"callout quote EN\">An order of magnitude speed improvement was rather unlikely no matter what architectural innovations are possible, since a factor of 10 speedup from the current R2000 TIGRE implementation leaves just 3.009 clock cycles per combinator for program execution time. Speeding up TIGRE operation by that amount exceeds all plausible expectations. So, it was probably not worthwhile building a special-purpose CPU to support TIGRE, since current RISC technology will probably have increased in speed enough by the time a TIGRE chip could be designed and fabricated to make the exercise pointless.<cite> Philip Koopman</cite></blockquote></section>"
         }
         },
+        {
+        "start_date": {
+          "month": "08",
+          "year": "1991"
+        },
+        "text": {
+            "headline": "RISC: the new buzz-word",
+            "text": "<p>Lennart Augustsson echoed this sentiment <a href=\"https://doi.org/10.1007/978-1-4471-3196-0_3\">a year later</a>:</p><section class=\"component\"><blockquote class=\"callout quote EN\">In the seventies and early eighties, before efficient compilers for functional languages existed, it was believed that special purpose hardware was needed to get efficient execution of functional languages. These were also the days when special purpose processors were considered a \"good thing\". With the advent of compilers for functional languages it was realized that relatively efficient execution was possible on stock hardware. Nowadays special purpose processors are no longer held in such high esteem; RISC is the buzz-word of today's computer design.<cite> Lennart Augustsson</cite></blockquote></section>"
+        }
+        },
          {
         "start_date": {
           "month": "08",
@@ -649,7 +659,7 @@
         },
         "text": {
           "headline": "Memory bandwidth",
-            "text": "<p>There were still some in this research community keen to explore functional hardware innovations.<br><br>At the Glasgow Workshop on Functional Programming, in Portree on the Isle of Skye, Lennart Augustsson observed that <i>memory bandwidth</i> was a limiting performance factor for lazy languages.</p><section class=\"component\"><blockquote class=\"callout quote EN\">For lazy languages [...] instead of computing a value, a suspension of the computations has to be created, to be scrutinized later on. [...] increasing the number of memory references. [...] the speed of functional programs are then limited by the memory bandwidth.<cite> Lennart Augustsson</cite></blockquote></section>"
+            "text": "<p>However Lennart Augustsson was still keen to explore functional hardware innovations.<br><br>At the Glasgow Workshop on Functional Programming, in Portree on the Isle of Skye, he observed that <i>memory bandwidth</i> was a limiting performance factor for lazy languages.</p><section class=\"component\"><blockquote class=\"callout quote EN\">For lazy languages [...] instead of computing a value, a suspension of the computations has to be created, to be scrutinized later on. [...] increasing the number of memory references. [...] the speed of functional programs are then limited by the memory bandwidth.<cite> Lennart Augustsson</cite></blockquote></section>"
         }
       },
          {
@@ -736,7 +746,7 @@
         },
             "text": {
                 "headline": "Reconfigurability spectrum",
-                "text": "<p>FPGAs offer a spectrum of possible architectures. At one extreme are <i>general purpose</i> CPUs, which most compilers target. The other extreme was application specific circuits that do one task extremely efficiently, but nothing else. These circuits can expressed with hardware description languages (even functional ones like <a href=\"https://doi.org/10.1109/DSD.2010.21\">Clash</a> and <a href=\"https://doi.org/10.1145/291251.289440\">Lava</a>), or can be generated by <a href=\"https://doi.org/10.1145/3315454.3329957\">functional language compilers</a>. These circuits can be reconfigured for FPGAs, or synthesised once to ASICs with the circuit drawn into silicon.<img src=\"/images/fp-history/modern-spectrum.svg\"/>There is, however, a spectrum. Recent architectures shrink 1980s functional architecture ideas onto a single chip - PilGRIM (ASIC) and Reduceron (FPGA). Another recent approach exploits reconfigurability properties of FPGAs, compiling functional OCaml code to a softcore processor alongside per-function generated circuits, all in one FPGA.</p>"
+                "text": "<p>FPGAs offer a spectrum of possible architectures. At one extreme are <i>general purpose</i> CPUs, which most compilers target. The other extreme was application specific circuits that do one task extremely efficiently, but nothing else. These circuits can expressed with hardware description languages (even functional ones like <a href=\"https://doi.org/10.1109/DSD.2010.21\">Clash</a> and <a href=\"https://doi.org/10.1145/291251.289440\">Lava</a>), or can be generated by <a href=\"https://doi.org/10.1145/3315454.3329957\">functional language compilers</a>. These circuits can be reconfigured for FPGAs, or synthesised once to ASICs with the circuit drawn into silicon.<img src=\"/images/fp-history/modern-spectrum.svg\"/><br>There is, however, a spectrum. Recent architectures shrink 1980s functional architecture ideas onto a single chip - PilGRIM (ASIC) and Reduceron (FPGA). Another recent approach exploits reconfigurability properties of FPGAs, compiling functional OCaml code to a softcore processor alongside per-function generated circuits, all in one FPGA.</p>"
             }
         },
         {
@@ -808,7 +818,7 @@
         },
         "text": {
             "headline": "HAFLANG",
-            "text": "<p>Our EPSRC funded <a href=\"https://haflang.github.io\">HAFLANG project</a> at Heriot-Watt University is extending functional language architecture ideas from the last 40+ years. We are targetting state-of-the-art Xilinx UltraScale+ FPGA technology. Our aim is to outperform the runtime and energy efficiency of software-based language implementations running on modern general purpose CPUs. To meet this aim, our innovation plans focus on parallel reduction, locality, minimising memory traffic and off-chip heap storage.<br><br>Our research is decribed in these papers:<ul><li><b>Heron</b> an efficient graph reduction core based on template instantiation <a href=\"https://doi.org/10.1145/3652561.3652564\">(IFL 2023)</a>.</li><li><b>Cloaca</b> a hardware-based concurrent garbage collector for Heron <a href=\"https://doi.org/10.1145/3677999.3678277\">(Haskell 2024)</a>.</ul></p>"
+            "text": "<p>Our EPSRC funded <a href=\"https://haflang.github.io\">HAFLANG project</a> at Heriot-Watt University is extending functional language architecture ideas from the last 40+ years. We are targetting state-of-the-art Xilinx UltraScale+ FPGA technology. Our aim is to outperform the runtime and energy efficiency of software-based language implementations running on modern general purpose CPUs. To meet this aim, our innovation plans focus on parallel reduction, locality, minimising memory traffic and off-chip heap storage.<br><br>Our research is decribed in these papers:<ul><li><b>Heron</b> an efficient graph reduction core based on template instantiation <a href=\"https://doi.org/10.1145/3652561.3652564\">(IFL 2023)</a>.</li><li><b>Cloaca</b> a hardware-based concurrent garbage collector for Heron <a href=\"https://doi.org/10.1145/3677999.3678277\">(Haskell 2024)</a>.</li><li>From Haskell to a New Structured Combinator Processor <a href=\"https://researchportal.hw.ac.uk/en/publications/from-haskell-to-a-new-structured-combinator-processor\">(TFP 2025)</a>.</li></ul></p>"
         }
         }
     ]
