@@ -17,7 +17,7 @@ title: People
       <img src="images/CraigRamsay.png" alt="Craig Ramsay" class="rounded-circle" height="180">
         <h2>Research Associate</h2>
         <p>Craig has interests in functional programming techniques for hardware description, with a focus on dependent types and DSP applications.</p>
-        <p><a class="btn btn-secondary" href="https://github.com/cramsay" target="_blank">Website &raquo;</a></p>
+        <p><a class="btn btn-secondary" href="https://cramsay.co.uk/" target="_blank">Website &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
 
       <div class="col-lg-4">
