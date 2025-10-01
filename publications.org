@@ -8,4 +8,4 @@ title: Publications
   Languages*, Craig Ramsay and Robert Stewart, Haskell Symposium 2024. [[https://doi.org/10.1145/3677999.3678277][DOI]]
 - *From Haskell to a New Structured Combinator Processor*, Yukang Xie, Craig
   Ramsay, Robert Stewart and  Hans-Wolfgang Loidl, Trends in Functional
-  Programming 2025. [[https://researchportal.hw.ac.uk/en/publications/from-haskell-to-a-new-structured-combinator-processor][link]]
+  Programming 2025. [[https://doi.org/10.1007/978-3-031-99751-8_7][DOI]]
