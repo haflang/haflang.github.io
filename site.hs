@@ -91,7 +91,8 @@ pandocCompiler' :: Compiler (Item String)
 pandocCompiler' =
   pandocCompilerWith
     pandocMathReaderOptions
-    pandocMathWriterOptions {writerHighlightStyle = Just pandocCodeStyle}
+    pandocMathWriterOptions {writerHighlightMethod = IdiomaticHighlighting}
+    -- pandocMathWriterOptions {writerHighlightStyle = Just pandocCodeStyle}
 
 pandocCodeStyle = haddock
 
