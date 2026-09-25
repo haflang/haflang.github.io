@@ -3,9 +3,12 @@ title: Publications
 ---
 
 - *Heron: Modern Hardware Graph Reduction*, Craig Ramsay and Robert Stewart,
-  Implementation of Functional Languages 2023. [[https://doi.org/10.1145/3652561.3652564][DOI]]
+  Implementation of Functional Languages (IFL) 2023. [[https://doi.org/10.1145/3652561.3652564][DOI]]
 - *Cloaca: A Concurrent Hardware Garbage Collector for Non-strict Functional
   Languages*, Craig Ramsay and Robert Stewart, Haskell Symposium 2024. [[https://doi.org/10.1145/3677999.3678277][DOI]]
 - *From Haskell to a New Structured Combinator Processor*, Yukang Xie, Craig
   Ramsay, Robert Stewart and  Hans-Wolfgang Loidl, Trends in Functional
-  Programming 2025. [[https://doi.org/10.1007/978-3-031-99751-8_7][DOI]]
+  Programming (TFP) 2025. [[https://doi.org/10.1007/978-3-031-99751-8_7][DOI]]
+- *Ouros: A Dataflow-Driven Processor for Lazy Functional Programming
+  Languages*, Yukang Xie, Craig Ramsay, Robert Stewart and Hans-Wolfgang Loidl,
+  Application-specific Systems, Architectures and Processors (ASAP). [[https://doi.org/10.1109/ASAP71856.2026.00023][DOI]]
